@@ -43,8 +43,8 @@ function StaticGrainBackground({ className = '' }: StaticGrainBackgroundProps) {
 
     // Set canvas size
     const resizeCanvas = (): void => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
       drawStatic(); // Redraw on resize
     };
     resizeCanvas();
@@ -64,7 +64,7 @@ function StaticGrainBackground({ className = '' }: StaticGrainBackgroundProps) {
   return (
     <canvas 
       ref={canvasRef} 
-      className={`fixed top-0 left-0 w-full h-full -z-10 ${className}`}
+      className={`w-full h-full ${className}`}
       style={{ background: '#0f1419' }}
     />
   );
