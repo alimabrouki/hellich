@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+@theme {
+  --font-cairo: 'Cairo', 'sans-serif';
+  --color-main-bleu: #03a6db;
+  --color-main-bleu-bg: #4682b4;
+  --color-head-bg: #b8bdbb21;
+}
+
+@layer base {
+  h1,h2,h3 {
+    @apply text-[min(10vw,70px)]
+  }
+
+}
+
+body {
+  @apply bg-main-bleu-bg
+}
+
+@utility wrapper {
+  @apply mt-6 mx-4 sm:mt-8 sm:mx-6 lg:mt-[50px] lg:mx-[50px];
+}
+
+@utility hellich {
+  @apply relative mx-auto w-full;
+}
+
+@utility flexx {
+  @apply flex justify-center items-center;
+}
+
+@utility head-links {
+  @apply flexx mr-[70px] gap-10  text-[#99b8f2] ;
+}
+
+@layer components {
+  .nav-link-animated {
+    @apply relative pb-1 transition-colors duration-300;
+  }
+  
+  .nav-link-animated::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-[2px] w-0 bg-white;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .nav-link-animated:hover::after {
+    @apply w-full;
+  }
+}
