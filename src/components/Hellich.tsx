@@ -6,14 +6,32 @@ import { useEffect, useState } from 'react';
 function Hellich() {
   const [menuOpen, setMenuOpen] = useState(false);
 
- 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style = 'overflow:hidden'
+    } else {
+      document.body.style = ''
+    }
+  }, [menuOpen])
 
-  const handleMenuOpen = (state:boolean) => {
+  const handleMenuOpen = (state: boolean) => {
     setMenuOpen(state)
   }
   return (
     <div className="wrapper">
-      <div className={`hellich relative pt-8 overflow-visible bg-black rounded-2xl" ${menuOpen ? 'before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-[#eaf9fb] before:z-20 overflow-hidden' : ''}`}>
+ <div
+  className={`hellich relative pt-8 rounded-2xl overflow-hidden
+    before:content-['']
+    before:absolute
+    before:inset-0
+    before:bg-[#eaf9fb]
+    before:transition-transform
+    before:duration-200
+    before:rounded-2xl
+    before:z-20
+    ${menuOpen ? 'before:translate-y-0' : 'before:translate-y-full'}
+  `}
+>
 
         <StaticGrainBackground className="absolute inset-0 rounded-2xl" />
 
