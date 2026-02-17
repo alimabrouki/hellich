@@ -19,20 +19,29 @@ function Hellich() {
   }
   return (
     <div className="wrapper">
- <div
-  className={`hellich relative pt-8 rounded-2xl overflow-hidden
-    before:content-['']
-    before:absolute
-    before:inset-0
-    before:bg-[#eaf9fb]
-    before:transition-transform
-    before:duration-200
-    before:rounded-2xl
-    before:z-20
-    ${menuOpen ? 'before:translate-y-0' : 'before:translate-y-full'}
+      <div
+        className={`hellich relative pt-8 rounded-2xl overflow-hidden
   `}
->
-
+      >
+        <div className={`
+          menu-layout 
+          absolute 
+          inset-0 
+          transition-transform 
+          duration-100
+          rounded-2xl
+          z-20
+        ${menuOpen ? 'translate-y-0' : 'translate-y-full'}`}>
+          <StaticGrainBackground
+            className="absolute inset-0 rounded-2xl"
+            colors={['#d6dada',
+              '#d6dada',
+              '#d6dada',
+              '#eaf9fb',
+              '#d6dada',
+              '#eaf9fb',
+            ]} />
+        </div>
         <StaticGrainBackground className="absolute inset-0 rounded-2xl" />
 
         <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
