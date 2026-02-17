@@ -23,8 +23,8 @@ function Header() {
             </div>
             <img  className="w-[140px] mr-auto sm:mr-5" src={logo} alt="" />
             <button className="menu-button ">
-              <span className="menu-dot "></span>
-              <span className="menu ">Menu</span>
+              <span className="menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu"></span>
+              <span className="menu inline-block -translate-x-2 translate-y-1.25 font-[650]">Menu</span>
               </button>
           </div>
         </div>

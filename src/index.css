@@ -12,6 +12,10 @@
     @apply text-[min(10vw,70px)]
   }
 
+* {
+  @apply font-cairo;
+}
+
 }
 
 body {
