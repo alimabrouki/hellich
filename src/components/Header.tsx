@@ -27,8 +27,17 @@ function Header({handleMenuOpen,menuOpen}: HeaderProps) {
               </NavLink>
             </div>
             <img  className={`w-[140px] rounded-[3px] mr-auto sm:mr-5 ${menuOpen && 'bg-black'}`} src={logo} alt="" />
-            <button onClick={() => handleMenuOpen(!menuOpen)} className={`menu-button relative sm:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]  ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}>
-              <span className="menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu"></span>
+            <button onClick={() => handleMenuOpen(!menuOpen)} className={`menu-button relative sm:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]  ${menuOpen ? 'bg-black text-[#eaf9fb]': 'text-main-bleu '}`}>
+
+              <span className="menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu ">
+              </span>
+
+              <span className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 ${menuOpen ? 'translate-y-2' : '-translate-y-1'} bg-main-bleu transition-transform duration-300`}>
+              </span>
+
+                <span className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 ${menuOpen ? 'translate-y-5' : '-translate-y-1'} bg-main-bleu transition-transform duration-300`}>
+              </span>
+
               <span className="menu inline-block -translate-x-2 translate-y-1.25 font-[650]">Menu</span>
               </button>
           </div>
