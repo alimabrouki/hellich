@@ -1,13 +1,14 @@
 interface NavLinkProps {
   href: string;
   children: string;
+  menuOpen: boolean;
 }
 
-function NavLink({ href, children }: NavLinkProps) {
+function NavLink({ href, children,menuOpen }: NavLinkProps) {
   return (
     <a 
       href={href}
-      className="group relative inline-block overflow-hidden text-white"
+      className={`group relative inline-block overflow-hidden  ${menuOpen ? 'text-black' : 'text-white'}`}
     >
       <span className="block transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full group-hover:blur-[10px] group-hover:opacity-0">
         {children}

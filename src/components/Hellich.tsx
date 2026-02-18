@@ -28,7 +28,7 @@ function Hellich() {
           absolute 
           inset-0 
           transition-transform 
-          duration-100
+          duration-300
           rounded-2xl
           z-20
         ${menuOpen ? 'translate-y-0' : 'translate-y-full'}`}>

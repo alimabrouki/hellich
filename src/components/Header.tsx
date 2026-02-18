@@ -12,19 +12,24 @@ function Header({handleMenuOpen,menuOpen}: HeaderProps) {
 
       <div className="header z-20 relative">
           <div className="head sm:bg-head-bg sm:rounded-4xl sm:mx-24 flex  justify-end ">
-            <div className="head-links max-sm:hidden">
-              <NavLink href={"/"}>
+            <div className={`head-links ${menuOpen ? 'absolute items-end mr-8 flex-col text-[40px] font-bold translate-y-50 gap-4' : 'max-sm:hidden'}`}>
+              <div className={`menu-links-lines ${menuOpen ? 'w-full h-px bg-black': ''}`}></div>
+              <NavLink menuOpen={menuOpen} href={"/"}>
                 برامج
               </NavLink>
-              <NavLink href={ "/contact"}>
+              <div className={`menu-links-lines ${menuOpen ? 'w-full h-px bg-black': ''}`}></div>
+              <NavLink menuOpen={menuOpen} href={ "/contact"}>
                 تواصل معي
               </NavLink>
-              <NavLink href={ "/about"}>
+               <div className={`menu-links-lines ${menuOpen ? 'w-full h-px bg-black': ''}`}></div>
+              <NavLink menuOpen={menuOpen} href={ "/about"}>
                 من أنا ؟
               </NavLink>
-              <NavLink href={"/faq" }>
+               <div className={`menu-links-lines ${menuOpen ? 'w-full h-px bg-black': ''}`}></div>
+              <NavLink menuOpen={menuOpen} href={"/faq" }>
                 الأسئلة الشائعة
               </NavLink>
+               <div className={`menu-links-lines ${menuOpen ? 'w-full h-px bg-black': ''}`}></div>
             </div>
             <img  className={`w-[140px] rounded-[3px] mr-auto sm:mr-5 ${menuOpen && 'bg-black'}`} src={logo} alt="" />
             <button
@@ -44,12 +49,12 @@ function Header({handleMenuOpen,menuOpen}: HeaderProps) {
 
               <span className="relative inline-block -translate-x-2 translate-y-1.25 overflow-hidden align-bottom font-[650] leading-none">
                 <span
-                  className={`block transition-all duration-250 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? '-translate-y-full blur-[10px] opacity-0' : ''}`}
+                  className={`block transition-all duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? '-translate-y-full blur-[10px] opacity-0' : ''}`}
                 >
                   Menu
                 </span>
                 <span
-                  className={`absolute left-0 top-full block transition-transform duration-250 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? '-translate-y-full' : ''}`}
+                  className={`absolute left-0 top-full block transition-transform duration-350 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? '-translate-y-full' : ''}`}
                 >
                   Close
                 </span>
