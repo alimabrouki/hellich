@@ -23,11 +23,11 @@ body {
 }
 
 @utility wrapper {
-  @apply mt-6 mx-4 sm:mt-8 sm:mx-6 lg:mt-[50px] lg:mx-[50px];
+  @apply border-[30px] border-main-bleu-bg 
 }
 
 @utility hellich {
-  @apply relative mx-auto w-full;
+  @apply relative mx-auto w-full overflow-visible;
 }
 
 @utility flexx {
