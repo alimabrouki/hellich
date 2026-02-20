@@ -44,6 +44,10 @@ body {
   font-feature-settings: 'zero';
 }
 
+@utility time-font {
+  font-variant-numeric: tabular-nums;
+}
+
 @layer components {
   .nav-link-animated {
     @apply relative pb-1 transition-colors duration-300;
