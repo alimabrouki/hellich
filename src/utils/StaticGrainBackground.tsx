@@ -27,7 +27,7 @@ function StaticGrainBackground({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const pixelSize: number = 1;
+    const pixelSize: number = 2;
 
 
     const drawStatic = (): void => {
@@ -67,7 +67,7 @@ function StaticGrainBackground({
     <canvas
       ref={canvasRef}
       className={`w-full h-full ${className}`}
-      style={{ background: '#0f1419' }}
+      style={{ background: '#e7e7e5' }}
     />
   );
 }
