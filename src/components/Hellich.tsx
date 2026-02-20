@@ -4,6 +4,7 @@ import '../App.css'
 import Header from './header/Header'
 import { useEffect, useState } from 'react'
 import NavLink from './header/NavLink'
+import LibyaTime from '../utils/LibyaTime'
 
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -44,7 +45,7 @@ function Hellich () {
               ]}
             />
 
-            <div className='relative z-10 h-full flex flex-col items-end justify-center gap-4 text-[30px] font-bold'>
+            <div className='relative z-10 mt-44 flex flex-col items-end justify-center gap-4 text-[30px] font-bold'>
               <div
                 className={`w-full overflow-hidden transition-all duration-500 ease-out
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
@@ -146,6 +147,7 @@ function Hellich () {
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
                 ></div>
               </div>
+              <LibyaTime />
             </div>
           </div>
 
