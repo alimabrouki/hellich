@@ -1,6 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
+  --font-jetbrains:'JetBrains Mono', monospace;;
   --font-cairo: 'Cairo', 'sans-serif';
   --color-main-bleu: #03a6db;
   --color-main-bleu-bg: #4682b4;
@@ -8,22 +9,23 @@
 }
 
 @layer base {
-  h1,h2,h3 {
-    @apply text-[min(10vw,70px)]
+  h1,
+  h2,
+  h3 {
+    @apply text-[min(10vw,70px)];
   }
 
-* {
-  @apply font-cairo;
-}
-
+  * {
+    @apply font-cairo;
+  }
 }
 
 body {
-  @apply bg-main-bleu-bg
+  @apply bg-main-bleu-bg;
 }
 
 @utility wrapper {
-  @apply border-[30px] border-main-bleu-bg 
+  @apply border-[30px] border-main-bleu-bg;
 }
 
 @utility hellich {
@@ -35,20 +37,24 @@ body {
 }
 
 @utility head-links {
-  @apply flexx mr-[70px] gap-10  text-[#99b8f2] ;
+  @apply flexx mr-[70px] gap-10  text-[#99b8f2];
+}
+
+@utility font-zero {
+  font-feature-settings: 'zero';
 }
 
 @layer components {
   .nav-link-animated {
     @apply relative pb-1 transition-colors duration-300;
   }
-  
+
   .nav-link-animated::after {
     content: '';
     @apply absolute bottom-0 left-0 h-[2px] w-0 bg-white;
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  
+
   .nav-link-animated:hover::after {
     @apply w-full;
   }
