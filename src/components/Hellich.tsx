@@ -1,4 +1,4 @@
-import profileImage from "../assets/images/hellich-hero-image.png"
+import profileImage from "../assets/images/erasebg-transformed (2).png"
 import StaticGrainBackground from "../utils/StaticGrainBackground"
 import '../App.css'
 import Header from "./header/Header"
@@ -45,61 +45,66 @@ function Hellich() {
     ]} 
   />
 
-  <div className="relative z-10 h-full flex flex-col items-end justify-center gap-4 px-8 text-[40px] font-bold">
+  <div className="relative z-10 h-full flex flex-col items-end justify-center gap-4 text-[30px] font-bold">
     
    
     <div className={`w-full overflow-hidden transition-all duration-500 ease-out
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}>
-      <div className={`w-full h-px bg-black origin-right transition-all duration-700 delay-100
+      <div className={`w-full h-[0.5px] bg-black origin-right transition-all duration-700 delay-100
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
     </div>
     
-    <div className={`transition-all duration-500 ease-out
+    <div className={`transition-all duration-500 ease-out mr-2.5 flexx gap-2.5
       ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
       style={{ transitionDelay: menuOpen ? '150ms' : '0ms' }}>
-      <NavLink menuOpen={menuOpen} href="/">برامج</NavLink>
+         
+         <NavLink menuOpen={menuOpen} href="/">برامج</NavLink>
+         <span className="text-[15px] font-zero font-jetbrains font-thin">01</span>
     </div>
     
  
     <div className={`w-full overflow-hidden transition-all duration-500 ease-out delay-100
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}>
-      <div className={`w-full h-px bg-black origin-right transition-all duration-700 delay-200
+      <div className={`w-full h-[0.5px] bg-black origin-right transition-all duration-700 delay-200
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
     </div>
     
-    <div className={`transition-all duration-500 ease-out delay-150
+    <div className={`transition-all duration-500 ease-out delay-150 mr-2.5 flexx  gap-2.5
       ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
       style={{ transitionDelay: menuOpen ? '250ms' : '0ms' }}>
       <NavLink menuOpen={menuOpen} href="/contact">تواصل معي</NavLink>
+       <span className="text-[15px] font-zero font-jetbrains font-light">02</span>
     </div>
     
     <div className={`w-full overflow-hidden transition-all duration-500 ease-out delay-200
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}>
-      <div className={`w-full h-px bg-black origin-right transition-all duration-700 delay-300
+      <div className={`w-full h-[0.5px] bg-black origin-right transition-all duration-700 delay-300
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
     </div>
     
-    <div className={`transition-all duration-500 ease-out delay-200
+    <div className={`transition-all duration-500 ease-out delay-200 mr-2.5 flexx  gap-2.5
       ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
       style={{ transitionDelay: menuOpen ? '350ms' : '0ms' }}>
       <NavLink menuOpen={menuOpen} href="/about">من أنا ؟</NavLink>
+       <span className="text-[15px] font-zero font-jetbrains font-light">03</span>
     </div>
     
     <div className={`w-full overflow-hidden transition-all duration-500 ease-out delay-300
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}>
-      <div className={`w-full h-px bg-black origin-right transition-all duration-700 delay-400
+      <div className={`w-full h-[0.5px] bg-black origin-right transition-all duration-700 delay-400
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
     </div>
     
-    <div className={`transition-all duration-500 ease-out delay-300
+    <div className={`transition-all duration-500 ease-out delay-300 mr-2.5 flexx gap-2.5
       ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
       style={{ transitionDelay: menuOpen ? '450ms' : '0ms' }}>
       <NavLink menuOpen={menuOpen} href="/faq">الأسئلة الشائعة</NavLink>
+       <span className="text-[15px] font-zero font-jetbrains font-light">04</span>
     </div>
     
     <div className={`w-full overflow-hidden transition-all duration-500 ease-out delay-[400ms]
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}>
-      <div className={`w-full h-px bg-black origin-right transition-all duration-700 delay-500
+      <div className={`w-full h-[0.5px] bg-black origin-right transition-all duration-700 delay-500
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
     </div>
     
