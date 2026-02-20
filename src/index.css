@@ -25,7 +25,7 @@ body {
 }
 
 @utility wrapper {
-  @apply border-[30px] border-main-bleu-bg;
+  @apply sm:border-30 border-18 border-main-bleu-bg;
 }
 
 @utility hellich {

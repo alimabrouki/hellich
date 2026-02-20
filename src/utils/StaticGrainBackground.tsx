@@ -67,7 +67,7 @@ function StaticGrainBackground({
     <canvas
       ref={canvasRef}
       className={`w-full h-full ${className}`}
-      style={{ background: '#e7e7e5' }}
+      style={{ background: '#0f1419' }}
     />
   );
 }
