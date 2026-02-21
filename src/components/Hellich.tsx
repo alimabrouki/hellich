@@ -45,9 +45,19 @@ function Hellich () {
               ]}
             />
 
-            <div className='relative z-10 mt-44 flex flex-col items-end justify-center gap-4 text-[30px] font-bold'>
+            <div className='relative z-10 mt-35 flex flex-col items-end justify-center gap-4 text-[30px] font-bold'>
+              <span
+                className={`transition-all duration-500 ease-out delay-200 text-[25px] text-text-dark  font-medium time-font mr-2.5 ${
+                  menuOpen
+                    ? 'translate-y-0 opacity-100'
+                    : 'translate-y-8 opacity-0'
+                }`}
+                style={{ transitionDelay: menuOpen ? '100ms' : '0ms' }}
+              >
+                .انضباط. قوة. نتائج حقيقية
+              </span>
               <div
-                className={`w-full overflow-hidden transition-all duration-500 ease-out
+                className={`w-full px-3.5 overflow-hidden transition-all duration-500 ease-out
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
               >
                 <div
@@ -70,7 +80,7 @@ function Hellich () {
               </div>
 
               <div
-                className={`w-full overflow-hidden transition-all duration-500 ease-out delay-100
+                className={`w-full px-3.5 overflow-hidden transition-all duration-500 ease-out delay-100
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
               >
                 <div
@@ -93,7 +103,7 @@ function Hellich () {
               </div>
 
               <div
-                className={`w-full overflow-hidden transition-all duration-500 ease-out delay-200
+                className={`w-full px-3.5 overflow-hidden transition-all duration-500 ease-out delay-200
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
               >
                 <div
@@ -116,7 +126,7 @@ function Hellich () {
               </div>
 
               <div
-                className={`w-full overflow-hidden transition-all duration-500 ease-out delay-300
+                className={`w-full px-3.5 overflow-hidden transition-all duration-500 ease-out delay-300
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
               >
                 <div
@@ -139,7 +149,7 @@ function Hellich () {
               </div>
 
               <div
-                className={`w-full overflow-hidden transition-all duration-500 ease-out delay-[400ms]
+                className={`w-full px-3.5 overflow-hidden transition-all duration-500 ease-out delay-[400ms]
       ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
               >
                 <div
@@ -147,7 +157,20 @@ function Hellich () {
         ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
                 ></div>
               </div>
-              <LibyaTime />
+              <div
+                className={`copyright-and-time flexx gap-13 mt-20 
+  transition-all duration-500 ease-out delay-[400ms]
+  ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                style={{ transitionDelay: menuOpen ? '550ms' : '0ms' }}
+              >
+                <span
+                  className={`text-[18px] font-zero font-jetbrains font-light time-font`}
+                >
+                  Hellich &copy;2026
+                </span>
+
+                <LibyaTime menuOpen={menuOpen} />
+              </div>
             </div>
           </div>
 

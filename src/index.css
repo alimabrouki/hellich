@@ -6,6 +6,7 @@
   --color-main-bleu: #03a6db;
   --color-main-bleu-bg: #4682b4;
   --color-head-bg: #b8bdbb21;
+  --color-text-dark: #1c1c1c;
 }
 
 @layer base {

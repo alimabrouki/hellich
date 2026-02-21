@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-function LibyaTime () {
+type LibyaTimeProps = {
+  menuOpen: boolean
+}
+
+function LibyaTime ({ menuOpen }: LibyaTimeProps) {
   const [dateTime, setDateTime] = useState('')
 
   useEffect(() => {
@@ -25,7 +29,7 @@ function LibyaTime () {
   }, [])
 
   return (
-    <div className='text-sm  text-[18px] font-zero font-jetbrains font-light time-font mr-4 mt-10 '>
+    <div className='text-sm  text-[18px] font-zero font-jetbrains font-light time-font mr-4 '>
       {dateTime}
     </div>
   )
