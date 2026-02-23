@@ -1,53 +1,60 @@
 import logo from '../../assets/images/logo.svg'
-import NavLink from "../NavLink"
+import NavLink from '../NavLink'
 
 type HeaderProps = {
-  handleMenuOpen: (state: boolean) => void;
-  menuOpen: boolean;
+  handleMenuOpen: (state: boolean) => void
+  menuOpen: boolean
 }
 
-function Header({ handleMenuOpen, menuOpen }: HeaderProps) {
-
+function Header ({ handleMenuOpen, menuOpen }: HeaderProps) {
   return (
-
     /* ===== Sticky Header ===== */
-    <div className="header sticky top-0 z-50">
-
-      <div className="head flex justify-end sm:bg-head-bg sm:rounded-4xl sm:mx-24 relative">
-         
-        <div className="hidden sm:flex head-links">
-          <NavLink menuOpen={false} href="/">برامج</NavLink>
-          <NavLink menuOpen={false} href="/contact">تواصل معي</NavLink>
-          <NavLink menuOpen={false} href="/about">من أنا ؟</NavLink>
-          <NavLink menuOpen={false} href="/faq">الأسئلة الشائعة</NavLink>
+    <div className='header sticky top-0 z-50'>
+      <div className='head flex justify-end lg:bg-head-bg lg:rounded-4xl lg:mx-24 relative'>
+        <div className='hidden lg:flex head-links'>
+          <NavLink menuOpen={false} href='/'>
+            برامج
+          </NavLink>
+          <NavLink menuOpen={false} href='/contact'>
+            تواصل معي
+          </NavLink>
+          <NavLink menuOpen={false} href='/about'>
+            من أنا ؟
+          </NavLink>
+          <NavLink menuOpen={false} href='/faq'>
+            الأسئلة الشائعة
+          </NavLink>
         </div>
 
         <img
-          className={`w-[140px] rounded-[3px] mr-auto sm:mr-5 ${menuOpen && 'bg-black'}`}
+          className={`w-[140px] rounded-[3px] mr-auto lg:mr-5 ${
+            menuOpen && 'bg-black'
+          }`}
           src={logo}
-          alt=""
+          alt=''
         />
 
         <button
-          type="button"
+          type='button'
           onClick={() => handleMenuOpen(!menuOpen)}
-          className={`menu-button group relative sm:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
+          className={`menu-button group relative lg:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
           ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
         >
+          <span className='menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu'></span>
 
-          <span className="menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu"></span>
-
-          <span className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
+          <span
+            className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
             ${menuOpen ? 'translate-y-2' : '-translate-y-1'}
-            bg-main-bleu transition-transform duration-300`}>
-          </span>
+            bg-main-bleu transition-transform duration-300`}
+          ></span>
 
-          <span className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
+          <span
+            className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
             ${menuOpen ? 'translate-y-5' : '-translate-y-1'}
-            bg-main-bleu transition-transform duration-300`}>
-          </span>
+            bg-main-bleu transition-transform duration-300`}
+          ></span>
 
-          <span className="relative inline-block -translate-x-2 translate-y-1.25 overflow-hidden align-bottom font-[650] leading-none">
+          <span className='relative inline-block -translate-x-2 translate-y-1.25 overflow-hidden align-bottom font-[650] leading-none'>
             <span
               className={`block transition-all duration-300 ease-[cubic-bezier(0.76,0,0.24,1)]
               ${menuOpen ? '-translate-y-full blur-[10px] opacity-0' : ''}`}
@@ -61,14 +68,10 @@ function Header({ handleMenuOpen, menuOpen }: HeaderProps) {
               Close
             </span>
           </span>
-
         </button>
-
       </div>
     </div>
   )
 }
 
-export default Header;
-
-
+export default Header
