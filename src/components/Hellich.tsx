@@ -1,5 +1,4 @@
 import profileImage from '../assets/images/hellich-hero-image.png'
-import StaticGrainBackground from '../utils/StaticGrainBackground'
 import '../App.css'
 import Header from './header/Header'
 import { useEffect, useState } from 'react'
@@ -23,28 +22,18 @@ function Hellich () {
   return (
     <>
       <div className='wrapper'>
-        <div className='hellich relative pt-8 rounded-2xl'>
-          <StaticGrainBackground className='absolute inset-0 rounded-2xl -z-50' />
-
+        <div className='hellich relative pt-8 lg:rounded-2xl'>
           <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
 
           <div
-            className={`menu-wrap absolute inset-0 z-40 rounded-2xl
+            className={`menu-wrap bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat fixed top-0 right-0 h-full w-full  z-40 
   transition-opacity duration-300 
-  ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+  ${
+    menuOpen
+      ? 'opacity-100 translate-y-0'
+      : 'translate-y-full opacity-0 pointer-events-none'
+  }`}
           >
-            <StaticGrainBackground
-              className='absolute inset-0 rounded-2xl'
-              colors={[
-                '#e7e7e5',
-                '#e6e6e4',
-                '#e5e5e3',
-                '#e8e8e6',
-                '#e4e4e2',
-                '#e9e9e7'
-              ]}
-            />
-
             <div className='relative z-10 mt-35 flex flex-col items-end justify-center gap-4 text-[30px] font-bold'>
               <span
                 className={`transition-all duration-500 ease-out delay-200 text-[25px] text-text-dark  font-medium time-font mr-2.5 ${
@@ -158,7 +147,7 @@ function Hellich () {
                 ></div>
               </div>
               <div
-                className={`copyright-and-time flexx gap-13 mt-20 
+                className={`copyright-and-time flex items-center justify-between  mt-20 
   transition-all duration-500 ease-out delay-[400ms]
   ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                 style={{ transitionDelay: menuOpen ? '550ms' : '0ms' }}
