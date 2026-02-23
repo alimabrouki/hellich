@@ -1,5 +1,6 @@
 import logo from '../../assets/images/logo.svg'
 import NavLink from '../NavLink'
+import StartBtn from './Startbtn'
 
 type HeaderProps = {
   handleMenuOpen: (state: boolean) => void
@@ -7,23 +8,23 @@ type HeaderProps = {
 }
 
 function Header ({ handleMenuOpen, menuOpen }: HeaderProps) {
+  const links = [
+    { href: '/faq', label: 'الأسئلة الشائعة', num: '04' },
+    { href: '/contact', label: 'تواصل معي', num: '02' },
+    { href: '/about', label: 'من أنا ؟', num: '03' },
+    { href: '/program', label: 'برامج', num: '01' }
+  ]
   return (
     /* ===== Sticky Header ===== */
     <div className='header sticky top-0 z-50'>
       <div className='head flex justify-end lg:bg-head-bg lg:rounded-4xl lg:mx-24 relative'>
+        <StartBtn />
         <div className='hidden lg:flex head-links'>
-          <NavLink menuOpen={false} href='/'>
-            برامج
-          </NavLink>
-          <NavLink menuOpen={false} href='/contact'>
-            تواصل معي
-          </NavLink>
-          <NavLink menuOpen={false} href='/about'>
-            من أنا ؟
-          </NavLink>
-          <NavLink menuOpen={false} href='/faq'>
-            الأسئلة الشائعة
-          </NavLink>
+          {links.map(link => (
+            <NavLink key={link.href} menuOpen={false} href={link.href}>
+              {link.label}
+            </NavLink>
+          ))}
         </div>
 
         <img
