@@ -2,6 +2,7 @@ import profileImage from '../assets/images/hellich-hero-image.png'
 import '../App.css'
 import Header from './header/Header'
 import { useEffect, useState } from 'react'
+import MobileMenu from './MobileMenu'
 
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,6 +23,8 @@ function Hellich () {
       <div className='wrapper'>
         <div className='hellich relative pt-8 lg:rounded-2xl'>
           <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
+
+          <MobileMenu menuOpen={menuOpen} />
 
           <div
             className={`hero relative z-10 min-h-screen flex items-center justify-center
