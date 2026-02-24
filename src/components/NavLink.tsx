@@ -9,7 +9,7 @@ function NavLink ({ href, children, menuOpen }: NavLinkProps) {
     <a
       href={href}
       className={`group relative inline-block overflow-hidden  ${
-        menuOpen ? 'text-text-dark' : 'text-white'
+        menuOpen ? 'text-text-dark' : 'text-head-btn'
       }`}
     >
       <span className='block transition-all duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full group-hover:blur-[10px] group-hover:opacity-0'>
