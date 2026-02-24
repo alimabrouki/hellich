@@ -39,7 +39,7 @@ body {
 }
 
 @utility head-links {
-  @apply flexx mr-[70px] gap-10  text-[#99b8f2];
+  @apply flexx mr-17.5 gap-10  text-[#99b8f2];
 }
 
 @utility font-zero {
@@ -57,7 +57,7 @@ body {
 
   .nav-link-animated::after {
     content: '';
-    @apply absolute bottom-0 left-0 h-[2px] w-0 bg-white;
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-white;
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
