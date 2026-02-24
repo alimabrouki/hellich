@@ -1,9 +1,9 @@
 import LibyaTime from '../utils/LibyaTime'
 import NavLink from './header/NavLink'
-import type { menuOpenProps } from '../utils/menuOpenProps'
+import type { menuProps } from '../utils/menuProps'
 import StartBtnMobile from './header/StartBtnMobile'
 
-function MobileMenu ({ menuOpen }: menuOpenProps) {
+function MobileMenu ({ menuOpen }: menuProps) {
   return (
     <div
       className={`menu-wrap flex items-end p-4 bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat fixed top-0 right-0 h-full w-full  z-40 
@@ -25,7 +25,7 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
         </span>
         <div
           className={`w-full overflow-hidden transition-all duration-500 ease-out
-                ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
+                ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
         >
           <div
             className={`w-full h-px bg-black origin-right transition-all duration-700 delay-100
@@ -52,7 +52,7 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
 
         <div
           className={`w-full overflow-hidden transition-all duration-500 ease-out delay-100
-              ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
+              ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
         >
           <div
             className={`w-full h-px bg-black origin-right transition-all duration-700 delay-200
@@ -79,7 +79,7 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
 
         <div
           className={`w-full overflow-hidden transition-all duration-500 ease-out delay-200
-                ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
+                ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
         >
           <div
             className={`w-full h-px bg-black origin-right transition-all duration-700 delay-300
@@ -106,7 +106,7 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
 
         <div
           className={`w-full overflow-hidden transition-all duration-500 ease-out delay-300
-              ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
+              ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
         >
           <div
             className={`w-full h-px bg-black origin-right transition-all duration-700 delay-400
@@ -132,8 +132,8 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-[400ms]
-                ${menuOpen ? 'max-h-[60px]' : 'max-h-0'}`}
+          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-400
+                ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
         >
           <div
             className={`w-full h-px bg-black origin-right transition-all duration-700 delay-500
@@ -143,7 +143,7 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
         <StartBtnMobile menuOpen={menuOpen} />
         <div
           className={`copyright-and-time flex items-center justify-between w-full
-                  transition-all duration-500 ease-out delay-[300ms]
+                  transition-all duration-500 ease-out delay-300
                   ${
                     menuOpen
                       ? 'translate-y-0 opacity-100'
