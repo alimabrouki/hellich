@@ -1,6 +1,7 @@
 import LibyaTime from '../utils/LibyaTime'
 import NavLink from './header/NavLink'
 import type { menuOpenProps } from '../utils/menuOpenProps'
+import StartBtnMobile from './header/StartBtnMobile'
 
 function MobileMenu ({ menuOpen }: menuOpenProps) {
   return (
@@ -139,9 +140,10 @@ function MobileMenu ({ menuOpen }: menuOpenProps) {
                   ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
           ></div>
         </div>
+        <StartBtnMobile menuOpen={menuOpen} />
         <div
-          className={`copyright-and-time flex items-center justify-between w-full mt-20 
-                  transition-all duration-500 ease-out delay-[400ms]
+          className={`copyright-and-time flex items-center justify-between w-full
+                  transition-all duration-500 ease-out delay-[300ms]
                   ${
                     menuOpen
                       ? 'translate-y-0 opacity-100'

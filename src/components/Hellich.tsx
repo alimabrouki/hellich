@@ -1,4 +1,4 @@
-import profileImage from '../assets/images/hellich-hero-image.png'
+// import profileImage from '../assets/images/hellich-hero-image.png'
 import '../App.css'
 import Header from './header/Header'
 import { useEffect, useState } from 'react'
@@ -31,11 +31,11 @@ function Hellich () {
             transition-opacity duration-300
             ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           >
-            <img
+            {/* <img
               src={profileImage}
               alt='Trainer'
               className='absolute -top-40 right-40 -translate-x-1/1 w-[570px]'
-            />
+            /> */}
 
             <p className='text-center text-5xl lg:text-7xl text-main-bleu font-cairo'>
               Elite Personal Training
