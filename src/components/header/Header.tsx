@@ -1,6 +1,6 @@
 import logo from '../../assets/images/logo.svg'
 import NavLink from '../NavLink'
-import StartBtn from './Startbtn'
+import StartBtnDesktop from './StartBtnDesktop'
 
 type HeaderProps = {
   handleMenuOpen: (state: boolean) => void
@@ -18,7 +18,7 @@ function Header ({ handleMenuOpen, menuOpen }: HeaderProps) {
     /* ===== Sticky Header ===== */
     <div className='header sticky top-0 z-50'>
       <div className='head flex justify-end lg:bg-head-bg lg:rounded-4xl lg:mx-24 relative'>
-        <StartBtn />
+        <StartBtnDesktop />
         <div className='hidden lg:flex head-links'>
           {links.map(link => (
             <NavLink key={link.href} menuOpen={false} href={link.href}>
