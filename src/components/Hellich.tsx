@@ -42,6 +42,20 @@ function Hellich () {
       '
               />
             </div>
+            <h1
+              className='
+      text-center
+      text-4xl sm:text-5xl lg:text-6xl
+      text-head-btn
+      font-cairo
+      font-black
+      text-[75px]
+      z-10
+      mb-20
+    '
+            >
+              تدريب مبني على فهم حقيقي
+            </h1>
 
             <div
               className='
