@@ -1,14 +1,9 @@
-import './App.css'
-import Hellich from './components/Hellich'
-import './index.css'
-
-
+import "./App.css";
+import Hellich from "./components/Hellich";
+import "./index.css";
 
 function App() {
-  return (
-    <Hellich />
-  )
+  return <Hellich />;
 }
 
-
-export default App
+export default App;

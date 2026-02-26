@@ -1,12 +1,13 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-jetbrains:'JetBrains Mono', monospace;;
-  --font-cairo: 'Cairo', 'sans-serif';
+  --font-jetbrains: "JetBrains Mono", monospace;
+  --font-cairo: "Cairo", "sans-serif";
   --color-main-bleu: #03a6db;
   --color-main-bleu-bg: #4682b4;
   --color-head-bg: #03132bc9;
   --color-head-btn: #ffefd5d6;
+  --color-pappay: #ffefd5;
   --color-text-dark: #1c1c1c;
 }
 
@@ -43,7 +44,7 @@ body {
 }
 
 @utility font-zero {
-  font-feature-settings: 'zero';
+  font-feature-settings: "zero";
 }
 
 @utility time-font {
@@ -56,7 +57,7 @@ body {
   }
 
   .nav-link-animated::after {
-    content: '';
+    content: "";
     @apply absolute bottom-0 left-0 h-0.5 w-0 bg-white;
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }

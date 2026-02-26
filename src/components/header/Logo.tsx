@@ -1,14 +1,14 @@
-import type { menuProps } from '../../utils/menuProps'
-import logo from '../../assets/images/logo.svg'
+import type { menuProps } from "../../utils/menuProps";
+import logo from "../../assets/images/logo.svg";
 
-function Logo ({ menuOpen }: menuProps) {
+function Logo({ menuOpen }: menuProps) {
   return (
     <img
-      className={`w-35 rounded-[3px] mr-auto lg:mr-5 ${menuOpen && 'bg-black'}`}
+      className={`w-35 rounded-[3px] mr-auto lg:mr-5 ${menuOpen && "bg-black"}`}
       src={logo}
-      alt=''
+      alt=""
     />
-  )
+  );
 }
 
-export default Logo
+export default Logo;

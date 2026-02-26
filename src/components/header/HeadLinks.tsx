@@ -1,21 +1,21 @@
-import NavLink from '../NavLink'
+import NavLink from "../NavLink";
 
-function HeadLinks () {
+function HeadLinks() {
   const links = [
-    { href: '/faq', label: 'الأسئلة الشائعة', num: '04' },
-    { href: '/contact', label: 'تواصل معي', num: '02' },
-    { href: '/about', label: 'من أنا ؟', num: '03' },
-    { href: '/program', label: 'برامج', num: '01' }
-  ]
+    { href: "/faq", label: "الأسئلة الشائعة", num: "04" },
+    { href: "/contact", label: "تواصل معي", num: "02" },
+    { href: "/about", label: "من أنا ؟", num: "03" },
+    { href: "/program", label: "برامج", num: "01" },
+  ];
   return (
-    <div className='hidden lg:flex head-links'>
-      {links.map(link => (
+    <div className="hidden lg:flex head-links">
+      {links.map((link) => (
         <NavLink key={link.href} menuOpen={false} href={link.href}>
           {link.label}
         </NavLink>
       ))}
     </div>
-  )
+  );
 }
 
-export default HeadLinks
+export default HeadLinks;
