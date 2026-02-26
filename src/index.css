@@ -66,3 +66,16 @@ body {
     @apply w-full;
   }
 }
+
+@keyframes slide-horizontal {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .sliding-text {
+    animation: slide-horizontal 8s linear infinite;
+  }
