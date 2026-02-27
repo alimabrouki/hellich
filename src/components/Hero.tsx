@@ -7,10 +7,10 @@ const Phrase = () => (
   <div className='flex shrink-0 items-center'>
     <span className='mx-10 flex items-center'>
       حقيقي
-      <Dot className='mx-6' strokeWidth={20} /> فهم
-      <Dot className='mx-6' strokeWidth={20} />
-      على <Dot className='mx-6' strokeWidth={20} />
-      مبني <Dot className='mx-6' strokeWidth={20} />
+      <Dot className='mx-2.5' strokeWidth={20} /> فهم
+      <Dot className='mx-2.5' strokeWidth={20} />
+      على <Dot className='mx-2.5' strokeWidth={20} />
+      مبني <Dot className='mx-2.5' strokeWidth={20} />
       تدريب
     </span>
   </div>
@@ -29,14 +29,14 @@ function Hero ({ menuOpen }: menuProps) {
 
   return (
     <div
-      className={`hero relative bottom-20 overflow-hidden flex flex-col items-center
+      className={`hero relative bottom-20 overflow-visible flex flex-col items-center
       transition-opacity duration-300
       ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
       {/* IMAGE */}
       <div
         className={`
-    relative w-full mb-[333px] flex justify-center pt-10
+    relative mb-[333px] flex justify-center pt-10
     transform transition-all duration-900 ease-out
     ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
   `}
@@ -45,26 +45,25 @@ function Hero ({ menuOpen }: menuProps) {
           src={profileImage}
           alt='Trainer'
           className='
-      w-[85%] max-w-2xl object-contain
-      [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
+          w-[85%] max-w-2xl object-contain
+          [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
     '
         />
-
-        <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
-          <div className='marquee-wrapper'>
-            <div
-              className='marquee-track
-      mix-blend-exclusion
-      whitespace-nowrap
-      font-cairo
-      font-black
-      text-[80px] sm:text-[120px] lg:text-[160px]
-      text-pappay
-    '
-            >
-              <Phrase />
-              <Phrase />
-            </div>
+      </div>
+      <div className='absolute bottom-30 inset-0 flex items-center justify-center pointer-events-none'>
+        <div className='marquee-wrapper'>
+          <div
+            className='marquee-track
+              mix-blend-difference
+              whitespace-nowrap
+              font-cairo
+              font-black
+              text-[80px] sm:text-[120px] lg:text-[160px]
+              text-pappay
+            '
+          >
+            <Phrase />
+            <Phrase />
           </div>
         </div>
       </div>
