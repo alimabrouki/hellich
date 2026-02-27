@@ -3,10 +3,21 @@ import profileImage from '../assets/images/hellich-hero-image.png'
 import { useEffect, useState } from 'react'
 import { Dot } from 'lucide-react'
 
+const Phrase = () => (
+  <div className='flex shrink-0 items-center'>
+    <span className='mx-10 flex items-center'>
+      حقيقي
+      <Dot className='mx-6' strokeWidth={20} /> فهم
+      <Dot className='mx-6' strokeWidth={20} />
+      على <Dot className='mx-6' strokeWidth={20} />
+      مبني <Dot className='mx-6' strokeWidth={20} />
+      تدريب
+    </span>
+  </div>
+)
+
 function Hero ({ menuOpen }: menuProps) {
   const [animate, setAnimate] = useState(false)
-
-  // const text = 'تدريب  مبني على فهم حقيقي'
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,32 +50,21 @@ function Hero ({ menuOpen }: menuProps) {
     '
         />
 
-        {/* Sliding Text Overlay */}
-        <div className='absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none'>
-          <div
-            className='
-        sliding-text
-        mix-blend-exclusion
-        flex
-        whitespace-nowrap
-        font-cairo
-        font-black
-        text-[80px] sm:text-[120px] lg:text-[160px]
-        text-pappay
-        select-none
-      '
-          >
-            <span className='mx-16'>
-              تدريب
-              <Dot className='inline' strokeWidth={20} />
-              مبني
-              <Dot className='inline' strokeWidth={20} />
-              على
-              <Dot className='inline  ' strokeWidth={20} />
-              فهم
-              <Dot className='inline' strokeWidth={20} />
-              حقيقي
-            </span>
+        <div className='absolute inset-0 flex items-center justify-center pointer-events-none'>
+          <div className='marquee-wrapper'>
+            <div
+              className='marquee-track
+      mix-blend-exclusion
+      whitespace-nowrap
+      font-cairo
+      font-black
+      text-[80px] sm:text-[120px] lg:text-[160px]
+      text-pappay
+    '
+            >
+              <Phrase />
+              <Phrase />
+            </div>
           </div>
         </div>
       </div>
