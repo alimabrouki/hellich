@@ -1,4 +1,4 @@
-import type { menuProps } from '../utils/menuProps'
+import type { menuProps } from '../types/menuProps'
 import profileImage from '../assets/images/hellich-hero-image.png'
 import { useEffect, useState } from 'react'
 import { Dot } from 'lucide-react'
