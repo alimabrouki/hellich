@@ -4,43 +4,49 @@ import type { menuProps } from '../types/menuProps'
 import StartBtnMobile from './header/StartBtnMobile'
 
 function MobileMenu ({ menuOpen }: menuProps) {
+  const revealDelay = (offset = 0) =>
+    menuOpen ? `${offset}ms` : '0ms'
+
   return (
     <div
-      className={`menu-wrap flex items-end p-4 bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat fixed top-0 right-0 h-full w-full  z-40 
-            transition-opacity duration-300 
+      className={`menu-wrap fixed right-0 bottom-0 z-40 flex w-full items-end overflow-hidden bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat opacity-100
+            transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${
               menuOpen
-                ? 'opacity-100 translate-y-0'
-                : 'translate-y-full opacity-0 pointer-events-none'
+                ? ''
+                : 'pointer-events-none'
             }`}
+      style={{ height: menuOpen ? '100%' : '0%' }}
     >
-      <div className='relative z-10 flex w-full flex-col items-end justify-center gap-4 text-[30px] font-bold'>
+      <div className='relative z-10 flex w-full flex-col items-end justify-center gap-4 p-4 text-[30px] font-bold'>
         <span
-          className={`transition-all duration-500 ease-out delay-200 text-[25px] text-text-dark  font-medium time-font ${
+          className={`transition-all duration-350 ease-out text-[25px] text-text-dark font-medium time-font ${
             menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
-          style={{ transitionDelay: menuOpen ? '100ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(0) }}
         >
           .انضباط. قوة. نتائج حقيقية
         </span>
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out
+          className={`w-full overflow-hidden transition-all duration-350 ease-out
                 ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
+          style={{ transitionDelay: revealDelay(12) }}
         >
           <div
-            className={`w-full h-px bg-black origin-right transition-all duration-700 delay-100
+            className={`w-full h-px bg-black origin-right transition-all duration-450
                   ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
+            style={{ transitionDelay: revealDelay(20) }}
           ></div>
         </div>
 
         <div
-          className={`transition-all duration-500 ease-out flexx gap-2.5
+          className={`transition-all duration-350 ease-out flexx gap-2.5
                 ${
                   menuOpen
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-8 opacity-0'
                 }`}
-          style={{ transitionDelay: menuOpen ? '150ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(30) }}
         >
           <NavLink menuOpen={menuOpen} href='/'>
             برامج
@@ -51,23 +57,25 @@ function MobileMenu ({ menuOpen }: menuProps) {
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-100
+          className={`w-full overflow-hidden transition-all duration-350 ease-out
               ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
+          style={{ transitionDelay: revealDelay(45) }}
         >
           <div
-            className={`w-full h-px bg-black origin-right transition-all duration-700 delay-200
+            className={`w-full h-px bg-black origin-right transition-all duration-450
                 ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
+            style={{ transitionDelay: revealDelay(55) }}
           ></div>
         </div>
 
         <div
-          className={`transition-all duration-500 ease-out delay-150 flexx  gap-2.5
+          className={`transition-all duration-350 ease-out flexx gap-2.5
               ${
                 menuOpen
                   ? 'translate-y-0 opacity-100'
                   : 'translate-y-8 opacity-0'
               }`}
-          style={{ transitionDelay: menuOpen ? '250ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(70) }}
         >
           <NavLink menuOpen={menuOpen} href='/contact'>
             تواصل معي
@@ -78,23 +86,25 @@ function MobileMenu ({ menuOpen }: menuProps) {
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-200
+          className={`w-full overflow-hidden transition-all duration-350 ease-out
                 ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
+          style={{ transitionDelay: revealDelay(85) }}
         >
           <div
-            className={`w-full h-px bg-black origin-right transition-all duration-700 delay-300
+            className={`w-full h-px bg-black origin-right transition-all duration-450
                   ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
+            style={{ transitionDelay: revealDelay(95) }}
           ></div>
         </div>
 
         <div
-          className={`transition-all duration-500 ease-out delay-200 flexx  gap-2.5
+          className={`transition-all duration-350 ease-out flexx gap-2.5
                 ${
                   menuOpen
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-8 opacity-0'
                 }`}
-          style={{ transitionDelay: menuOpen ? '350ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(110) }}
         >
           <NavLink menuOpen={menuOpen} href='/about'>
             من أنا ؟
@@ -105,23 +115,25 @@ function MobileMenu ({ menuOpen }: menuProps) {
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-300
+          className={`w-full overflow-hidden transition-all duration-350 ease-out
               ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
+          style={{ transitionDelay: revealDelay(125) }}
         >
           <div
-            className={`w-full h-px bg-black origin-right transition-all duration-700 delay-400
+            className={`w-full h-px bg-black origin-right transition-all duration-450
                 ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
+            style={{ transitionDelay: revealDelay(135) }}
           ></div>
         </div>
 
         <div
-          className={`transition-all duration-500 ease-out delay-300 flexx gap-2.5
+          className={`transition-all duration-350 ease-out flexx gap-2.5
               ${
                 menuOpen
                   ? 'translate-y-0 opacity-100'
                   : 'translate-y-8 opacity-0'
               }`}
-          style={{ transitionDelay: menuOpen ? '450ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(150) }}
         >
           <NavLink menuOpen={menuOpen} href='/faq'>
             الأسئلة الشائعة
@@ -132,24 +144,29 @@ function MobileMenu ({ menuOpen }: menuProps) {
         </div>
 
         <div
-          className={`w-full overflow-hidden transition-all duration-500 ease-out delay-400
+          className={`w-full overflow-hidden transition-all duration-350 ease-out
                 ${menuOpen ? 'max-h-15' : 'max-h-0'}`}
+          style={{ transitionDelay: revealDelay(165) }}
         >
           <div
-            className={`w-full h-px bg-black origin-right transition-all duration-700 delay-500
+            className={`w-full h-px bg-black origin-right transition-all duration-450
                   ${menuOpen ? 'scale-x-100' : 'scale-x-0'}`}
+            style={{ transitionDelay: revealDelay(175) }}
           ></div>
         </div>
-        <StartBtnMobile menuOpen={menuOpen} />
+        <StartBtnMobile
+          menuOpen={menuOpen}
+          delayMs={menuOpen ? 185 : 0}
+        />
         <div
           className={`copyright-and-time flex items-center justify-between w-full
-                  transition-all duration-500 ease-out delay-300
+                  transition-all duration-350 ease-out
                   ${
                     menuOpen
                       ? 'translate-y-0 opacity-100'
                       : 'translate-y-8 opacity-0'
                   }`}
-          style={{ transitionDelay: menuOpen ? '550ms' : '0ms' }}
+          style={{ transitionDelay: revealDelay(195) }}
         >
           <span
             className={`text-[18px] font-zero font-jetbrains font-light time-font`}
