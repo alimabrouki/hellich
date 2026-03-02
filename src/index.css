@@ -70,6 +70,7 @@ body {
 .marquee-wrapper {
   overflow: hidden;
   width: 100%;
+  padding: 10px;
 }
 
 .marquee-track {
