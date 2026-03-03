@@ -1,20 +1,7 @@
 import type { menuProps } from '../types/menuProps'
 import profileImage from '../assets/images/hellich-hero-image.png'
 import { useEffect, useState } from 'react'
-import { Dot } from 'lucide-react'
-
-const Phrase = () => (
-  <div className='flex shrink-0 items-center'>
-    <span className='mx-10 flex items-center'>
-      حقيقي
-      <Dot className='mx-2.5' strokeWidth={20} /> فهم
-      <Dot className='mx-2.5' strokeWidth={20} />
-      على <Dot className='mx-2.5' strokeWidth={20} />
-      مبني <Dot className='mx-2.5' strokeWidth={20} />
-      تدريب
-    </span>
-  </div>
-)
+import HeroTitle from './HeroTitle'
 
 function Hero ({ menuOpen }: menuProps) {
   const [animate, setAnimate] = useState(false)
@@ -29,14 +16,17 @@ function Hero ({ menuOpen }: menuProps) {
 
   return (
     <div
-      className={`hero relative bottom-20 overflow-visible flex flex-col items-center
+      className={`hero relative overflow-visible flex flex-col px-2 pt-4 sm:px-4 md:px-8 lg:px-12
       transition-opacity duration-300
-      ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      ${menuOpen ? 'opacity-100 pointer-events-none' : 'opacity-100'}`}
     >
+      <div className='relative z-20 ml-auto w-full max-w-none lg:max-w-[980px]'>
+        <HeroTitle />
+      </div>
       {/* IMAGE */}
       <div
         className={`
-    relative mb-[333px] flex justify-center pt-10
+    relative z-30 flex justify-start -mt-10 md:-mt-16 lg:-mt-20
     transform transition-all duration-900 ease-out
     ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
   `}
@@ -45,49 +35,29 @@ function Hero ({ menuOpen }: menuProps) {
           src={profileImage}
           alt='Trainer'
           className='
-          w-[85%] max-w-2xl object-contain
+          w-[80%] max-w-2xl object-contain
           [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
     '
         />
       </div>
-      <div className='absolute bottom-30 inset-0 flex items-center justify-center pointer-events-none'>
-        <div className='marquee-wrapper'>
-          <div
-            className='marquee-track
-              mix-blend-difference
-              whitespace-nowrap
-              font-cairo
-              font-black
-              text-[80px] sm:text-[120px] lg:text-[160px]
-              text-pappay
-            '
-          >
-            <Phrase />
-            <Phrase />
-          </div>
-        </div>
-      </div>
 
-      {/* GRADIENT */}
+      {/* Bottom-of-screen fog */}
       <div
         className='
-          pointer-events-none absolute bottom-0 left-0 right-0 z-0
-          h-[64%] lg:h-[45%]
-          bg-gradient-to-t
-          from-[#03a6db]
-          via-[#03a6db]/70
-          to-transparent
-        '
+    pointer-events-none fixed inset-x-0 bottom-0 z-10
+    h-[28vh] md:h-[32vh]
+    bg-gradient-to-t
+    from-[#03a6db]/85
+    via-[#03a6db]/45
+    to-transparent
+  '
       />
-
       <div
         className='
-          hidden lg:block
-          pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2
-          w-[60%] h-[25%]
-          bg-[radial-gradient(ellipse_at_center,_transparent_40%,_#03a6db_90%)]
-          blur-2xl
-        '
+    pointer-events-none fixed -bottom-14 left-1/2 z-10 -translate-x-1/2
+    h-44 w-[120vw] rounded-full
+    bg-[#03a6db]/70 blur-3xl
+  '
       />
     </div>
   )
