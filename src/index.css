@@ -9,6 +9,7 @@
   --color-head-btn: #ffefd5d6;
   --color-pappay: #ffefd5;
   --color-text-dark: #1c1c1c;
+  --color-second-bg:#eae6dd;
 }
 
 @layer base {
@@ -66,24 +67,44 @@ body {
     @apply w-full;
   }
 }
-
-.marquee-wrapper {
-  overflow: hidden;
-  width: 100%;
-  padding: 10px;
-}
-
-.marquee-track {
+.word-slider {
+  --word-height: 93px;
   display: flex;
-  width: max-content;
-  animation: marquee 10s linear infinite;
+  flex-direction: column;
+  height: var(--word-height);
+  width: 100%;
+  will-change: transform;
+  transform: translateY(0);
+  animation: slideWords 20s infinite cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.word-slider span {
+  display: flex;
+  height: var(--word-height);
+  line-height: var(--word-height);
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
+  color: #03a6db;
+  font-weight: 800;
+}
+
+.word-slot {
+  direction: rtl;
+  clip-path: inset(0 round 0);
+  vertical-align: baseline;
+}
+
+@keyframes slideWords {
+  0%, 12% { transform: translateY(0); }
+
+  16%, 28% { transform: translateY(calc(var(--word-height) * -1)); }
+
+  32%, 44% { transform: translateY(calc(var(--word-height) * -2)); }
+
+  48%, 60% { transform: translateY(calc(var(--word-height) * -3)); }
+
+  64%, 76% { transform: translateY(calc(var(--word-height) * -4)); }
+
+  80%, 100% { transform: translateY(calc(var(--word-height) * -5)); }
 }
