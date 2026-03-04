@@ -71,7 +71,7 @@ body {
   --word-height: 93px;
   display: flex;
   flex-direction: column;
-  height: var(--word-height);
+
   width: 100%;
   will-change: transform;
   transform: translateY(0);
@@ -79,14 +79,10 @@ body {
 }
 
 .word-slider span {
-  display: flex;
-  height: var(--word-height);
   line-height: var(--word-height);
-  align-items: center;
-  justify-content: flex-end;
   white-space: nowrap;
   color: #03a6db;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .word-slot {
