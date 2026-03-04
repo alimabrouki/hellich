@@ -71,7 +71,6 @@ body {
   --word-height: 93px;
   display: flex;
   flex-direction: column;
-
   width: 100%;
   will-change: transform;
   transform: translateY(0);

@@ -16,7 +16,7 @@ function Hero ({ menuOpen }: menuProps) {
 
   return (
     <div
-      className={`hero relative overflow-visible flex flex-col px-2 pt-4 sm:px-4 md:px-8 lg:px-12
+      className={`hero sticky overflow-visible flex flex-col px-2 pt-4 sm:px-4 md:px-8 lg:px-12
       transition-opacity duration-300
       ${menuOpen ? 'opacity-100 pointer-events-none' : 'opacity-100'}`}
     >
@@ -26,7 +26,7 @@ function Hero ({ menuOpen }: menuProps) {
       {/* IMAGE */}
       <div
         className={`
-    relative z-30 flex justify-start -mt-10 md:-mt-16 lg:-mt-20
+    relative z-30 bottom-[70px] right-[10px] -mt-10 md:-mt-16 lg:-mt-20
     transform transition-all duration-900 ease-out
     ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
   `}
@@ -44,19 +44,21 @@ function Hero ({ menuOpen }: menuProps) {
       {/* Bottom-of-screen fog */}
       <div
         className='
-    pointer-events-none fixed inset-x-0 bottom-0 z-10
-    h-[28vh] md:h-[32vh]
-    bg-gradient-to-t
-    from-[#03a6db]/85
-    via-[#03a6db]/45
-    to-transparent
+    pointer-events-none absolute bottom-0 left-0 right-0 z-0
+          h-[64%] lg:h-[45%]
+          bg-gradient-to-t
+          from-[#03a6db]
+          via-[#03a6db]/70
+          to-transparent
   '
       />
       <div
         className='
-    pointer-events-none fixed -bottom-14 left-1/2 z-10 -translate-x-1/2
-    h-44 w-[120vw] rounded-full
-    bg-[#03a6db]/70 blur-3xl
+      hidden lg:block
+          pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2
+          w-[60%] h-[25%]
+          bg-[radial-gradient(ellipse_at_center,_transparent_40%,_#03a6db_90%)]
+          blur-2xl
   '
       />
     </div>
