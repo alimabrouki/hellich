@@ -1,5 +1,5 @@
 import '../App.css'
-import Header from './header/Header'
+
 import { useEffect, useState } from 'react'
 import MobileMenu from './MobileMenu'
 import Hero from './Hero'
@@ -21,12 +21,10 @@ function Hellich () {
   return (
     <>
       <div className='wrapper'>
-        <div className='hellich relative pt-8 lg:rounded-2xl'>
-          <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
-
+        <div className='hellich relative lg:rounded-2xl'>
           <MobileMenu menuOpen={menuOpen} />
 
-          <Hero menuOpen={menuOpen} />
+          <Hero handleMenuOpen={handleMenuOpen} menuOpen={menuOpen} />
           <div className='about'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
             minima possimus suscipit eveniet cum quod libero placeat totam ea
