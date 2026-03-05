@@ -98,8 +98,10 @@ body {
 }
 
 .hero {
-  height: calc(100svh - var(--spacing--nav-bar-height));
+  height:100svh;
+  padding-top: var(--spacing--nav-bar-height);
 }
+
 
 @keyframes slideWords {
   0%, 12% { transform: translateY(0); }
