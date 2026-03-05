@@ -3,6 +3,7 @@ import '../App.css'
 import { useEffect, useState } from 'react'
 import MobileMenu from './MobileMenu'
 import Hero from './Hero'
+import Header from './header/Header'
 
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -23,8 +24,8 @@ function Hellich () {
       <div className='wrapper'>
         <div className='hellich relative lg:rounded-2xl'>
           <MobileMenu menuOpen={menuOpen} />
-
-          <Hero handleMenuOpen={handleMenuOpen} menuOpen={menuOpen} />
+          <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
+          <Hero />
           <div className='about'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
             minima possimus suscipit eveniet cum quod libero placeat totam ea

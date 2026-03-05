@@ -1,10 +1,8 @@
-import type { handleMenuProps, menuProps } from '../types/menuProps'
 import profileImage from '../assets/images/hellich-hero-image.png'
 import { useEffect, useState } from 'react'
 import HeroTitle from './HeroTitle'
-import Header from './header/Header'
 
-function Hero ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
+function Hero () {
   const [animate, setAnimate] = useState(false)
 
   useEffect(() => {
@@ -17,9 +15,8 @@ function Hero ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
 
   return (
     <>
-      <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
       <div
-        className='hero relative overflow-visible flex flex-col px-2 sm:px-4 md:px-8 lg:px-12 pt-0 lg:pt-28
+        className='hero relative overflow-visible flex flex-col px-2 sm:px-4 md:px-8 lg:px-12 lg:pt-28
       transition-opacity duration-300 opacity-100'
       >
         <div className='hero-container'>
@@ -32,7 +29,7 @@ function Hero ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
         <div
           className={`
     absolute
-     z-30 bottom-[70px] right-[10px] -mt-10 md:-mt-16 lg:-mt-20
+     z-30 bottom-[70px] max-[400px]:bottom-[110px] right-[10px] -mt-10 md:-mt-16 lg:-mt-20
     transform transition-all duration-900 ease-out
     ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
   `}
@@ -41,7 +38,7 @@ function Hero ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
             src={profileImage}
             alt='Trainer'
             className='
-          w-[80%] max-w-2xl object-contain
+          w-[80%] max-[400px]:w-[70%] max-w-2xl object-contain
           [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
     '
           />
