@@ -16,7 +16,7 @@ function Hero ({ menuOpen }: menuProps) {
 
   return (
     <div
-      className={`hero sticky overflow-visible flex flex-col px-2 pt-4 sm:px-4 md:px-8 lg:px-12
+      className={`hero sticky min-h-screen min-h-[100dvh] overflow-visible flex flex-col px-2 pt-4 sm:px-4 md:px-8 lg:px-12
       transition-opacity duration-300
       ${menuOpen ? 'opacity-100 pointer-events-none' : 'opacity-100'}`}
     >
