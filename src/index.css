@@ -80,7 +80,13 @@ body {
 .word-slider span {
   line-height: var(--word-height);
   white-space: nowrap;
-  color: #03a6db;
+  background-image: linear-gradient(90deg, rgba(3, 166, 219, 1) 31%, rgba(0, 212, 255, 1) 52%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-weight: 900;
 }
 
