@@ -10,6 +10,7 @@
   --color-pappay: #ffefd5;
   --color-text-dark: #1c1c1c;
   --color-second-bg:#eae6dd;
+  --spacing--nav-bar-height: 86px;
 }
 
 @layer base {
@@ -94,6 +95,10 @@ body {
   direction: rtl;
   clip-path: inset(0 round 0);
   vertical-align: baseline;
+}
+
+.hero {
+  height: calc(100svh - var(--spacing--nav-bar-height));
 }
 
 @keyframes slideWords {
