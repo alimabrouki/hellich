@@ -1,11 +1,18 @@
-import type { handleMenuProps, menuProps } from '../../types/menuProps'
+import type { animate, handleMenuProps, menuProps } from '../../types/menuProps'
 
-function MenuButton ({ handleMenuOpen, menuOpen }: menuProps & handleMenuProps) {
+function MenuButton ({
+  handleMenuOpen,
+  menuOpen,
+  animate
+}: menuProps & handleMenuProps & animate) {
   return (
     <button
       type='button'
       onClick={() => handleMenuOpen(!menuOpen)}
-      className={`menu-button group relative lg:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
+      className={`menu-button transform transition-all duration-900 ease-out
+    ${
+      animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+    } group relative lg:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
           ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
     >
       <span className='menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu'></span>

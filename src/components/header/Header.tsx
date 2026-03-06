@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import type { handleMenuProps, menuProps } from '../../types/menuProps'
+import type { animate, handleMenuProps, menuProps } from '../../types/menuProps'
 import HeadLinks from './HeadLinks'
 import Logo from './Logo'
 import MenuButton from './MenuButton'
 import StartBtnDesktop from './StartBtnDesktop'
 
-function Header ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
+function Header ({
+  menuOpen,
+  handleMenuOpen,
+  animate
+}: menuProps & handleMenuProps & animate) {
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
   const isTicking = useRef(false)
@@ -77,8 +81,12 @@ function Header ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
       <div className='head flex justify-end lg:bg-head-bg lg:rounded-4xl lg:mx-24 relative'>
         <StartBtnDesktop />
         <HeadLinks />
-        <Logo menuOpen={menuOpen} />
-        <MenuButton menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
+        <Logo animate={animate} menuOpen={menuOpen} />
+        <MenuButton
+          animate={animate}
+          menuOpen={menuOpen}
+          handleMenuOpen={handleMenuOpen}
+        />
       </div>
     </div>
   )

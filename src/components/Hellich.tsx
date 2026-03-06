@@ -8,6 +8,16 @@ import Header from './header/Header'
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  const [animate, setAnimate] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimate(true)
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   useEffect(() => {
     if (menuOpen) {
       document.body.style = 'overflow:hidden'
@@ -24,8 +34,12 @@ function Hellich () {
       <div className='wrapper'>
         <div className='hellich relative lg:rounded-2xl'>
           <MobileMenu menuOpen={menuOpen} />
-          <Header menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
-          <Hero />
+          <Header
+            animate={animate}
+            menuOpen={menuOpen}
+            handleMenuOpen={handleMenuOpen}
+          />
+          <Hero animate={animate} />
           <div className='about'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
             minima possimus suscipit eveniet cum quod libero placeat totam ea

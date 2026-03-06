@@ -1,7 +1,8 @@
 import profileImage from '../assets/images/hellich-hero-image.png'
+import type { animate } from '../types/menuProps'
 import HeroTitle from './HeroTitle'
 
-function Hero () {
+function Hero ({ animate }: animate) {
   return (
     <>
       <div
@@ -10,7 +11,7 @@ function Hero () {
       >
         <div className='hero-container'>
           <div className='relative z-20 ml-auto w-full max-w-none lg:max-w-[980px]'>
-            <HeroTitle />
+            <HeroTitle animate={animate} />
           </div>
           <span>سيبستبتشبخ سشخبتسي تشخب سيبتبىسشب شبست</span>
         </div>

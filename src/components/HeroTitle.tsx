@@ -1,15 +1,6 @@
-import { useEffect, useState } from 'react'
+import type { animate } from '../types/menuProps'
 
-function HeroTitle () {
-  const [animate, setAnimate] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true)
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [])
+function HeroTitle ({ animate }: animate) {
   return (
     <h1
       dir='rtl'
