@@ -17,7 +17,7 @@ function HeroTitle () {
     ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'} `}
     >
       <span> إبني معي جسمًا أكثر </span>{' '}
-      <span className='word-slot relative inline-flex h-[93px] w-[7.6ch] sm:w-[7.1ch] mx-[0.2em] overflow-hidden align-baseline'>
+      <span className='word-slot transform translate-x-2.5  relative inline-flex h-[93px] w-[7.6ch] sm:w-[7.1ch] overflow-hidden align-baseline'>
         <span className='word-slider absolute inset-0'>
           <span>ضخامة</span>
           <span>قوة</span>
