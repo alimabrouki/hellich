@@ -5,3 +5,7 @@ export type menuProps = {
 export type handleMenuProps = {
   handleMenuOpen: (state: boolean) => void;
 };
+
+export type animate = {
+  animate: boolean
+}
