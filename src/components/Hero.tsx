@@ -1,18 +1,7 @@
 import profileImage from '../assets/images/hellich-hero-image.png'
-import { useEffect, useState } from 'react'
 import HeroTitle from './HeroTitle'
 
 function Hero () {
-  const [animate, setAnimate] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true)
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <>
       <div
@@ -26,23 +15,17 @@ function Hero () {
           <span>سيبستبتشبخ سشخبتسي تشخب سيبتبىسشب شبست</span>
         </div>
         {/* IMAGE */}
-        <div
-          className={`
+
+        <img
+          src={profileImage}
+          alt='Trainer'
+          className={`translate-y-[60%] left-1.25  w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] max-w-2xl object-contain
+          mask-[linear-gradient(to_bottom,black_70%,transparent_100%)]
     absolute
-     z-30 bottom-[70px] max-[400px]:bottom-[110px] right-[10px] -mt-10 md:-mt-16 lg:-mt-20
-    transform transition-all duration-900 ease-out
-    ${animate ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
+     z-30 -mt-10 md:-mt-16 lg:-mt-20
+    
   `}
-        >
-          <img
-            src={profileImage}
-            alt='Trainer'
-            className='
-          w-[80%] max-[400px]:w-[70%] max-w-2xl object-contain
-          [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]
-    '
-          />
-        </div>
+        />
 
         {/* Bottom-of-screen fog */}
         <div
