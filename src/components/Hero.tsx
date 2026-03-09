@@ -9,11 +9,14 @@ function Hero ({ animate }: animate) {
         className='hero relative overflow-visible flex flex-col px-2 sm:px-4 md:px-8 lg:px-12 lg:pt-28
       transition-opacity duration-300 opacity-100'
       >
-        <div className='hero-container'>
+        <div className='hero-container flex flex-col justify-between'>
           <div className='relative z-20 ml-auto w-full max-w-none lg:max-w-[980px]'>
             <HeroTitle animate={animate} />
           </div>
-          <span>سيبستبتشبخ سشخبتسي تشخب سيبتبىسشب شبست</span>
+          <div className='hero-footer flex gap-8 pr-2.5 flex-col z-30'>
+            <span className='text-2xl text-end'>تدريب مبني على فهم حقيقي</span>
+            <span className='text-3xl text-end'>(انزل للأسفل لترى كيف)</span>
+          </div>
         </div>
         {/* IMAGE */}
 
