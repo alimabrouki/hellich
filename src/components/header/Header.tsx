@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { animate, handleMenuProps, menuProps } from '../../types/menuProps'
+import type { animate, handleMenuProps, menuProps } from '../../types/types'
 import HeadLinks from './HeadLinks'
 import Logo from './Logo'
 import MenuButton from './MenuButton'

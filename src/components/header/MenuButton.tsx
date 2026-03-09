@@ -1,4 +1,4 @@
-import type { animate, handleMenuProps, menuProps } from '../../types/menuProps'
+import type { animate, handleMenuProps, menuProps } from '../../types/types'
 
 function MenuButton ({
   handleMenuOpen,

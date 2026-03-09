@@ -1,21 +1,16 @@
 import LibyaTime from '../utils/LibyaTime'
 import NavLink from './header/NavLink'
-import type { menuProps } from '../types/menuProps'
+import type { menuProps } from '../types/types'
 import StartBtnMobile from './header/StartBtnMobile'
 
 function MobileMenu ({ menuOpen }: menuProps) {
-  const revealDelay = (offset = 0) =>
-    menuOpen ? `${offset}ms` : '0ms'
+  const revealDelay = (offset = 0) => (menuOpen ? `${offset}ms` : '0ms')
 
   return (
     <div
       className={`menu-wrap fixed right-0 bottom-0 z-40 flex w-full items-end overflow-hidden bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat opacity-100
             transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-            ${
-              menuOpen
-                ? ''
-                : 'pointer-events-none'
-            }`}
+            ${menuOpen ? '' : 'pointer-events-none'}`}
       style={{ height: menuOpen ? '100%' : '0%' }}
     >
       <div className='relative z-10 flex w-full flex-col items-end justify-center gap-4 p-4 text-[30px] font-bold'>
@@ -154,10 +149,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
             style={{ transitionDelay: revealDelay(175) }}
           ></div>
         </div>
-        <StartBtnMobile
-          menuOpen={menuOpen}
-          delayMs={menuOpen ? 185 : 0}
-        />
+        <StartBtnMobile menuOpen={menuOpen} delayMs={menuOpen ? 185 : 0} />
         <div
           className={`copyright-and-time flex items-center justify-between w-full
                   transition-all duration-350 ease-out

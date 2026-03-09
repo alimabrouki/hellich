@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import type { menuProps } from '../../types/menuProps'
+import type { menuProps } from '../../types/types'
 
 type StartBtnMobileProps = menuProps & {
   delayMs?: number

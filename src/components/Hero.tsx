@@ -1,5 +1,5 @@
 import profileImage from '../assets/images/hellich-hero-image.png'
-import type { animate } from '../types/menuProps'
+import type { animate } from '../types/types'
 import HeroTitle from './HeroTitle'
 
 function Hero ({ animate }: animate) {

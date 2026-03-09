@@ -1,4 +1,4 @@
-import type { animate, menuProps } from '../../types/menuProps'
+import type { animate, menuProps } from '../../types/types'
 import logo from '../../assets/images/logo.svg'
 
 function Logo ({ menuOpen, animate }: menuProps & animate) {

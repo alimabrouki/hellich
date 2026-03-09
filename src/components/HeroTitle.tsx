@@ -1,4 +1,4 @@
-import type { animate } from '../types/menuProps'
+import type { animate } from '../types/types'
 
 function HeroTitle ({ animate }: animate) {
   return (
