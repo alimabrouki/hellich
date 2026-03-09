@@ -40,7 +40,7 @@ function Hellich () {
             handleMenuOpen={handleMenuOpen}
           />
           <Hero animate={animate} />
-          <div className='about'>
+          <div className='about relative z-10 min-h-svh bg-second-bg'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
             minima possimus suscipit eveniet cum quod libero placeat totam ea
             ipsa impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem

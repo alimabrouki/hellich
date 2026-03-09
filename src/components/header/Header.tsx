@@ -74,7 +74,7 @@ function Header ({
   return (
     <div
       className={`header fixed h-[86px] 
-         py-4 left-0 right-0 z-50 px-2 sm:px-4 md:px-8 lg:px-12
+         py-4 left-0 right-0 z-50 sm:px-4 md:px-8 lg:px-12
       transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
       ${isVisible ? 'translate-y-0' : '-translate-y-[140%]'}`}
     >

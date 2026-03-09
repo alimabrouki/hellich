@@ -6,7 +6,7 @@ function Hero ({ animate }: animate) {
   return (
     <>
       <div
-        className='hero relative overflow-visible flex flex-col px-2 sm:px-4 md:px-8 lg:px-12 lg:pt-28
+        className='hero sticky top-0 overflow-visible flex flex-col px-2 sm:px-4 md:px-8 lg:px-12 lg:pt-28
       transition-opacity duration-300 opacity-100'
       >
         <div className='hero-container flex flex-col justify-between'>
@@ -26,7 +26,7 @@ function Hero ({ animate }: animate) {
             style={{ transitionDelay: animate ? '200ms' : '0ms' }}
           >
             <span className='text-2xl text-end'>تدريب مبني على فهم حقيقي</span>
-            <span className='text-3xl text-end'>(انزل للأسفل لترى كيف)</span>
+            <span className='text-3xl text-end'>( إنزل للأسفل لترى كيف )</span>
           </div>
         </div>
         {/* IMAGE */}
