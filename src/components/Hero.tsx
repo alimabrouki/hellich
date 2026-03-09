@@ -13,7 +13,18 @@ function Hero ({ animate }: animate) {
           <div className='relative z-20 ml-auto w-full max-w-none lg:max-w-[980px]'>
             <HeroTitle animate={animate} />
           </div>
-          <div className='hero-footer flex gap-8 pr-2.5 flex-col z-30'>
+          <div
+            className={`hero-footer flex gap-8 pr-2.5 flex-col z-30 align-baseline
+          origin-bottom transform-gpu will-change-transform
+          transition-[transform,opacity,filter] duration-[1120ms]
+          [transition-timing-function:cubic-bezier(0.2,1.1,0.32,1)]
+          ${
+            animate
+              ? 'translate-y-0 opacity-100 blur-0 rotate-0'
+              : 'translate-y-[118%] opacity-0 blur-[8px] -rotate-[1.2deg]'
+          }`}
+            style={{ transitionDelay: animate ? '200ms' : '0ms' }}
+          >
             <span className='text-2xl text-end'>تدريب مبني على فهم حقيقي</span>
             <span className='text-3xl text-end'>(انزل للأسفل لترى كيف)</span>
           </div>
@@ -33,9 +44,9 @@ function Hero ({ animate }: animate) {
 
         {/* Bottom-of-screen fog */}
         <div
-          className='
+          className=' max-[350px]:h-[55%]
     pointer-events-none absolute bottom-0 left-0 right-0 z-0
-          h-[64%] lg:h-[45%]
+          h-[40%] lg:h-[45%]
           bg-gradient-to-t
           from-[#03a6db]
           via-[#03a6db]/70
