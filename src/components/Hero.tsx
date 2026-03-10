@@ -25,8 +25,12 @@ function Hero ({ animate }: animate) {
           }`}
             style={{ transitionDelay: animate ? '200ms' : '0ms' }}
           >
-            <span className='text-2xl text-end'>تدريب مبني على فهم حقيقي</span>
-            <span className='text-3xl text-end'>( إنزل للأسفل لترى كيف )</span>
+            <span className='text-2xl min-[900px]:text-[40px] text-end'>
+              تدريب مبني على فهم حقيقي
+            </span>
+            <span className='text-3xl min-[900px]:text-[45px] text-end'>
+              ( إنزل للأسفل لترى كيف )
+            </span>
           </div>
         </div>
         {/* IMAGE */}
@@ -34,7 +38,7 @@ function Hero ({ animate }: animate) {
         <img
           src={profileImage}
           alt='Trainer'
-          className={`translate-y-[60%] left-1.25  w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] max-w-2xl object-contain
+          className={`translate-y-[60%] left-1.25 sm:w-[55%] md:w-[60%] min-[850px]:translate-y-[30%] w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] object-contain
           mask-[linear-gradient(to_bottom,black_70%,transparent_100%)]
     absolute
      z-30 -mt-10 md:-mt-16 lg:-mt-20
