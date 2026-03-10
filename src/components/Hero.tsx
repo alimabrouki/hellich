@@ -10,7 +10,7 @@ function Hero ({ animate }: animate) {
       transition-opacity duration-300 opacity-100'
       >
         <div className='hero-container flex flex-col justify-between'>
-          <div className='relative z-20 ml-auto w-full max-w-none lg:max-w-[980px]'>
+          <div className='relative z-20'>
             <HeroTitle animate={animate} />
           </div>
           <div
@@ -25,8 +25,8 @@ function Hero ({ animate }: animate) {
           }`}
             style={{ transitionDelay: animate ? '200ms' : '0ms' }}
           >
-            <span className='text-2xl  text-end'>تدريب مبني على فهم حقيقي</span>
-            <span className='text-3xl  text-end'>( إنزل للأسفل لترى كيف )</span>
+            <span className='text-xl  text-end'>تدريب مبني على فهم حقيقي</span>
+            <span className='text-2xl  text-end'>( إنزل للأسفل لترى كيف )</span>
           </div>
         </div>
         {/* IMAGE */}

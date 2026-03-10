@@ -78,7 +78,7 @@ function Header ({
       transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
       ${isVisible ? 'translate-y-0' : '-translate-y-[140%]'}`}
     >
-      <div className='head flex lg:bg-head-bg lg:rounded-4xl lg:mx-24 relative'>
+      <div className='head flex  lg:mx-24 relative'>
         <StartBtnDesktop />
         <HeadLinks />
         <Logo animate={animate} menuOpen={menuOpen} />

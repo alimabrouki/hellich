@@ -4,7 +4,7 @@ function HeroTitle ({ animate }: animate) {
   return (
     <h1
       dir='rtl'
-      className='text-[clamp(4.4rem,19vw,7.9rem)] lg:text-[clamp(5.8rem,7.2vw,6.8rem)] max-[479px]:text-[60px] sm:text-[clamp(6.8rem,12.2vw,11.8rem)] text-second-bg font-extrabold text-right tracking-tight'
+      className='text-[clamp(4.4rem,19vw,7.9rem)] lg:text-[clamp(5.8rem,7.2vw,6.8rem)] max-[479px]:text-[60px] lg:text-center sm:text-[clamp(6.8rem,12.2vw,11.8rem)] text-second-bg font-extrabold text-right tracking-tight'
     >
       <span
         className={`inline-flex origin-bottom items-baseline transform-gpu will-change-transform
