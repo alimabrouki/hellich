@@ -30,36 +30,32 @@ function Hellich () {
     setMenuOpen(state)
   }
   return (
-    <>
-      <div className='wrapper'>
-        <div className='hellich relative lg:rounded-2xl'>
-          <MobileMenu menuOpen={menuOpen} />
-          <Header
-            animate={animate}
-            menuOpen={menuOpen}
-            handleMenuOpen={handleMenuOpen}
-          />
-          <Hero animate={animate} />
-          <div className='about relative z-10 min-h-svh bg-second-bg'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
-            minima possimus suscipit eveniet cum quod libero placeat totam ea
-            ipsa impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
-            minima possimus suscipit eveniet cum quod libero placeat totam ea
-            ipsa impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
-            minima possimus suscipit eveniet cum quod libero placeat totam ea
-            ipsa impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
-            minima possimus suscipit eveniet cum quod libero placeat totam ea
-            ipsa impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
-            minima possimus suscipit eveniet cum quod libero placeat totam ea
-            ipsa impedit soluta quas nisi non! Nobis officiis cum beatae.
-          </div>
-        </div>
+    <div className='hellich relative'>
+      <MobileMenu menuOpen={menuOpen} />
+      <Header
+        animate={animate}
+        menuOpen={menuOpen}
+        handleMenuOpen={handleMenuOpen}
+      />
+      <Hero animate={animate} />
+      <div className='about relative z-10 min-h-svh bg-second-bg'>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, fugit
+        minima possimus suscipit eveniet cum quod libero placeat totam ea ipsa
+        impedit soluta quas nisi non! Nobis officiis cum beatae. Lorem ipsum
+        dolor sit, amet consectetur adipisicing elit. Vel, fugit minima possimus
+        suscipit eveniet cum quod libero placeat totam ea ipsa impedit soluta
+        quas nisi non! Nobis officiis cum beatae. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Vel, fugit minima possimus suscipit
+        eveniet cum quod libero placeat totam ea ipsa impedit soluta quas nisi
+        non! Nobis officiis cum beatae. Lorem ipsum dolor sit, amet consectetur
+        adipisicing elit. Vel, fugit minima possimus suscipit eveniet cum quod
+        libero placeat totam ea ipsa impedit soluta quas nisi non! Nobis
+        officiis cum beatae. Lorem ipsum dolor sit, amet consectetur adipisicing
+        elit. Vel, fugit minima possimus suscipit eveniet cum quod libero
+        placeat totam ea ipsa impedit soluta quas nisi non! Nobis officiis cum
+        beatae.
       </div>
-    </>
+    </div>
   )
 }
 

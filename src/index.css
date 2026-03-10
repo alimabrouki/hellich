@@ -42,10 +42,6 @@ body {
   @apply bg-main-bleu-bg;
 }
 
-@utility wrapper {
-  @apply lg:border-30  border-main-bleu-bg;
-}
-
 @utility hellich {
   @apply relative mx-auto w-full overflow-visible bg-[url('./assets/images/dark-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
 }
