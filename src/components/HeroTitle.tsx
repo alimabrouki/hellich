@@ -4,7 +4,7 @@ function HeroTitle ({ animate }: animate) {
   return (
     <h1
       dir='rtl'
-      className='text-[clamp(4.4rem,19vw,7.9rem)] max-[479px]:text-[60px] sm:text-[clamp(4.8rem,12.2vw,11.8rem)] text-second-bg font-extrabold text-right tracking-tight'
+      className='text-[clamp(4.4rem,19vw,7.9rem)]  max-[479px]:text-[60px] sm:text-[clamp(6.8rem,12.2vw,11.8rem)] text-second-bg font-extrabold text-right tracking-tight'
     >
       <span
         className={`inline-flex origin-bottom items-baseline transform-gpu will-change-transform
@@ -20,7 +20,7 @@ function HeroTitle ({ animate }: animate) {
         إبني معي جسمًا أكثر
       </span>{' '}
       <span
-        className={`word-slot transform relative inline-flex h-[93px] w-[7.6ch] sm:w-[7.1ch] overflow-hidden align-baseline
+        className={`word-slot transform relative inline-flex sm:h-[140px] h-[93px] w-[7.6ch] sm:w-[7.1ch] overflow-hidden align-baseline
           origin-bottom transform-gpu will-change-transform
           transition-[transform,opacity,filter] duration-[1120ms]
           [transition-timing-function:cubic-bezier(0.2,1.1,0.32,1)]
