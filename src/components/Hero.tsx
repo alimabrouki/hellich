@@ -34,7 +34,7 @@ function Hero ({ animate }: animate) {
         <img
           src={profileImage}
           alt='Trainer'
-          className={`hero-image translate-y-[60%] lg:translate-x-[60%] lg:w-[30%] left-1.25 sm:w-[55%] md:w-[60%] min-[850px]:translate-y-[30%] w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] object-contain
+          className={`hero-image translate-y-[60%] lg:translate-x-[60%] lg:w-[30%] left-1.25 sm:w-[55%] md:w-[60%] min-[850px]:translate-y-[30%] lg:translate-y-[20%] w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] object-contain
           mask-[linear-gradient(to_bottom,black_70%,transparent_100%)]
     absolute
      z-30 
