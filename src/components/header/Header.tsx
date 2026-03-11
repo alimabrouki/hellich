@@ -11,10 +11,18 @@ function Header ({
   animate
 }: menuProps & handleMenuProps & animate) {
   const [isVisible, setIsVisible] = useState(true)
+  const [introActive, setIntroActive] = useState(true)
   const lastScrollY = useRef(0)
   const isTicking = useRef(false)
   const downDistance = useRef(0)
   const upDistance = useRef(0)
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setIntroActive(false)
+    })
+    return () => window.cancelAnimationFrame(frameId)
+  }, [])
 
   useEffect(() => {
     if (menuOpen) {
@@ -74,11 +82,20 @@ function Header ({
   return (
     <div
       className={`header fixed h-[86px] 
-         py-4 left-0 right-0 z-50 sm:px-4 md:px-8 lg:px-12
+         py-4 left-0 right-0 z-50 sm:px-4 md:px-8 lg:px-12 perspective-[1200px]
       transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
-      ${isVisible ? 'translate-y-0' : '-translate-y-[140%]'}`}
+      ${isVisible ? 'translate-y-0' : '-translate-y-[140%]'}
+      ${introActive ? 'overflow-hidden' : 'overflow-visible'}`}
     >
-      <div className='head flex justify-between lg:mx-24 relative'>
+      <div
+        className={`head flex justify-between lg:mx-24 relative origin-bottom transform-gpu will-change-transform
+        transition-[transform] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]
+        ${
+          introActive
+            ? 'translate-y-[55%] rotate-x-[75deg]'
+            : 'translate-y-0 rotate-x-[0deg]'
+        }`}
+      >
         <StartBtnDesktop />
         <HeadLinks />
         <Logo animate={animate} menuOpen={menuOpen} />

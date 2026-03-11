@@ -10,14 +10,7 @@ function MenuButton ({
       type='button'
       onClick={() => handleMenuOpen(!menuOpen)}
       className={`menu-button group relative lg:hidden py-2 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
-          transform-gpu will-change-transform
-          transition-[transform,opacity,filter] duration-[820ms]
-          [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
-          ${
-            animate
-              ? 'translate-y-0 opacity-100 blur-0'
-              : 'translate-y-16 opacity-0 blur-[6px]'
-          }
+       
           ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
       style={{ transitionDelay: animate ? '110ms' : '0ms' }}
     >
