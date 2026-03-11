@@ -119,6 +119,13 @@ body {
   padding-bottom: calc(var(--spacing--nav-bar-height) - 20px);
 }
 
+@media (max-width: 1024px) and (min-height: 1366px) {
+  .hero-image {
+    --tw-translate-y: 60%;
+    width: 50%;
+  }
+}
+
 @keyframes slideWords {
   0%,
   12% {
