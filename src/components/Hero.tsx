@@ -14,7 +14,7 @@ function Hero ({ animate }: animate) {
             <HeroTitle animate={animate} />
           </div>
           <div
-            className={`hero-footer lg:flex-row justify-between flex gap-8 pr-2.5 flex-col z-30 align-baseline
+            className={`hero-footer z-50 lg:flex-row justify-between flex gap-8 pr-2.5 flex-col z-30 align-baseline
           origin-bottom transform-gpu will-change-transform
           transition-[transform,opacity,filter] duration-[1120ms]
           [transition-timing-function:cubic-bezier(0.2,1.1,0.32,1)]
