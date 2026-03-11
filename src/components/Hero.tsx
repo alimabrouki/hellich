@@ -10,7 +10,7 @@ function Hero ({ animate }: animate) {
       transition-opacity duration-300 opacity-100'
       >
         <div className='hero-container flex flex-col justify-between'>
-          <div className='relative flexx  z-20'>
+          <div className='relative flexx'>
             <HeroTitle animate={animate} />
           </div>
           <div

@@ -114,6 +114,12 @@ body {
   padding-top: var(--spacing--nav-bar-height);
 }
 
+.hero-title {
+  position: relative;
+  z-index: 40;
+  mix-blend-mode: overlay;
+}
+
 .hero-container {
   height: 100svh;
   padding-bottom: calc(var(--spacing--nav-bar-height) - 20px);
