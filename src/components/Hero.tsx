@@ -10,7 +10,7 @@ function Hero ({ animate }: animate) {
       transition-opacity duration-300 opacity-100'
       >
         <div className='hero-container flex flex-col justify-between'>
-          <div className='relative z-20'>
+          <div className='relative flexx  z-20'>
             <HeroTitle animate={animate} />
           </div>
           <div
@@ -26,7 +26,7 @@ function Hero ({ animate }: animate) {
             style={{ transitionDelay: animate ? '200ms' : '0ms' }}
           >
             <span className='text-xl  text-end'>تدريب مبني على فهم حقيقي</span>
-            <span className='text-2xl  text-end'>( إنزل للأسفل لترى كيف )</span>
+            <span className='text-xl  text-end'>( إنزل للأسفل لترى كيف )</span>
           </div>
         </div>
         {/* IMAGE */}
@@ -34,10 +34,10 @@ function Hero ({ animate }: animate) {
         <img
           src={profileImage}
           alt='Trainer'
-          className={`translate-y-[60%] lg:translate-x-full lg:w-[35%] left-1.25 sm:w-[55%] md:w-[60%] min-[850px]:translate-y-[30%] w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] object-contain
+          className={`translate-y-[60%] lg:translate-x-[60%] lg:w-[30%] left-1.25 sm:w-[55%] md:w-[60%] min-[850px]:translate-y-[30%] w-[80%] max-[400px]:w-[70%] max-[479px]:w-[75%] object-contain
           mask-[linear-gradient(to_bottom,black_70%,transparent_100%)]
     absolute
-     z-30 -mt-10 md:-mt-16 lg:-mt-20
+     z-30 
     
   `}
         />

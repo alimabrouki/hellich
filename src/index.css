@@ -51,7 +51,7 @@ body {
 }
 
 @utility head-links {
-  @apply flexx mr-17.5 gap-10  text-[#99b8f2];
+  @apply flexx gap-10;
 }
 
 @utility font-zero {
