@@ -39,7 +39,7 @@
 }
 
 body {
-  @apply bg-main-bleu-bg;
+  @apply bg-[url('./assets/images/dark-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
 }
 
 @utility hellich {
