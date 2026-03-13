@@ -62,6 +62,10 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+@utility about {
+  @apply bg-[url('./assets/images/dark-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
+}
+
 @layer components {
   .nav-link-animated {
     @apply relative pb-1 transition-colors duration-300;
@@ -130,6 +134,9 @@ body {
     --tw-translate-y: 60%;
     width: 50%;
   }
+}
+
+.about {
 }
 
 @keyframes slideWords {
