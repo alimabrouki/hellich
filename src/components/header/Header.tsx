@@ -12,6 +12,7 @@ function Header ({
 }: menuProps & handleMenuProps & animate) {
   const [isVisible, setIsVisible] = useState(true)
   const [introActive, setIntroActive] = useState(true)
+  const [isAtTop, setIsAtTop] = useState(true)
   const lastScrollY = useRef(0)
   const isTicking = useRef(false)
   const downDistance = useRef(0)
@@ -31,7 +32,9 @@ function Header ({
   }, [menuOpen])
 
   useEffect(() => {
-    lastScrollY.current = window.scrollY
+    const initialScrollY = window.scrollY
+    lastScrollY.current = initialScrollY
+    setIsAtTop(initialScrollY <= 24)
 
     const onScroll = () => {
       const currentScrollY = window.scrollY
@@ -43,12 +46,15 @@ function Header ({
       isTicking.current = true
       window.requestAnimationFrame(() => {
         const delta = currentScrollY - lastScrollY.current
+        const atTop = currentScrollY <= 24
+
+        setIsAtTop((prev) => (prev === atTop ? prev : atTop))
 
         if (menuOpen) {
           setIsVisible(true)
           downDistance.current = 0
           upDistance.current = 0
-        } else if (currentScrollY <= 24) {
+        } else if (atTop) {
           setIsVisible(true)
           downDistance.current = 0
           upDistance.current = 0
@@ -79,6 +85,9 @@ function Header ({
     return () => window.removeEventListener('scroll', onScroll)
   }, [menuOpen])
 
+  const showHeadLinks = isAtTop && !menuOpen
+  const showDesktopMenuButton = !isAtTop || menuOpen
+
   return (
     <div
       className={`header fixed h-[86px] 
@@ -97,7 +106,29 @@ function Header ({
         }`}
       >
         <StartBtnDesktop />
-        <HeadLinks />
+        <div className='absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:grid place-items-center'>
+          <div
+            className={`col-start-1 row-start-1 transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            ${showHeadLinks ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+          >
+            <HeadLinks />
+          </div>
+          <div
+            className={`col-start-1 row-start-1 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            ${
+              showDesktopMenuButton
+                ? 'opacity-100 translate-y-0'
+                : 'pointer-events-none opacity-0 translate-y-2'
+            }`}
+          >
+            <MenuButton
+              animate={animate}
+              menuOpen={menuOpen}
+              showOnDesktop
+              handleMenuOpen={handleMenuOpen}
+            />
+          </div>
+        </div>
         <Logo animate={animate} menuOpen={menuOpen} />
         <MenuButton
           animate={animate}
