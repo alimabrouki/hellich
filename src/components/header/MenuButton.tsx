@@ -20,26 +20,26 @@ function MenuButton ({
     <button
       type='button'
       onClick={() => handleMenuOpen(!menuOpen)}
-      className={`menu-button group relative ${desktopVisibilityClass} py-4 px-3.5 bg-[#eaf9fb] mr-3 rounded-[3px]
-       
+      className={`menu-button group relative ${desktopVisibilityClass} py-4 px-3.5 lg:py-[17px] lg:px-[28px] bg-[#eaf9fb] mr-3 lg:mr-0 rounded-[3px]
+        
           ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
       style={{ transitionDelay: animate ? '110ms' : '0ms' }}
     >
-      <span className='menu-dot rounded-[40%] size-2 absolute translate-x-10 -translate-y-1 bg-main-bleu'></span>
+      <span className='menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px] -translate-y-2 bg-main-bleu'></span>
 
       <span
-        className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
-            ${menuOpen ? 'translate-y-2' : '-translate-y-1'}
+        className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px]
+            ${menuOpen ? 'translate-y-1.75' : '-translate-y-2'}
             bg-main-bleu transition-transform duration-300`}
       ></span>
 
       <span
-        className={`menu-dot rounded-[40%] size-2 absolute translate-x-10
-            ${menuOpen ? 'translate-y-5' : '-translate-y-1'}
+        className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px]
+            ${menuOpen ? 'translate-y-5' : '-translate-y-2'}
             bg-main-bleu transition-transform duration-300`}
       ></span>
 
-      <span className='relative inline-block -translate-x-2 translate-y-1.25 lg:translate-y-1.5 overflow-hidden align-bottom font-[650] leading-none'>
+      <span className='relative inline-block -translate-x-2.5 lg:-translate-x-3.5  translate-y-2.25 overflow-hidden align-bottom font-[650] leading-none'>
         <span
           className={`block transition-all duration-300 ease-[cubic-bezier(0.76,0,0.24,1)]
               ${menuOpen ? '-translate-y-full blur-[10px] opacity-0' : ''}`}
