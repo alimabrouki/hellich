@@ -20,7 +20,7 @@ function MenuButton ({
     <button
       type='button'
       onClick={() => handleMenuOpen(!menuOpen)}
-      className={`menu-button group relative ${desktopVisibilityClass} py-4 px-3.5 lg:py-[17px] lg:px-[28px] bg-[#eaf9fb] mr-3 lg:mr-0 rounded-[3px]
+      className={`menu-button cursor-pointer group relative ${desktopVisibilityClass} py-4 px-3.5 lg:py-[17px] lg:px-[28px] bg-[#eaf9fb] mr-3 lg:mr-0 rounded-[3px]
         
           ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
       style={{ transitionDelay: animate ? '110ms' : '0ms' }}

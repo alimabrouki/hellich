@@ -48,7 +48,7 @@ function Header ({
         const delta = currentScrollY - lastScrollY.current
         const atTop = currentScrollY <= 24
 
-        setIsAtTop((prev) => (prev === atTop ? prev : atTop))
+        setIsAtTop(prev => (prev === atTop ? prev : atTop))
 
         if (menuOpen) {
           setIsVisible(true)
@@ -108,13 +108,13 @@ function Header ({
         <StartBtnDesktop />
         <div className='absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:grid place-items-center'>
           <div
-            className={`col-start-1 row-start-1 transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            className={`col-start-1 row-start-1 transition-opacity duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${showHeadLinks ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
           >
             <HeadLinks />
           </div>
           <div
-            className={`col-start-1 row-start-1 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            className={`col-start-1 row-start-1 transition-[opacity,transform] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${
               showDesktopMenuButton
                 ? 'opacity-100 translate-y-0'
