@@ -165,7 +165,7 @@ body {
 
   55% {
     opacity: 1;
-    transform: translateY(-6px) rotate(2.5deg) skewX(1deg);
+    transform: translateY(0px) rotate(0deg) skewX(1deg);
   }
 
   100% {
