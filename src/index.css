@@ -82,7 +82,7 @@ body.menu-open::-webkit-scrollbar {
 
 html.menu-open,
 body.menu-open {
-  scrollbar-color: #ffffff #ffffff;
+  scrollbar-color: #e7e7e5 #e7e7e5;
 }
 
 html.menu-open::-webkit-scrollbar-track,
