@@ -97,7 +97,7 @@ function Header ({
       ${introActive ? 'overflow-hidden' : 'overflow-visible'}`}
     >
       <div
-        className={`head flex justify-between lg:mx-24 relative origin-bottom transform-gpu will-change-transform
+        className={`head flex justify-between lg:mx-19 relative origin-bottom transform-gpu will-change-transform
         transition-[transform] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]
         ${
           introActive
