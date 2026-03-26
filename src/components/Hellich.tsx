@@ -21,10 +21,14 @@ function Hellich () {
   }, [])
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style = 'overflow:hidden'
-    } else {
-      document.body.style = ''
+    const body = document.body
+    const root = document.documentElement
+    body.classList.toggle('menu-open', menuOpen)
+    root.classList.toggle('menu-open', menuOpen)
+
+    return () => {
+      body.classList.remove('menu-open')
+      root.classList.remove('menu-open')
     }
   }, [menuOpen])
 
@@ -99,7 +103,7 @@ function Hellich () {
         <div ref={aboutIntroRef} className='about-intro'>
           <h1
             dir='rtl'
-            className='about-intro-title text-second-bg pt-20 mx-12 text-center'
+            className='about-intro-title text-second-bg pt-20 mx-12 xl:mx-50 text-center'
           >
             {aboutIntroWords.map((word, index) => (
               <span
@@ -117,6 +121,14 @@ function Hellich () {
               </span>
             ))}
           </h1>
+        </div>
+        <div className='come-train-w-me'>
+          <div className='sliding-images'>
+            <img src='/../assets/images/train-client1' alt='' />
+            <img src='/../assets/images/train-client2' alt='' />
+            <img src='/../assets/images/train-client3' alt='' />
+            <img src='/../assets/images/train-client4' alt='' />
+          </div>
         </div>
       </div>
     </div>
