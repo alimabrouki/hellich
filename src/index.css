@@ -199,6 +199,48 @@ body::-webkit-scrollbar-thumb {
 .about {
 }
 
+.come-train-w-me {
+  position: relative;
+  margin-top: 56px;
+  padding: 0 0 32px;
+  overflow: hidden;
+}
+
+.sliding-images {
+  position: relative;
+  min-height: clamp(320px, 40vw, 480px);
+}
+
+.sliding-images-track {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  will-change: transform;
+  width: max-content;
+}
+
+.sliding-images-track img {
+  width: clamp(260px, 36vw, 520px);
+  height: clamp(260px, 36vw, 520px);
+  object-fit: cover;
+  border-radius: 30px;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+/* @media (max-width: 720px) {
+  .come-train-title {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin-bottom: 0;
+  } */
+
+/* .come-train-w-me {
+    padding-top: 0;
+  }
+} */
+
 @keyframes aboutIntroRope {
   0% {
     opacity: 0;
