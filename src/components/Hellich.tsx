@@ -199,7 +199,7 @@ function Hellich () {
             <h1
               dir='rtl'
               ref={comeTrainTitleRef}
-              className='come-train-title absolute left-1/2 z-20 text-center w-max font-black leading-none tracking-[0.02em] text-[clamp(3.2rem,9vw,4.4rem)] sm:text-[clamp(3rem,7vw,4.8rem)] lg:text-[clamp(4.6rem,9vw,9.8rem)] pointer-events-none whitespace-nowrap text-main-bleu drop-shadow-[0_2px_0_rgba(0,0,0,0.65)] transition-colors duration-300 group-hover:text-white'
+              className='come-train-title absolute left-1/2 z-20 text-center w-max font-black leading-none tracking-[0.02em] text-[clamp(3.2rem,9vw,4.4rem)] sm:text-[clamp(3rem,7vw,4.8rem)] lg:text-[clamp(4.6rem,9vw,9.8rem)] pointer-events-none whitespace-nowrap text-cyan-400 drop-shadow-[0_2px_0_rgba(0,0,0,0.65)] transition-colors duration-300 group-hover:text-white'
             >
               تعال نتدرّب معا !
             </h1>
