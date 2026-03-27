@@ -194,12 +194,12 @@ function Hellich () {
             ))}
           </h1>
         </div>
-        <div ref={comeTrainRef} className='come-train-w-me group'>
+        <div ref={comeTrainRef} className='come-train-w-me'>
           <div ref={slidingImagesRef} className='sliding-images'>
             <h1
               dir='rtl'
               ref={comeTrainTitleRef}
-              className='come-train-title absolute left-1/2 z-20 text-center w-max font-black leading-none tracking-[0.02em] text-[clamp(3.2rem,9vw,4.4rem)] sm:text-[clamp(3rem,7vw,4.8rem)] lg:text-[clamp(4.6rem,9vw,9.8rem)] pointer-events-none whitespace-nowrap text-cyan-400 drop-shadow-[0_2px_0_rgba(0,0,0,0.65)] transition-colors duration-300 group-hover:text-second-bg'
+              className='come-train-title absolute left-1/2 z-20 text-center w-max font-black leading-none tracking-[0.02em] text-[clamp(3.2rem,9vw,4.4rem)] sm:text-[clamp(3rem,7vw,4.8rem)] lg:text-[clamp(4.6rem,9vw,9.8rem)] pointer-events-auto whitespace-nowrap text-cyan-400 drop-shadow-[0_2px_0_rgba(0,0,0,0.65)] transition-colors duration-300 hover:text-second-bg'
             >
               تعال نتدرّب معا !
             </h1>
