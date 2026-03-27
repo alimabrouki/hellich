@@ -267,7 +267,7 @@ body::-webkit-scrollbar-thumb {
 
 @keyframes comeTrainTrack {
   from {
-    transform: translateX(-22%);
+    transform: translateX(-20%);
   }
 
   to {
