@@ -1,4 +1,5 @@
-import { useEffect, useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import './ProgramsSection.css'
 import nutrition01 from '../assets/images/nutrition01.jpg'
 import nutrition02 from '../assets/images/nutrition02.jpg'
 import nutrition03 from '../assets/images/nutrition03.jpg'
@@ -80,8 +81,26 @@ const splitPrograms = [
 
 function ProgramsSection () {
   const programsRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const leftColumnRef = useRef<HTMLDivElement | null>(null)
+  const rightColumnRef = useRef<HTMLDivElement | null>(null)
+  const [titleVisible, setTitleVisible] = useState(false)
+  const [leftVisible, setLeftVisible] = useState(false)
+  const [rightVisible, setRightVisible] = useState(false)
+
+  const programsTitle = 'برامج مجانية !'
+  const programsTitleWords = programsTitle.split(/\s+/)
+  const wordDelayMs = 45
 
   useEffect(() => {
+    const supportsScrollTimeline =
+      typeof CSS !== 'undefined' &&
+      typeof CSS.supports === 'function' &&
+      (CSS.supports('animation-timeline: --programs') ||
+        CSS.supports('animation-timeline: auto'))
+
+    if (supportsScrollTimeline) return
+
     let rafId: number | null = null
 
     const update = () => {
@@ -129,6 +148,108 @@ function ProgramsSection () {
     }
   }, [])
 
+  useEffect(() => {
+    const title = titleRef.current
+    if (!title) return
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTitleVisible(true)
+          }
+        },
+        { threshold: 0.6 }
+      )
+      observer.observe(title)
+      return () => observer.disconnect()
+    }
+
+    const onScroll = () => {
+      const rect = title.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight && rect.bottom > 0
+      if (inView) {
+        setTitleVisible(true)
+      }
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const section = programsRef.current
+    if (!section) return
+
+    const media = window.matchMedia('(max-width: 720px)')
+
+    const left = leftColumnRef.current
+    const right = rightColumnRef.current
+    if (!left || !right) return
+
+    const applyVisibility = (setter: (value: boolean) => void, inView: boolean) => {
+      if (!media.matches) {
+        setter(true)
+        return
+      }
+      if (inView) {
+        setter(true)
+      }
+    }
+
+    const checkInView = (element: HTMLElement) => {
+      const rect = element.getBoundingClientRect()
+      return rect.top < window.innerHeight * 0.85 && rect.bottom > 0
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.target === left) {
+              applyVisibility(setLeftVisible, entry.isIntersecting)
+            }
+            if (entry.target === right) {
+              applyVisibility(setRightVisible, entry.isIntersecting)
+            }
+          })
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+      )
+      observer.observe(left)
+      observer.observe(right)
+
+      const handleMediaChange = () => {
+        applyVisibility(setLeftVisible, checkInView(left))
+        applyVisibility(setRightVisible, checkInView(right))
+      }
+      handleMediaChange()
+      media.addEventListener('change', handleMediaChange)
+      return () => {
+        observer.disconnect()
+        media.removeEventListener('change', handleMediaChange)
+      }
+    }
+
+    const onScroll = () => {
+      applyVisibility(setLeftVisible, checkInView(left))
+      applyVisibility(setRightVisible, checkInView(right))
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
   return (
     <section
       ref={programsRef}
@@ -136,15 +257,38 @@ function ProgramsSection () {
       aria-labelledby='programs-title'
       dir='rtl'
     >
-      <div className='programs-inner'>
-        <h1 id='programs-title' className='programs-title'>
-          برامج مجانية !
+        <div className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'>
+        <h1
+          id='programs-title'
+          ref={titleRef}
+          className='programs-title'
+        >
+          {programsTitleWords.map((word, index) => (
+            <span
+              key={`${word}-${index}`}
+              className={`about-intro-word ${
+                titleVisible ? 'about-intro-word--visible' : ''
+              }`}
+              style={{
+                transitionDelay: `${index * wordDelayMs}ms`,
+                animationDelay: `${index * wordDelayMs}ms`
+              }}
+            >
+              {word}
+              {index < programsTitleWords.length - 1 ? '\u00A0' : ''}
+            </span>
+          ))}
         </h1>
-        <div className='programs-columns'>
-          <div className='programs-column programs-column--left'>
+        <div className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'>
+          <div
+            ref={leftColumnRef}
+            className={`programs-column flex flex-col gap-3 text-right programs-column--left ${
+              leftVisible ? 'programs-column--visible' : ''
+            }`}
+          >
             <h2 className='programs-column-title'>تقسيمات التمرين</h2>
             <div
-              className='programs-stack'
+              className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
               style={
                 {
                   '--stack-pad': `${(splitPrograms.length - 1) * 28}px`
@@ -159,7 +303,8 @@ function ProgramsSection () {
                     {
                       '--stack-index': index * -1,
                       '--stack-z': splitPrograms.length - index,
-                      '--card-bg': `url(${program.image})`
+                      '--card-bg': `url(${program.image})`,
+                      '--reveal-delay': `${index * 80}ms`
                     } as CSSProperties
                   }
                 >
@@ -189,10 +334,15 @@ function ProgramsSection () {
               ))}
             </div>
           </div>
-          <div className='programs-column programs-column--right'>
+          <div
+            ref={rightColumnRef}
+            className={`programs-column flex flex-col gap-3 text-right programs-column--right ${
+              rightVisible ? 'programs-column--visible' : ''
+            }`}
+          >
             <h2 className='programs-column-title'>دليل التغذية</h2>
             <div
-              className='programs-stack'
+              className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
               style={
                 {
                   '--stack-pad': `${(nutritionPrograms.length - 1) * 28}px`
@@ -207,7 +357,8 @@ function ProgramsSection () {
                     {
                       '--stack-index': index,
                       '--stack-z': nutritionPrograms.length - index,
-                      '--card-bg': `url(${program.image})`
+                      '--card-bg': `url(${program.image})`,
+                      '--reveal-delay': `${index * 80}ms`
                     } as CSSProperties
                   }
                 >
