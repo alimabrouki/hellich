@@ -93,59 +93,28 @@ function ProgramsSection () {
   const wordDelayMs = 45
 
   useEffect(() => {
-    const supportsScrollTimeline =
-      typeof CSS !== 'undefined' &&
-      typeof CSS.supports === 'function' &&
-      (CSS.supports('animation-timeline: --programs') ||
-        CSS.supports('animation-timeline: auto'))
+    const section = programsRef.current
+    if (!section) return
 
-    if (supportsScrollTimeline) return
+    const triggerAnimation = () => {
+      section.classList.add('programs-section--animate')
+    }
 
-    let rafId: number | null = null
-
-    const update = () => {
-      rafId = null
-      const programs = programsRef.current
-      if (!programs) return
-
-      const vh = window.innerHeight || 1
-      const programsRect = programs.getBoundingClientRect()
-      const programsStart = vh * 1.1
-      const programsEnd = vh * 0.1
-      const programsRaw =
-        (programsStart - programsRect.top) / (programsStart - programsEnd)
-      const programsProgress = Math.min(Math.max(programsRaw, 0), 1)
-      const eased = 1 - Math.pow(1 - programsProgress, 3)
-      const isMobile = window.innerWidth < 720
-      const separationStart = isMobile ? 16 : 22
-      const separationEnd = isMobile ? -24 : -40
-      const shiftStart = isMobile ? 10 : 20
-      const shiftEnd = 0
-      const separation = separationStart + (separationEnd - separationStart) * eased
-      const shift = shiftStart + (shiftEnd - shiftStart) * eased
-      programs.style.setProperty(
-        '--programs-stack-separation',
-        `${separation.toFixed(1)}px`
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            triggerAnimation()
+            observer.disconnect()
+          }
+        },
+        { threshold: 0.35 }
       )
-      programs.style.setProperty(
-        '--programs-stack-shift',
-        `${shift.toFixed(1)}px`
-      )
+      observer.observe(section)
+      return () => observer.disconnect()
     }
 
-    const onScroll = () => {
-      if (rafId !== null) return
-      rafId = requestAnimationFrame(update)
-    }
-
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      if (rafId !== null) cancelAnimationFrame(rafId)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
+    triggerAnimation()
   }, [])
 
   useEffect(() => {
