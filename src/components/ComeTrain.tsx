@@ -1,9 +1,10 @@
+import { useEffect, useRef } from 'react'
+import './ComeTrain.css'
 import trainer1 from '../assets/images/train-client1.png'
 import trainer4 from '../assets/images/train-client2.png'
 import trainer3 from '../assets/images/train-client3.png'
 import trainer2 from '../assets/images/train-client4.png'
 import trainer5 from '../assets/images/train-client5.png'
-import { useEffect, useRef } from 'react'
 
 const comeTrainWords = ['تعال', 'نتدرّب', 'معا !']
 
@@ -129,7 +130,7 @@ function ComeTrain () {
   }, [])
 
   return (
-    <div ref={comeTrainRef} className='come-train-w-me'>
+    <div ref={comeTrainRef} className='come-train-w-me relative mt-14 overflow-hidden'>
       <div ref={slidingImagesRef} className='sliding-images'>
         <h1
           dir='rtl'
