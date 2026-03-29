@@ -1,6 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router'
-
 const StartBtnDesktop: React.FC = () => {
   const contentRef = useRef<HTMLDivElement | null>(null)
   const pausedRef = useRef<boolean>(false) // track hover pause
@@ -47,8 +45,8 @@ const StartBtnDesktop: React.FC = () => {
   const text = 'إبدأ الآن'
 
   return (
-    <Link
-      to='/'
+    <a
+      href='#contact'
       className='hidden lg:flex overflow-hidden rounded-2xl bg-head-btn font-bold lg:my-2 lg:ml-5'
     >
       <div className='w-28.75 overflow-hidden py-2'>
@@ -72,7 +70,7 @@ const StartBtnDesktop: React.FC = () => {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   )
 }
 
