@@ -5,6 +5,8 @@ import Hero from './Hero'
 import Header from './header/Header'
 import ComeTrain from './ComeTrain'
 import ProgramsSection from './ProgramsSection'
+import WhoAmISection from './WhoAmISection'
+import SlidingWords from './SlidingWords'
 
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -126,7 +128,8 @@ function Hellich () {
 
         <ComeTrain />
         <ProgramsSection />
-        <div className='who-am-i'></div>
+        <SlidingWords />
+        <WhoAmISection />
       </div>
     </div>
   )
