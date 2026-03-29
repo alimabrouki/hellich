@@ -234,7 +234,7 @@
 
 @media (max-width: 720px) {
   .programs-section {
-    padding: 60px 0 120px;
+    padding: 60px 0 60px;
     --programs-stack-separation: 26px;
     --programs-stack-shift: 16px;
   }
