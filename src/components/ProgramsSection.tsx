@@ -81,7 +81,9 @@ const splitPrograms = [
 
 function ProgramsSection () {
   const programsRef = useRef<HTMLElement | null>(null)
+  const innerRef = useRef<HTMLDivElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const columnsRef = useRef<HTMLDivElement | null>(null)
   const leftColumnRef = useRef<HTMLDivElement | null>(null)
   const rightColumnRef = useRef<HTMLDivElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
@@ -152,6 +154,24 @@ function ProgramsSection () {
   }, [])
 
   useEffect(() => {
+    const inner = innerRef.current
+    const columns = columnsRef.current
+    if (!inner || !columns) return
+
+    const update = () => {
+      const innerRect = inner.getBoundingClientRect()
+      const columnsRect = columns.getBoundingClientRect()
+      const offset =
+        columnsRect.top - innerRect.top + columnsRect.height + 16
+      inner.style.setProperty('--programs-cta-top', `${offset}px`)
+    }
+
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  useEffect(() => {
     const section = programsRef.current
     if (!section) return
 
@@ -161,7 +181,10 @@ function ProgramsSection () {
     const right = rightColumnRef.current
     if (!left || !right) return
 
-    const applyVisibility = (setter: (value: boolean) => void, inView: boolean) => {
+    const applyVisibility = (
+      setter: (value: boolean) => void,
+      inView: boolean
+    ) => {
       if (!media.matches) {
         setter(true)
         return
@@ -226,12 +249,11 @@ function ProgramsSection () {
       aria-labelledby='programs-title'
       dir='rtl'
     >
-        <div className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'>
-        <h1
-          id='programs-title'
-          ref={titleRef}
-          className='programs-title'
-        >
+      <div
+        ref={innerRef}
+        className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'
+      >
+        <h1 id='programs-title' ref={titleRef} className='programs-title'>
           {programsTitleWords.map((word, index) => (
             <span
               key={`${word}-${index}`}
@@ -248,114 +270,138 @@ function ProgramsSection () {
             </span>
           ))}
         </h1>
-        <div className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'>
+        <div className='flex flex-col'>
           <div
-            ref={leftColumnRef}
-            className={`programs-column flex flex-col gap-3 text-right programs-column--left ${
-              leftVisible ? 'programs-column--visible' : ''
-            }`}
+            ref={columnsRef}
+            className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'
           >
-            <h2 className='programs-column-title'>تقسيمات التمرين</h2>
             <div
-              className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
-              style={
-                {
-                  '--stack-pad': `${(splitPrograms.length - 1) * 28}px`
-                } as CSSProperties
-              }
+              ref={leftColumnRef}
+              className={`programs-column flex flex-col gap-3 text-right programs-column--left ${
+                leftVisible ? 'programs-column--visible' : ''
+              }`}
             >
-              {splitPrograms.map((program, index) => (
-                <article
-                  className='program-card program-card--stack'
-                  key={`split-${program.title}`}
-                  style={
-                    {
-                      '--stack-index': index * -1,
-                      '--stack-z': splitPrograms.length - index,
-                      '--card-bg': `url(${program.image})`,
-                      '--reveal-delay': `${index * 80}ms`
-                    } as CSSProperties
-                  }
-                >
-                  <div className='program-card__content'>
-                    <div className='program-card__header'>
-                      <span className='program-card__index'>
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className='program-card__title'>{program.title}</h3>
-                    </div>
-                    <div className='program-card__details'>
-                      <p className='program-card__desc'>{program.description}</p>
-                      <div className='program-card__tags'>
-                        {program.tags.map(tag => (
-                          <span
-                            className='program-tag'
-                            key={`${program.title}-${tag}`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
+              <h2 className='programs-column-title'>تقسيمات التمرين</h2>
+              <div
+                className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
+                style={
+                  {
+                    '--stack-pad': `${(splitPrograms.length - 1) * 28}px`
+                  } as CSSProperties
+                }
+              >
+                {splitPrograms.map((program, index) => (
+                  <article
+                    className='program-card program-card--stack'
+                    key={`split-${program.title}`}
+                    style={
+                      {
+                        '--stack-index': index * -1,
+                        '--stack-z': splitPrograms.length - index,
+                        '--card-bg': `url(${program.image})`,
+                        '--reveal-delay': `${index * 80}ms`
+                      } as CSSProperties
+                    }
+                  >
+                    <div className='program-card__content'>
+                      <div className='program-card__header'>
+                        <span className='program-card__index'>
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className='program-card__title'>{program.title}</h3>
                       </div>
+                      <div className='program-card__details'>
+                        <p className='program-card__desc'>
+                          {program.description}
+                        </p>
+                        <div className='program-card__tags'>
+                          {program.tags.map(tag => (
+                            <span
+                              className='program-tag'
+                              key={`${program.title}-${tag}`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <p className='program-card__full'>
+                        {program.fullDescription}
+                      </p>
                     </div>
-                    <p className='program-card__full'>{program.fullDescription}</p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
+            </div>
+            <div
+              ref={rightColumnRef}
+              className={`programs-column flex flex-col gap-3 text-right programs-column--right ${
+                rightVisible ? 'programs-column--visible' : ''
+              }`}
+            >
+              <h2 className='programs-column-title'>دليل التغذية</h2>
+              <div
+                className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
+                style={
+                  {
+                    '--stack-pad': `${(nutritionPrograms.length - 1) * 28}px`
+                  } as CSSProperties
+                }
+              >
+                {nutritionPrograms.map((program, index) => (
+                  <article
+                    className='program-card program-card--stack'
+                    key={`nutrition-${program.title}`}
+                    style={
+                      {
+                        '--stack-index': index,
+                        '--stack-z': nutritionPrograms.length - index,
+                        '--card-bg': `url(${program.image})`,
+                        '--reveal-delay': `${index * 80}ms`
+                      } as CSSProperties
+                    }
+                  >
+                    <div className='program-card__content'>
+                      <div className='program-card__header'>
+                        <span className='program-card__index'>
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className='program-card__title'>{program.title}</h3>
+                      </div>
+                      <div className='program-card__details'>
+                        <p className='program-card__desc'>
+                          {program.description}
+                        </p>
+                        <div className='program-card__tags'>
+                          {program.tags.map(tag => (
+                            <span
+                              className='program-tag'
+                              key={`${program.title}-${tag}`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <p className='program-card__full'>
+                        {program.fullDescription}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
           <div
-            ref={rightColumnRef}
-            className={`programs-column flex flex-col gap-3 text-right programs-column--right ${
-              rightVisible ? 'programs-column--visible' : ''
-            }`}
+            className='absolute inset-x-0 z-30 flex justify-center'
+            style={{ top: 'var(--programs-cta-top)' }}
           >
-            <h2 className='programs-column-title'>دليل التغذية</h2>
-            <div
-              className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
-              style={
-                {
-                  '--stack-pad': `${(nutritionPrograms.length - 1) * 28}px`
-                } as CSSProperties
-              }
+            <a
+              href='#contact'
+              className='inline-flex cursor-pointer items-center justify-center rounded-2xl bg-head-btn px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-dark shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-bleu/70'
             >
-              {nutritionPrograms.map((program, index) => (
-                <article
-                  className='program-card program-card--stack'
-                  key={`nutrition-${program.title}`}
-                  style={
-                    {
-                      '--stack-index': index,
-                      '--stack-z': nutritionPrograms.length - index,
-                      '--card-bg': `url(${program.image})`,
-                      '--reveal-delay': `${index * 80}ms`
-                    } as CSSProperties
-                  }
-                >
-                  <div className='program-card__content'>
-                    <div className='program-card__header'>
-                      <span className='program-card__index'>
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className='program-card__title'>{program.title}</h3>
-                    </div>
-                    <div className='program-card__details'>
-                      <p className='program-card__desc'>{program.description}</p>
-                      <div className='program-card__tags'>
-                        {program.tags.map(tag => (
-                          <span
-                            className='program-tag'
-                            key={`${program.title}-${tag}`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <p className='program-card__full'>{program.fullDescription}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+              ابدأ برنامجك الآن
+            </a>
           </div>
         </div>
       </div>

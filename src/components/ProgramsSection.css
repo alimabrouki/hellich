@@ -24,7 +24,7 @@
 
 .programs-section {
   position: relative;
-  padding: 120px 0 140px;
+  padding: 60px 0 60px;
   overflow: hidden;
   --programs-stack-separation: 36px;
   --programs-stack-shift: 28px;
@@ -64,6 +64,8 @@
   font-size: clamp(1.4rem, 2.6vw, 2rem);
   color: var(--color-pappay);
   letter-spacing: 0.02em;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .programs-stack {
@@ -224,7 +226,7 @@
 
 @media (max-width: 720px) {
   .programs-section {
-    padding: 96px 0 120px;
+    padding: 60px 0 120px;
     --programs-stack-separation: 26px;
     --programs-stack-shift: 16px;
   }
