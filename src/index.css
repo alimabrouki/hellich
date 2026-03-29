@@ -68,6 +68,11 @@ body {
 @utility about {
   @apply bg-[url('./assets/images/dark-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
 }
+
+@utility who-am-i {
+  @apply bg-[url('./assets/images/about-light-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 html.menu-open::-webkit-scrollbar,
@@ -194,9 +199,6 @@ body::-webkit-scrollbar-thumb {
     --tw-translate-y: 60%;
     width: 50%;
   }
-}
-
-.about {
 }
 
 @keyframes aboutIntroRope {

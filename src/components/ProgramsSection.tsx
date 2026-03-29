@@ -81,9 +81,7 @@ const splitPrograms = [
 
 function ProgramsSection () {
   const programsRef = useRef<HTMLElement | null>(null)
-  const innerRef = useRef<HTMLDivElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const columnsRef = useRef<HTMLDivElement | null>(null)
   const leftColumnRef = useRef<HTMLDivElement | null>(null)
   const rightColumnRef = useRef<HTMLDivElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
@@ -154,27 +152,6 @@ function ProgramsSection () {
   }, [])
 
   useEffect(() => {
-    const inner = innerRef.current
-    const columns = columnsRef.current
-    if (!inner || !columns) return
-
-    const update = () => {
-      const innerRect = inner.getBoundingClientRect()
-      const columnsRect = columns.getBoundingClientRect()
-      const offset =
-        columnsRect.top - innerRect.top + columnsRect.height + 16
-      inner.style.setProperty('--programs-cta-top', `${offset}px`)
-    }
-
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
-
-  useEffect(() => {
-    const section = programsRef.current
-    if (!section) return
-
     const media = window.matchMedia('(max-width: 720px)')
 
     const left = leftColumnRef.current
@@ -250,7 +227,6 @@ function ProgramsSection () {
       dir='rtl'
     >
       <div
-        ref={innerRef}
         className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'
       >
         <h1 id='programs-title' ref={titleRef} className='programs-title'>
@@ -272,7 +248,6 @@ function ProgramsSection () {
         </h1>
         <div className='flex flex-col'>
           <div
-            ref={columnsRef}
             className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'
           >
             <div
@@ -392,18 +367,15 @@ function ProgramsSection () {
               </div>
             </div>
           </div>
-          <div
-            className='absolute inset-x-0 z-30 flex justify-center'
-            style={{ top: 'var(--programs-cta-top)' }}
-          >
-            <a
-              href='#contact'
-              className='inline-flex cursor-pointer items-center justify-center rounded-2xl bg-head-btn px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-dark shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-bleu/70'
-            >
-              ابدأ برنامجك الآن
-            </a>
-          </div>
         </div>
+      </div>
+      <div className='programs-cta'>
+        <a
+          href='#contact'
+          className='inline-flex cursor-pointer items-center justify-center rounded-2xl bg-head-btn px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-dark shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-bleu/70'
+        >
+          ابدأ برنامجك الآن
+        </a>
       </div>
     </section>
   )

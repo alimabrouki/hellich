@@ -1,0 +1,22 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="lightNoise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 0 0 1 0 0 0 0 1 0 0 1"/>
+      </feComponentTransfer>
+      <feColorMatrix type="matrix" values="
+        0.9 0 0 0 0.906
+        0 0.9 0 0 0.902
+        0 0 0.9 0 0.898
+        0 0 0 0.8 0"/>
+    </filter>
+  </defs>
+  
+  <!-- Base light gray color -->
+  <rect width="100%" height="100%" fill="#d0dae4"/>
+  
+  <!-- Grain overlay -->
+  <rect width="100%" height="100%" filter="url(#lightNoise)" opacity="0.5"/>
+</svg>

@@ -125,8 +125,9 @@ function Hellich () {
         </div>
 
         <ComeTrain />
+        <ProgramsSection />
+        <div className='who-am-i'></div>
       </div>
-      <ProgramsSection />
     </div>
   )
 }

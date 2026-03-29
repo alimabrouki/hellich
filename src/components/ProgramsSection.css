@@ -24,7 +24,7 @@
 
 .programs-section {
   position: relative;
-  padding: 60px 0 60px;
+  padding: 60px 0 140px;
   overflow: hidden;
   --programs-stack-separation: 36px;
   --programs-stack-shift: 28px;
@@ -70,6 +70,14 @@
 
 .programs-stack {
   padding-bottom: var(--stack-pad, 0px);
+}
+
+.programs-cta {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
 }
 
 .program-card {
