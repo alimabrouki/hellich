@@ -13,6 +13,7 @@ function Hellich () {
 
   const [animate, setAnimate] = useState(false)
   const [aboutIntroVisible, setAboutIntroVisible] = useState(false)
+  const [logoOnLight, setLogoOnLight] = useState(false)
   const aboutIntroRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -34,6 +35,31 @@ function Hellich () {
       root.classList.remove('menu-open')
     }
   }, [menuOpen])
+
+  useEffect(() => {
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-logo-contrast="dark"]')
+    )
+    if (!targets.length) return
+
+    const visibleTargets = new Set<Element>()
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            visibleTargets.add(entry.target)
+          } else {
+            visibleTargets.delete(entry.target)
+          }
+        })
+        setLogoOnLight(visibleTargets.size > 0)
+      },
+      { threshold: 0.35 }
+    )
+
+    targets.forEach(target => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const target = aboutIntroRef.current
@@ -100,6 +126,7 @@ function Hellich () {
         animate={animate}
         menuOpen={menuOpen}
         handleMenuOpen={handleMenuOpen}
+        logoOnLight={logoOnLight}
       />
       <Hero animate={animate} />
       <div className='about relative z-10 min-h-svh '>
