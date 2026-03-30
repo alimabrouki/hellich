@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import type { animate, handleMenuProps, menuProps } from '../../types/types'
+import type {
+  animate,
+  handleMenuProps,
+  logoContrastProps,
+  menuProps
+} from '../../types/types'
 import HeadLinks from './HeadLinks'
 import Logo from './Logo'
 import MenuButton from './MenuButton'
@@ -8,8 +13,9 @@ import StartBtnDesktop from './StartBtnDesktop'
 function Header ({
   menuOpen,
   handleMenuOpen,
-  animate
-}: menuProps & handleMenuProps & animate) {
+  animate,
+  logoOnLight
+}: menuProps & handleMenuProps & animate & logoContrastProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [introActive, setIntroActive] = useState(true)
   const [isAtTop, setIsAtTop] = useState(true)
@@ -94,7 +100,8 @@ function Header ({
          py-4 left-0 right-0 z-50 sm:px-4 md:px-8 lg:px-12 perspective-[1200px]
       transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
       ${isVisible ? 'translate-y-0' : '-translate-y-[140%]'}
-      ${introActive ? 'overflow-hidden' : 'overflow-visible'}`}
+      ${introActive ? 'overflow-hidden' : 'overflow-visible'}
+      `}
     >
       <div
         className={`head flex justify-between lg:mx-19 relative origin-bottom transform-gpu will-change-transform
@@ -103,7 +110,8 @@ function Header ({
           introActive
             ? 'translate-y-[55%] rotate-x-[75deg]'
             : 'translate-y-0 rotate-x-[0deg]'
-        }`}
+        }
+       `}
       >
         <StartBtnDesktop />
         <div className='absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:grid place-items-center'>
@@ -129,7 +137,7 @@ function Header ({
             />
           </div>
         </div>
-        <Logo animate={animate} menuOpen={menuOpen} />
+        <Logo animate={animate} menuOpen={menuOpen} logoOnLight={logoOnLight} />
         <MenuButton
           animate={animate}
           menuOpen={menuOpen}
