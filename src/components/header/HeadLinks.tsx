@@ -4,8 +4,8 @@ function HeadLinks() {
   const links = [
     { href: "/faq", label: "الأسئلة الشائعة", num: "04" },
     { href: "/contact", label: "تواصل معي", num: "02" },
-    { href: "/about", label: "من أنا ؟", num: "03" },
-    { href: "/program", label: "برامج", num: "01" },
+    { href: "#who-am-i", label: "من أنا ؟", num: "03" },
+    { href: "#programs", label: "برامج", num: "01" },
   ];
   return (
     <div className="hidden lg:flex head-links">

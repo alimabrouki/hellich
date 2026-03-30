@@ -43,7 +43,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
                 }`}
           style={{ transitionDelay: revealDelay(30) }}
         >
-          <NavLink menuOpen={menuOpen} href='/'>
+          <NavLink menuOpen={menuOpen} href='#programs'>
             برامج
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-thin'>
@@ -101,7 +101,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
                 }`}
           style={{ transitionDelay: revealDelay(110) }}
         >
-          <NavLink menuOpen={menuOpen} href='/about'>
+          <NavLink menuOpen={menuOpen} href='#who-am-i'>
             من أنا ؟
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-light'>
