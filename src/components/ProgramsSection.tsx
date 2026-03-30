@@ -223,6 +223,7 @@ function ProgramsSection () {
     <section
       ref={programsRef}
       className='programs-section about'
+      id='programs'
       aria-labelledby='programs-title'
       dir='rtl'
     >
