@@ -24,7 +24,7 @@
 
 .programs-section {
   position: relative;
-  padding: 60px 0 140px;
+  padding: 60px 0 60px;
   overflow: hidden;
   --programs-stack-separation: 36px;
   --programs-stack-shift: 28px;
