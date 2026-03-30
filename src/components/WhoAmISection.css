@@ -31,19 +31,59 @@
 }
 
 .who-am-i-image-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  display: grid;
+  place-items: center;
 }
 
 .who-am-i-image {
-  width: min(560px, 100%);
+  width: min(340px, 100%);
   height: auto;
   border-radius: 32px;
   border: 1px solid rgba(3, 19, 43, 0.15);
   box-shadow: 0 24px 60px rgba(3, 19, 43, 0.25);
   background: rgba(255, 255, 255, 0.35);
   object-fit: cover;
+  grid-area: 1 / 1;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.55s ease,
+    filter 0.55s ease;
+  will-change: transform, opacity, filter;
+}
+
+.who-am-i-image--main {
+  opacity: 0;
+  transform: translate(-28px, 28px);
+  z-index: 2;
+}
+
+.who-am-i-image--ghost {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  filter: blur(1.6px);
+  z-index: 1;
+}
+
+.who-am-i-image--ghost-a {
+  transform: translate(-64px, 64px);
+}
+
+.who-am-i-image--ghost-b {
+  transform: translate(-36px, 36px);
+  opacity: 0.3;
+}
+
+.who-am-i-image-wrap--visible .who-am-i-image--main {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.who-am-i-image-wrap--visible .who-am-i-image--ghost {
+  opacity: 0;
+  transform: translate(0, 0);
+  filter: blur(0);
 }
 
 .who-am-i-info {
@@ -51,14 +91,34 @@
   text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(12px);
+  transition:
+    opacity 0.6s ease,
+    filter 0.6s ease,
+    transform 0.6s ease;
+}
+
+.who-am-i-info--visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
 }
 
 .who-am-i-certified {
-  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
   font-weight: 800;
   letter-spacing: 0.02em;
   margin: 0;
+}
+
+.who-am-i-subtext {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(28, 28, 28, 0.6);
 }
 
 .who-am-i-stats {
@@ -71,17 +131,17 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(3, 19, 43, 0.12);
-  box-shadow: 0 10px 20px rgba(3, 19, 43, 0.12);
+  padding: 4px 6px;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .who-am-i-stat-number {
   font-size: clamp(1.8rem, 3.4vw, 2.6rem);
   font-weight: 800;
-  color: var(--color-text-dark);
+  color: var(--color-main-bleu);
   font-variant-numeric: tabular-nums;
   direction: ltr;
 }
@@ -89,7 +149,7 @@
 .who-am-i-stat-label {
   font-size: 1rem;
   font-weight: 600;
-  color: rgba(28, 28, 28, 0.72);
+  color: var(--color-main-bleu);
   line-height: 1.35;
 }
 
