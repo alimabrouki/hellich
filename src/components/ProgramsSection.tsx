@@ -226,9 +226,7 @@ function ProgramsSection () {
       aria-labelledby='programs-title'
       dir='rtl'
     >
-      <div
-        className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'
-      >
+      <div className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'>
         <h1 id='programs-title' ref={titleRef} className='programs-title'>
           {programsTitleWords.map((word, index) => (
             <span
@@ -247,9 +245,7 @@ function ProgramsSection () {
           ))}
         </h1>
         <div className='flex flex-col'>
-          <div
-            className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'
-          >
+          <div className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'>
             <div
               ref={leftColumnRef}
               className={`programs-column flex flex-col gap-3 text-right programs-column--left ${
@@ -257,14 +253,7 @@ function ProgramsSection () {
               }`}
             >
               <h2 className='programs-column-title'>تقسيمات التمرين</h2>
-              <div
-                className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
-                style={
-                  {
-                    '--stack-pad': `${(splitPrograms.length - 1) * 28}px`
-                  } as CSSProperties
-                }
-              >
+              <div className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'>
                 {splitPrograms.map((program, index) => (
                   <article
                     className='program-card program-card--stack'
