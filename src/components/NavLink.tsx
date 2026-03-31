@@ -2,12 +2,14 @@ interface NavLinkProps {
   href: string;
   children: string;
   menuOpen: boolean;
+  onClick?: () => void;
 }
 
-function NavLink({ href, children, menuOpen }: NavLinkProps) {
+function NavLink({ href, children, menuOpen, onClick }: NavLinkProps) {
   return (
     <a
       href={href}
+      onClick={onClick}
       className={`group relative inline-block overflow-hidden  ${
         menuOpen ? "text-text-dark" : "text-head-btn"
       }`}

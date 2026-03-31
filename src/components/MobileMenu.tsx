@@ -1,10 +1,11 @@
 import LibyaTime from '../utils/LibyaTime'
 import NavLink from './header/NavLink'
-import type { menuProps } from '../types/types'
+import type { handleMenuProps, menuProps } from '../types/types'
 import StartBtnMobile from './header/StartBtnMobile'
 
-function MobileMenu ({ menuOpen }: menuProps) {
+function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
   const revealDelay = (offset = 0) => (menuOpen ? `${offset}ms` : '0ms')
+  const closeMenu = () => handleMenuOpen(false)
 
   return (
     <div
@@ -43,7 +44,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
                 }`}
           style={{ transitionDelay: revealDelay(30) }}
         >
-          <NavLink menuOpen={menuOpen} href='#programs'>
+          <NavLink menuOpen={menuOpen} href='#programs' onClick={closeMenu}>
             برامج
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-thin'>
@@ -72,7 +73,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
               }`}
           style={{ transitionDelay: revealDelay(70) }}
         >
-          <NavLink menuOpen={menuOpen} href='/contact'>
+          <NavLink menuOpen={menuOpen} href='/contact' onClick={closeMenu}>
             تواصل معي
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-light'>
@@ -101,7 +102,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
                 }`}
           style={{ transitionDelay: revealDelay(110) }}
         >
-          <NavLink menuOpen={menuOpen} href='#who-am-i'>
+          <NavLink menuOpen={menuOpen} href='#who-am-i' onClick={closeMenu}>
             من أنا ؟
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-light'>
@@ -130,7 +131,7 @@ function MobileMenu ({ menuOpen }: menuProps) {
               }`}
           style={{ transitionDelay: revealDelay(150) }}
         >
-          <NavLink menuOpen={menuOpen} href='/faq'>
+          <NavLink menuOpen={menuOpen} href='/faq' onClick={closeMenu}>
             الأسئلة الشائعة
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-light'>

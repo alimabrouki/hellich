@@ -120,8 +120,8 @@ function Hellich () {
     setMenuOpen(state)
   }
   return (
-    <div className='hellich relative'>
-      <MobileMenu menuOpen={menuOpen} />
+    <div className='hellich relative' id='top'>
+      <MobileMenu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
       <Header
         animate={animate}
         menuOpen={menuOpen}

@@ -1,6 +1,10 @@
 import NavLink from "../NavLink";
 
-function HeadLinks() {
+type HeadLinksProps = {
+  onNavigate?: () => void;
+};
+
+function HeadLinks({ onNavigate }: HeadLinksProps) {
   const links = [
     { href: "/faq", label: "الأسئلة الشائعة", num: "04" },
     { href: "/contact", label: "تواصل معي", num: "02" },
@@ -10,7 +14,12 @@ function HeadLinks() {
   return (
     <div className="hidden lg:flex head-links">
       {links.map((link) => (
-        <NavLink key={link.href} menuOpen={false} href={link.href}>
+        <NavLink
+          key={link.href}
+          menuOpen={false}
+          href={link.href}
+          onClick={onNavigate}
+        >
           {link.label}
         </NavLink>
       ))}

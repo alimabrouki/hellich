@@ -119,7 +119,7 @@ function Header ({
             className={`col-start-1 row-start-1 transition-opacity duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${showHeadLinks ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
           >
-            <HeadLinks />
+          <HeadLinks onNavigate={() => handleMenuOpen(false)} />
           </div>
           <div
             className={`col-start-1 row-start-1 transition-[opacity,transform] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -137,7 +137,12 @@ function Header ({
             />
           </div>
         </div>
-        <Logo animate={animate} menuOpen={menuOpen} logoOnLight={logoOnLight} />
+        <Logo
+          animate={animate}
+          menuOpen={menuOpen}
+          logoOnLight={logoOnLight}
+          onLogoClick={() => handleMenuOpen(false)}
+        />
         <MenuButton
           animate={animate}
           menuOpen={menuOpen}
