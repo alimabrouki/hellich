@@ -1,4 +1,4 @@
-import './SlidingWords.css'
+import '../styles/SlidingWords.css'
 
 const words = [
   'BURPEES',

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import './ProgramsSection.css'
+import '../styles/ProgramsSection.css'
 import nutrition01 from '../assets/images/nutrition01.jpg'
 import nutrition02 from '../assets/images/nutrition02.jpg'
 import nutrition03 from '../assets/images/nutrition03.jpg'

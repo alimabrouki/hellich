@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import './ComeTrain.css'
+import '../styles/ComeTrain.css'
 import trainer1 from '../assets/images/train-client1.png'
 import trainer4 from '../assets/images/train-client2.png'
 import trainer3 from '../assets/images/train-client3.png'
@@ -130,7 +130,10 @@ function ComeTrain () {
   }, [])
 
   return (
-    <div ref={comeTrainRef} className='come-train-w-me relative mt-14 overflow-hidden'>
+    <div
+      ref={comeTrainRef}
+      className='come-train-w-me relative mt-14 overflow-hidden'
+    >
       <div ref={slidingImagesRef} className='sliding-images'>
         <h1
           dir='rtl'

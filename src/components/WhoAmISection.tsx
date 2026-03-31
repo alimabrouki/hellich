@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState } from 'react'
-import './WhoAmISection.css'
+import '../styles/WhoAmISection.css'
 import whoAmIImage from '../assets/images/who-am-i.jpg'
 import tiktokVideo from '../assets/videos/tiktok.mp4'
 import facebookVideo from '../assets/videos/facebook.mp4'
