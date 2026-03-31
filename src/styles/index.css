@@ -51,7 +51,7 @@ html {
 }
 
 @utility hellich {
-  @apply relative mx-auto w-full overflow-visible bg-[url('./assets/images/dark-grain-bg.svg')] bg-repeat bg-[length:420px_420px] bg-top;
+  @apply relative mx-auto w-full overflow-visible bg-[url('../assets/images/dark-grain-bg.svg')] bg-repeat bg-[length:420px_420px] bg-top;
 }
 
 @utility flexx {
@@ -71,11 +71,11 @@ html {
 }
 
 @utility about {
-  @apply bg-[url('./assets/images/dark-grain-bg.svg')] bg-repeat bg-[length:420px_420px] bg-top;
+  @apply bg-[url('../assets/images/dark-grain-bg.svg')] bg-repeat bg-[length:420px_420px] bg-top;
 }
 
 @utility who-am-i {
-  @apply bg-[url('./assets/images/about-light-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
+  @apply bg-[url('../assets/images/about-light-grain-bg.svg')] bg-cover bg-center bg-no-repeat;
 }
 
 html::-webkit-scrollbar,
