@@ -13,3 +13,7 @@ export type animate = {
 export type logoContrastProps = {
   logoOnLight: boolean
 }
+
+export type logoClickProps = {
+  onLogoClick?: () => void
+}
