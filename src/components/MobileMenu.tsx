@@ -9,7 +9,7 @@ function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) 
 
   return (
     <div
-      className={`menu-wrap fixed right-0 bottom-0 z-40 flex w-full items-end overflow-hidden bg-[url('./assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat opacity-100
+      className={`menu-wrap fixed right-0 bottom-0 z-40 flex w-full items-end overflow-hidden bg-[url('../assets/images/light-grain-bg.svg')] bg-cover bg-center bg-no-repeat opacity-100
             transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${menuOpen ? '' : 'pointer-events-none'}`}
       style={{ height: menuOpen ? '100%' : '0%' }}
@@ -45,7 +45,7 @@ function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) 
           style={{ transitionDelay: revealDelay(30) }}
         >
           <NavLink menuOpen={menuOpen} href='#programs' onClick={closeMenu}>
-            برامج
+            برامج مجانية
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-thin'>
             01
