@@ -270,9 +270,9 @@
   letter-spacing: 0;
   cursor: pointer;
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
 }
 
@@ -281,9 +281,9 @@
   transform: translateY(14px) scale(0.98);
   transition:
     opacity 0.5s ease,
-    transform 0.5s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    transform 0.3s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
   transition-delay: var(--reveal-delay, 0ms);
   will-change: transform, opacity;
 }
@@ -297,6 +297,7 @@
   transform: translateY(-3px);
   box-shadow: 0 20px 36px rgba(0, 0, 0, 0.45);
   background: #fff4d8;
+  transition: 0.6s ease;
 }
 
 .contact-submit:disabled {
