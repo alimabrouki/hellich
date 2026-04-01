@@ -107,11 +107,11 @@
 }
 
 .contact-social--whatsapp .contact-social__icon {
-  color: #25d366;
+  color: var(--color-pappay);
 }
 
 .contact-social--facebook .contact-social__icon {
-  color: #1877f2;
+  color: var(--color-pappay);
 }
 
 .contact-form {
