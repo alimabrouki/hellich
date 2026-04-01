@@ -73,7 +73,7 @@ function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) 
               }`}
           style={{ transitionDelay: revealDelay(70) }}
         >
-          <NavLink menuOpen={menuOpen} href='/contact' onClick={closeMenu}>
+          <NavLink menuOpen={menuOpen} href='#contact' onClick={closeMenu}>
             تواصل معي
           </NavLink>
           <span className='text-[15px] font-zero font-jetbrains font-light'>

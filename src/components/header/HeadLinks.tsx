@@ -7,7 +7,7 @@ type HeadLinksProps = {
 function HeadLinks ({ onNavigate }: HeadLinksProps) {
   const links = [
     { href: '/faq', label: 'الأسئلة الشائعة', num: '04' },
-    { href: '/contact', label: 'تواصل معي', num: '02' },
+    { href: '#contact', label: 'تواصل معي', num: '02' },
     { href: '#who-am-i', label: 'من أنا ؟', num: '03' },
     { href: '#programs', label: 'برامج مجانية', num: '01' }
   ]

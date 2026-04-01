@@ -7,6 +7,7 @@ import ComeTrain from './ComeTrain'
 import ProgramsSection from './ProgramsSection'
 import WhoAmISection from './WhoAmISection'
 import SlidingWords from './SlidingWords'
+import ContactSection from './ContactSection'
 
 function Hellich () {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -157,6 +158,7 @@ function Hellich () {
         <ProgramsSection />
         <SlidingWords />
         <WhoAmISection />
+        <ContactSection />
       </div>
     </div>
   )
