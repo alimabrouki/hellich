@@ -7,6 +7,8 @@ import '../styles/ContactSection.css'
 const contactTitle = 'تواصل معي'
 const contactTitleWords = contactTitle.split(/\s+/)
 const wordDelayMs = 45
+const footerTitle = 'محمد مبروكي'
+const footerTitleWords = footerTitle.split(/\s+/)
 const fieldRevealStepMs = 90
 const revealStyle = (index: number): CSSProperties =>
   ({
@@ -15,9 +17,11 @@ const revealStyle = (index: number): CSSProperties =>
 
 function ContactSection () {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const footerTitleRef = useRef<HTMLHeadingElement | null>(null)
   const socialsRef = useRef<HTMLDivElement | null>(null)
   const formRef = useRef<HTMLFormElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
+  const [footerTitleVisible, setFooterTitleVisible] = useState(false)
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [formVisible, setFormVisible] = useState(false)
   const [status, setStatus] = useState<
@@ -102,6 +106,62 @@ function ContactSection () {
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const target = footerTitleRef.current
+    if (!target) return
+
+    let timeoutId: number | null = null
+    let wasInView = false
+
+    const triggerAnimation = () => {
+      setFooterTitleVisible(false)
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId)
+      }
+      timeoutId = window.setTimeout(() => {
+        setFooterTitleVisible(true)
+      }, 60)
+    }
+
+    const handleVisibility = (inView: boolean) => {
+      if (inView && !wasInView) {
+        triggerAnimation()
+      } else if (!inView && wasInView) {
+        setFooterTitleVisible(false)
+      }
+      wasInView = inView
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          handleVisibility(entry.isIntersecting)
+        },
+        { threshold: 0.45 }
+      )
+      observer.observe(target)
+      return () => {
+        observer.disconnect()
+        if (timeoutId !== null) window.clearTimeout(timeoutId)
+      }
+    }
+
+    const onScroll = () => {
+      const rect = target.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight && rect.bottom > 0
+      handleVisibility(inView)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      if (timeoutId !== null) window.clearTimeout(timeoutId)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
     }
@@ -403,6 +463,50 @@ function ContactSection () {
           </form>
         </div>
       </div>
+      <footer className='contact-footer' id='footer' aria-label='footer'>
+        <div className='contact-footer-inner'>
+          <h2
+            ref={footerTitleRef}
+            className='contact-footer-title'
+            aria-label={footerTitle}
+          >
+            {footerTitleWords.map((word, index) => (
+              <span
+                key={`footer-${word}-${index}`}
+                className={`about-intro-word ${
+                  footerTitleVisible ? 'about-intro-word--visible' : ''
+                }`}
+                style={{
+                  transitionDelay: `${index * wordDelayMs}ms`,
+                  animationDelay: `${index * wordDelayMs}ms`
+                }}
+              >
+                {word}
+                {index < footerTitleWords.length - 1 ? '\u00A0' : ''}
+              </span>
+            ))}
+          </h2>
+        </div>
+        <div className='contact-footer-corners'>
+          <span className='contact-footer-corner contact-footer-corner--left'>
+            ©2026 Hellich
+          </span>
+          <span className='contact-footer-corner contact-footer-corner--right'>
+            by{' '}
+            <a
+              className='contact-footer-link'
+              href='https://wa.me/21652213767'
+              target='_blank'
+              rel='noreferrer'
+              aria-label='WhatsApp ALI'
+            >
+              ALI
+            </a>
+          </span>
+        </div>
+        <div className='contact-footer-fog contact-footer-fog--base' />
+        <div className='contact-footer-fog contact-footer-fog--glow' />
+      </footer>
     </section>
   )
 }
