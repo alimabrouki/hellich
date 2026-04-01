@@ -118,7 +118,7 @@
   direction: rtl;
   text-align: right;
   display: grid;
-  gap: 16px;
+  gap: 40px;
   padding: 32px;
   opacity: 0;
   filter: blur(12px);
