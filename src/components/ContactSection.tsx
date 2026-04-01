@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import '../styles/ContactSection.css'
 
 const contactTitle = 'تواصل معي'
 const contactTitleWords = contactTitle.split(/\s+/)
 const wordDelayMs = 45
+const fieldRevealStepMs = 90
+const revealStyle = (index: number): CSSProperties =>
+  ({
+    '--reveal-delay': `${index * fieldRevealStepMs}ms`
+  } as CSSProperties)
 
 function ContactSection () {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
@@ -12,9 +20,9 @@ function ContactSection () {
   const [titleVisible, setTitleVisible] = useState(false)
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [formVisible, setFormVisible] = useState(false)
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>(
-    'idle'
-  )
+  const [status, setStatus] = useState<
+    'idle' | 'sending' | 'success' | 'error'
+  >('idle')
   const [statusMessage, setStatusMessage] = useState('')
 
   useEffect(() => {
@@ -209,12 +217,7 @@ function ContactSection () {
               aria-label='واتساب'
             >
               <span className='contact-social__icon' aria-hidden='true'>
-                <svg viewBox='0 0 24 24' aria-hidden='true'>
-                  <path
-                    d='M20.52 3.48A11.78 11.78 0 0 0 12 1.02c-6.22 0-11.28 5.06-11.28 11.28 0 1.99.52 3.93 1.5 5.66L.95 23l5.17-1.35a11.23 11.23 0 0 0 5.88 1.59h.01c6.22 0 11.28-5.06 11.28-11.28 0-3.01-1.17-5.84-3.77-8.48zm-8.52 17.8h-.01a9.24 9.24 0 0 1-4.71-1.29l-.34-.2-3.07.8.82-2.99-.22-.35a9.25 9.25 0 1 1 7.53 3.99zm5.07-6.94c-.28-.14-1.65-.82-1.9-.91-.26-.1-.44-.14-.62.14-.18.28-.71.91-.88 1.09-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.47.1-.18.05-.35-.02-.5-.07-.14-.62-1.5-.85-2.06-.22-.54-.45-.47-.62-.48-.16-.01-.35-.01-.53-.01-.18 0-.48.07-.73.35-.25.28-.96.94-.96 2.28 0 1.34.99 2.64 1.13 2.82.14.18 1.95 2.98 4.72 4.18.66.28 1.17.45 1.57.57.66.2 1.26.17 1.73.1.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32z'
-                    fill='currentColor'
-                  />
-                </svg>
+                <FontAwesomeIcon icon={faWhatsapp} />
               </span>
               <span className='contact-social__label'>واتساب</span>
             </a>
@@ -226,12 +229,7 @@ function ContactSection () {
               aria-label='فيسبوك'
             >
               <span className='contact-social__icon' aria-hidden='true'>
-                <svg viewBox='0 0 24 24' aria-hidden='true'>
-                  <path
-                    d='M13.7 9.35V7.58c0-.9.6-1.1 1.02-1.1h2V4h-2.76c-2.56 0-3.14 1.9-3.14 3.12v2.23H8.6v2.78h2.22V20h2.88v-7.87h2.2l.34-2.78H13.7z'
-                    fill='currentColor'
-                  />
-                </svg>
+                <FontAwesomeIcon icon={faFacebookF} />
               </span>
               <span className='contact-social__label'>فيسبوك</span>
             </a>
@@ -244,7 +242,10 @@ function ContactSection () {
             onSubmit={handleSubmit}
           >
             <div className='contact-grid'>
-              <div className='contact-field'>
+              <div
+                className='contact-field contact-field--reveal'
+                style={revealStyle(0)}
+              >
                 <label htmlFor='contact-name'>الاسم الكامل</label>
                 <input
                   id='contact-name'
@@ -255,7 +256,10 @@ function ContactSection () {
                   required
                 />
               </div>
-              <div className='contact-field'>
+              <div
+                className='contact-field contact-field--reveal'
+                style={revealStyle(1)}
+              >
                 <label htmlFor='contact-email'>البريد الإلكتروني</label>
                 <input
                   id='contact-email'
@@ -266,7 +270,10 @@ function ContactSection () {
                   required
                 />
               </div>
-              <div className='contact-field'>
+              <div
+                className='contact-field contact-field--reveal'
+                style={revealStyle(2)}
+              >
                 <label htmlFor='contact-age'>العمر</label>
                 <input
                   id='contact-age'
@@ -278,7 +285,10 @@ function ContactSection () {
                   required
                 />
               </div>
-              <div className='contact-field'>
+              <div
+                className='contact-field contact-field--reveal'
+                style={revealStyle(3)}
+              >
                 <label htmlFor='contact-sex'>الجنس</label>
                 <select
                   id='contact-sex'
@@ -296,7 +306,10 @@ function ContactSection () {
               </div>
               <div className='contact-field contact-field--full'>
                 <div className='contact-row contact-row--time-weight'>
-                  <div className='contact-field contact-field--compact'>
+                  <div
+                    className='contact-field contact-field--compact contact-field--reveal'
+                    style={revealStyle(4)}
+                  >
                     <label htmlFor='contact-weight'>الوزن</label>
                     <input
                       id='contact-weight'
@@ -304,31 +317,46 @@ function ContactSection () {
                       type='number'
                       inputMode='decimal'
                       className='contact-input'
-                      placeholder='مثال: 78 كجم'
+                      placeholder='مثال: 78 كج'
                       required
                     />
                   </div>
-                  <div className='contact-field contact-field--time-group'>
-                    <label htmlFor='contact-free-time-from'>الوقت المناسب</label>
+                  <div
+                    className='contact-field contact-field--time-group contact-field--reveal'
+                    style={revealStyle(5)}
+                  >
+                    <label htmlFor='contact-free-time-from'>
+                      الوقت المناسب
+                    </label>
                     <div className='contact-time-row'>
-                      <div className='contact-time-slot'>
+                      <div
+                        className='contact-time-slot contact-time-slot--reveal'
+                        style={revealStyle(6)}
+                      >
                         <span className='contact-time-label'>من</span>
                         <input
                           id='contact-free-time-from'
                           name='freeTimeFrom'
                           type='number'
+                          min='1'
+                          max='12'
                           inputMode='numeric'
                           className='contact-input contact-input--time'
                           placeholder='5'
                           required
                         />
                       </div>
-                      <div className='contact-time-slot'>
+                      <div
+                        className='contact-time-slot contact-time-slot--reveal'
+                        style={revealStyle(7)}
+                      >
                         <span className='contact-time-label'>إلى</span>
                         <input
                           id='contact-free-time-to'
                           name='freeTimeTo'
                           type='number'
+                          min='1'
+                          max='12'
                           inputMode='numeric'
                           className='contact-input contact-input--time'
                           placeholder='7'
@@ -339,7 +367,10 @@ function ContactSection () {
                   </div>
                 </div>
               </div>
-              <div className='contact-field contact-field--full'>
+              <div
+                className='contact-field contact-field--full contact-field--reveal'
+                style={revealStyle(8)}
+              >
                 <label htmlFor='contact-message'>رسالتك</label>
                 <textarea
                   id='contact-message'
@@ -353,11 +384,12 @@ function ContactSection () {
             </div>
             <button
               type='submit'
-              className='contact-submit'
+              className='contact-submit contact-submit--reveal'
               disabled={status === 'sending'}
               aria-busy={status === 'sending'}
+              style={revealStyle(9)}
             >
-              train with me
+              تدرّب معي
             </button>
             {status !== 'idle' && (
               <p
