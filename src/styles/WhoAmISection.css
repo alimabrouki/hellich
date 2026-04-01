@@ -90,7 +90,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
-  width: min(720px, 100%);
+  width: min(460px, 100%);
   margin: 10px auto 0;
 }
 
@@ -98,7 +98,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 26px;
-  min-height: 280px;
+  min-height: 387px;
   display: grid;
   place-items: center;
   background: #000;
