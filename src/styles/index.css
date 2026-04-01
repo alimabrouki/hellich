@@ -136,19 +136,19 @@ body::-webkit-scrollbar-thumb {
   .about-intro-word {
     display: inline-block;
     opacity: 0;
-    transform: translateY(56px) rotate(-7deg) skewX(-6deg);
+    transform: translateY(64px) rotate(-8deg) skewX(-7deg);
     transform-origin: left bottom;
     filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.18));
     transition:
-      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.55s ease-out;
+      transform 1.15s cubic-bezier(0.16, 1.15, 0.3, 1),
+      opacity 0.6s ease-out;
     will-change: transform, opacity;
   }
 
   .about-intro-word--visible {
     opacity: 1;
     transform: translateY(0) rotate(0) skewX(0);
-    animation: aboutIntroRope 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: aboutIntroRope 1.35s cubic-bezier(0.16, 1.15, 0.3, 1) both;
   }
 }
 .word-slider {
@@ -209,12 +209,20 @@ body::-webkit-scrollbar-thumb {
 @keyframes aboutIntroRope {
   0% {
     opacity: 0;
-    transform: translateY(56px) rotate(-7deg) skewX(-6deg);
+    transform: translateY(64px) rotate(-8deg) skewX(-7deg);
   }
 
-  55% {
+  58% {
     opacity: 1;
-    transform: translateY(0px) rotate(0deg) skewX(1deg);
+    transform: translateY(-10px) rotate(1.6deg) skewX(2deg);
+  }
+
+  72% {
+    transform: translateY(6px) rotate(-0.7deg) skewX(-1deg);
+  }
+
+  86% {
+    transform: translateY(-3px) rotate(0.35deg) skewX(0.4deg);
   }
 
   100% {
