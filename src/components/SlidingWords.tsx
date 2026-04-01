@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import '../styles/SlidingWords.css'
 
 const words = [
@@ -13,9 +14,19 @@ const words = [
   'PUSH-UPS'
 ]
 
-function SlidingWords () {
+type SlidingWordsProps = {
+  className?: string
+  style?: CSSProperties
+}
+
+function SlidingWords ({ className = '', style }: SlidingWordsProps) {
   return (
-    <div className='sliding-words' dir='ltr' aria-hidden='true'>
+    <div
+      className={`sliding-words${className ? ` ${className}` : ''}`}
+      style={style}
+      dir='ltr'
+      aria-hidden='true'
+    >
       <div className='sliding-words__track'>
         {[0, 1].map(group => (
           <div className='sliding-words__group' key={`group-${group}`}>

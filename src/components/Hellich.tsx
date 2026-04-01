@@ -158,7 +158,7 @@ function Hellich () {
         <ProgramsSection />
         <SlidingWords />
         <WhoAmISection />
-        <SlidingWords />
+        <SlidingWords className='sliding-words--second' />
         <ContactSection />
       </div>
     </div>
