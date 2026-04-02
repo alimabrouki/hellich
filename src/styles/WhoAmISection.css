@@ -160,6 +160,148 @@
   transform: translateX(0);
 }
 
+.who-am-i-faqs {
+  width: min(760px, 100%);
+  margin: 28px auto 0;
+  display: grid;
+  gap: 16px;
+  direction: rtl;
+}
+
+.who-am-i-faqs-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--color-text-dark);
+}
+
+.who-am-i-faqs-list {
+  display: grid;
+  gap: 14px;
+}
+
+.who-am-i-faq {
+  background: #fff;
+  border-radius: 13px;
+  border: 1px solid rgba(3, 19, 43, 0.08);
+  box-shadow: 0 16px 34px rgba(3, 19, 43, 0.08);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition:
+    opacity 1s ease,
+    transform 2s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.who-am-i-faqs--visible .who-am-i-faq {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.who-am-i-faq-button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  text-align: right;
+  direction: ltr;
+  color: #111;
+  font-family: inherit;
+}
+
+.who-am-i-faq-button:focus-visible {
+  outline: 2px solid rgba(3, 19, 43, 0.35);
+  outline-offset: 2px;
+}
+
+.who-am-i-faq-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
+  flex: 1;
+  order: 2;
+}
+
+.who-am-i-faq-number {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.who-am-i-faq-question {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111;
+  text-align: right;
+}
+
+.who-am-i-faq-icon {
+  width: 30px;
+  height: 30px;
+  background: #111;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  order: 1;
+}
+
+.who-am-i-faq-arrow {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid rgba(255, 255, 255, 0.92);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.92);
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.who-am-i-faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    padding 0.3s ease;
+}
+
+.who-am-i-faq-answer {
+  margin: 0;
+  padding-bottom: 18px;
+  color: rgba(28, 28, 28, 0.75);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.who-am-i-faq--open .who-am-i-faq-panel {
+  max-height: 720px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.who-am-i-faq--open .who-am-i-faq-icon {
+  transform: rotate(180deg);
+}
+
 .who-am-i-info {
   direction: rtl;
   text-align: right;
