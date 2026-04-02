@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import '../styles/WhoAmISection.css'
 import whoAmIImage from '../assets/images/who-am-i.jpg'
 import tiktokVideo from '../assets/videos/tiktok.mp4'
@@ -7,6 +8,8 @@ import facebookVideo from '../assets/videos/facebook.mp4'
 const whoTitle = 'من أنا ؟'
 const whoTitleWords = whoTitle.split(/\s+/)
 const wordDelayMs = 45
+const faqTitle = 'عندك أسألة ؟'
+const faqTitleWords = faqTitle.split(/\s+/)
 const certifiedTitle = 'مدرب متخصص يوجّهك لتحقيق أفضل جسم وعقلية'
 const certifiedTitleWords = certifiedTitle.split(/\s+/)
 const certifiedSubtitle =
@@ -19,20 +22,77 @@ const stats = [
   { value: 458, suffix: '+', lines: ['جلسات مكتملة'] },
   { value: 15, suffix: '+', lines: ['برامج مخصصة'] }
 ]
+
+const faqRevealStepMs = 90
+const faqRevealStyle = (index: number): CSSProperties =>
+  ({
+    '--reveal-delay': `${index * faqRevealStepMs}ms`
+  } as CSSProperties)
+
+const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+const toArabicNumber = (value: number) =>
+  String(value)
+    .split('')
+    .map(char =>
+      char >= '0' && char <= '9' ? arabicDigits[Number(char)] : char
+    )
+    .join('')
+
+const faqs = [
+  {
+    question: 'هل يجب أن أكون في فورما قبل أن أبدأ؟',
+    answer:
+      'ج: لا، بالعكس. التدريب مصمم لكل المستويات، سواء كنت مبتدئ تماماً أو لديك خبرة سابقة.\nهدفي هو أن آخذك من مستواك الحالي إلى أفضل نسخة منك، خطوة بخطوة وبطريقة آمنة وفعالة.'
+  },
+  {
+    question: 'هل التدريب مناسب للمبتدئين؟',
+    answer:
+      ' نعم، ومصمم خصيصاً لهم أيضاً.\nأغلب الأشخاص الذين أعمل معهم يبدأون من الصفر، ويتم توجيههم بشكل تدريجي لبناء الأساس الصحيح في التمرين، التقنية، والانضباط.\nالبداية الصحيحة هي أهم خطوة، وأنا أضمن أنك تبدأ بالطريقة الصح.'
+  },
+  {
+    question: 'هل توفر نظام غذائي؟',
+    answer:
+      ' نعم. أقدم لك 4 برامج تدريب و4 برامج تغذية مجاناً لتبدأ بشكل قوي ومنظم.\nوإذا كنت تبحث عن مستوى أعلى وتخصيص أدق حسب أهدافك وتفاصيل جسمك، يمكنك الحصول على برنامج متقدم مدفوع يتم تصميمه خصيصاً لك.'
+  },
+  {
+    question: 'كم من الوقت أحتاج حتى أرى نتائج؟',
+    answer:
+      ' إذا كنت تتدرب بشكل طبيعي (بدون أي منشطات)، يمكنك ملاحظة نتائج واضحة خلال 3 إلى 6 أشهر من الالتزام.\nأما في حال استخدام الهرمونات، فقد تبدأ النتائج بالظهور خلال شهر واحد.\nلكن خلّيها واضحة: النتائج تعتمد أولاً وأخيراً على التزامك أنت، سواء في التمرين أو التغذية أو نمط حياتك.'
+  },
+  {
+    question: 'هل هناك أشخاص لا يمكنك تدريبهم؟',
+    answer:
+      ' نعم. لا أعمل مع الأشخاص غير الملتزمين بالمواعيد أو الذين لا يحترمون وقت الحصة.\nالانضباط جزء أساسي من النجاح، وإذا لم تكن جاداً في التزامك، فلن تحصل على نتائج — وبالتالي هذا النوع من التدريب ليس مناسباً لك.'
+  },
+  {
+    question: 'كم سعر الحصة التدريبية؟',
+    answer:
+      ' سعر الحصة هو 20 دينار ليبي.\nهذا يشمل تدريب شخصي مخصص بالكامل حسب مستواك وأهدافك، مع متابعة مستمرة لضمان تحقيق أفضل النتائج في أقصر وقت ممكن.'
+  },
+  {
+    question: 'ماذا أحتاج قبل أن أبدأ؟',
+    answer:
+      ' قبل بدء التدريب، أقوم بتقييم شامل لحالتك البدنية، يشمل:\n\nفحص وضعية الجسم (Posture)\nتقييم المفاصل والحركة\nمعرفة طبيعة عملك (نشِط أم مكتبي)\nالاطلاع على حالتك الصحية، بما في ذلك أي أمراض مزمنة\n\nبناءً على هذا التقييم، يتم تصميم برنامج تدريبي مناسب لك 100%.'
+  }
+]
 function WhoAmISection () {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const infoRef = useRef<HTMLDivElement | null>(null)
   const socialsRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
+  const faqTitleRef = useRef<HTMLHeadingElement | null>(null)
+  const faqsRef = useRef<HTMLDivElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
   const [infoVisible, setInfoVisible] = useState(false)
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [imageVisible, setImageVisible] = useState(false)
+  const [faqTitleVisible, setFaqTitleVisible] = useState(false)
+  const [faqsVisible, setFaqsVisible] = useState(false)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const [statValues, setStatValues] = useState<number[]>(() =>
     stats.map(() => 0)
   )
   const statsAnimatedRef = useRef(false)
-
   useEffect(() => {
     const title = titleRef.current
     if (!title) return
@@ -71,13 +131,17 @@ function WhoAmISection () {
     const info = infoRef.current
     const socials = socialsRef.current
     const image = imageRef.current
-    if (!info && !socials && !image) return
+    const faqTitleEl = faqTitleRef.current
+    const faqsEl = faqsRef.current
+    if (!info && !socials && !image && !faqTitleEl && !faqsEl) return
 
     const reveal = (entry: IntersectionObserverEntry) => {
       if (!entry.isIntersecting) return
       if (entry.target === info) setInfoVisible(true)
       if (entry.target === socials) setSocialsVisible(true)
       if (entry.target === image) setImageVisible(true)
+      if (entry.target === faqTitleEl) setFaqTitleVisible(true)
+      if (entry.target === faqsEl) setFaqsVisible(true)
     }
 
     if ('IntersectionObserver' in window) {
@@ -85,12 +149,14 @@ function WhoAmISection () {
         entries => {
           entries.forEach(entry => reveal(entry))
         },
-        { threshold: 0.35 }
+        { threshold: 0 }
       )
 
       if (info) observer.observe(info)
       if (socials) observer.observe(socials)
       if (image) observer.observe(image)
+      if (faqTitleEl) observer.observe(faqTitleEl)
+      if (faqsEl) observer.observe(faqsEl)
       return () => observer.disconnect()
     }
 
@@ -111,6 +177,18 @@ function WhoAmISection () {
         const rect = image.getBoundingClientRect()
         if (rect.top < window.innerHeight && rect.bottom > 0) {
           setImageVisible(true)
+        }
+      }
+      if (faqTitleEl) {
+        const rect = faqTitleEl.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setFaqTitleVisible(true)
+        }
+      }
+      if (faqsEl) {
+        const rect = faqsEl.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setFaqsVisible(true)
         }
       }
     }
@@ -175,6 +253,10 @@ function WhoAmISection () {
         {index < words.length - 1 ? '\u00A0' : ''}
       </span>
     ))
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(current => (current === index ? null : index))
+  }
 
   return (
     <section
@@ -349,6 +431,59 @@ function WhoAmISection () {
               </svg>
             </span>
           </a>
+        </div>
+        <div
+          ref={faqsRef}
+          className={`who-am-i-faqs ${
+            faqsVisible ? 'who-am-i-faqs--visible' : ''
+          }`}
+          aria-label='الأسئلة الشائعة'
+        >
+          <h2 ref={faqTitleRef} className='who-am-i-faqs-title'>
+            {renderWords(faqTitleWords, faqTitleVisible, 0, wordDelayMs, 'faq')}
+          </h2>
+          <div className='who-am-i-faqs-list'>
+            {faqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index
+              return (
+                <div
+                  key={`${faq.question}-${index}`}
+                  className={`who-am-i-faq ${
+                    isOpen ? 'who-am-i-faq--open' : ''
+                  }`}
+                  style={faqRevealStyle(index)}
+                >
+                  <button
+                    type='button'
+                    className='who-am-i-faq-button'
+                    onClick={() => toggleFaq(index)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${index}`}
+                  >
+                    <span className='who-am-i-faq-text'>
+                      <span className='who-am-i-faq-number'>
+                        السؤال {toArabicNumber(index + 1)}
+                      </span>
+                      <span className='who-am-i-faq-question'>
+                        {faq.question}
+                      </span>
+                    </span>
+                    <span className='who-am-i-faq-icon' aria-hidden='true'>
+                      <span className='who-am-i-faq-arrow' />
+                    </span>
+                  </button>
+                  <div
+                    id={`faq-panel-${index}`}
+                    className='who-am-i-faq-panel'
+                    role='region'
+                    aria-hidden={!isOpen}
+                  >
+                    <p className='who-am-i-faq-answer'>{faq.answer}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
