@@ -168,7 +168,13 @@ function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) 
           <span
             className={`text-[18px] font-zero font-jetbrains font-light time-font`}
           >
-            Hellich &copy;2026
+            <span
+              className='relative top-[4.5px] text-[27px]'
+              aria-hidden='true'
+            >
+              ©
+            </span>
+            2026 Hellich
           </span>
 
           <LibyaTime />

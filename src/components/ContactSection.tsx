@@ -596,23 +596,23 @@ function ContactSection () {
             ))}
           </h2>
         </div>
-        <div className='contact-footer-corners'>
-          <span className='contact-footer-corner contact-footer-corner--left'>
+        <div className='contact-footer-corners '>
+          <span className='contact-footer-corner contact-footer-corner--left font-jetbrains'>
             <span className='contact-footer-copy' aria-hidden='true'>
               ©
             </span>
             2026 Hellich
           </span>
-          <span className='contact-footer-corner contact-footer-corner--right'>
+          <span className='contact-footer-corner contact-footer-corner--right font-jetbrains'>
             by{' '}
             <a
-              className='contact-footer-link'
+              className='contact-footer-link '
               href='https://wa.me/21652213767'
               target='_blank'
               rel='noreferrer'
               aria-label='WhatsApp ALI'
             >
-              <span>ALI</span>
+              <span className='font-jetbrains'>ALI</span>
               <img
                 className='contact-footer-ali'
                 src={aliImage}
