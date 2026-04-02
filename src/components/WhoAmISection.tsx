@@ -81,14 +81,16 @@ function WhoAmISection () {
   const socialsRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
   const faqTitleRef = useRef<HTMLHeadingElement | null>(null)
-  const faqsRef = useRef<HTMLDivElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
   const [infoVisible, setInfoVisible] = useState(false)
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [imageVisible, setImageVisible] = useState(false)
   const [faqTitleVisible, setFaqTitleVisible] = useState(false)
-  const [faqsVisible, setFaqsVisible] = useState(false)
+  const [faqItemsVisible, setFaqItemsVisible] = useState<boolean[]>(
+    () => faqs.map(() => false)
+  )
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+  const faqItemRefs = useRef<(HTMLDivElement | null)[]>([])
   const [statValues, setStatValues] = useState<number[]>(() =>
     stats.map(() => 0)
   )
@@ -132,8 +134,7 @@ function WhoAmISection () {
     const socials = socialsRef.current
     const image = imageRef.current
     const faqTitleEl = faqTitleRef.current
-    const faqsEl = faqsRef.current
-    if (!info && !socials && !image && !faqTitleEl && !faqsEl) return
+    if (!info && !socials && !image && !faqTitleEl) return
 
     const reveal = (entry: IntersectionObserverEntry) => {
       if (!entry.isIntersecting) return
@@ -141,7 +142,6 @@ function WhoAmISection () {
       if (entry.target === socials) setSocialsVisible(true)
       if (entry.target === image) setImageVisible(true)
       if (entry.target === faqTitleEl) setFaqTitleVisible(true)
-      if (entry.target === faqsEl) setFaqsVisible(true)
     }
 
     if ('IntersectionObserver' in window) {
@@ -156,7 +156,6 @@ function WhoAmISection () {
       if (socials) observer.observe(socials)
       if (image) observer.observe(image)
       if (faqTitleEl) observer.observe(faqTitleEl)
-      if (faqsEl) observer.observe(faqsEl)
       return () => observer.disconnect()
     }
 
@@ -185,12 +184,58 @@ function WhoAmISection () {
           setFaqTitleVisible(true)
         }
       }
-      if (faqsEl) {
-        const rect = faqsEl.getBoundingClientRect()
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          setFaqsVisible(true)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const items = faqItemRefs.current.filter(
+      (item): item is HTMLDivElement => Boolean(item)
+    )
+    if (!items.length) return
+
+    const reveal = (target: HTMLElement) => {
+      const index = Number(target.dataset.faqIndex)
+      if (Number.isNaN(index)) return
+      setFaqItemsVisible(current => {
+        if (current[index]) return current
+        const next = [...current]
+        next[index] = true
+        return next
+      })
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            reveal(entry.target as HTMLElement)
+            observer.unobserve(entry.target)
+          })
+        },
+        { threshold: 0.3 }
+      )
+
+      items.forEach(item => observer.observe(item))
+      return () => observer.disconnect()
+    }
+
+    const onScroll = () => {
+      const viewportHeight = window.innerHeight
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect()
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+          reveal(item)
         }
-      }
+      })
     }
 
     onScroll()
@@ -432,13 +477,7 @@ function WhoAmISection () {
             </span>
           </a>
         </div>
-        <div
-          ref={faqsRef}
-          className={`who-am-i-faqs ${
-            faqsVisible ? 'who-am-i-faqs--visible' : ''
-          }`}
-          aria-label='الأسئلة الشائعة'
-        >
+        <div className='who-am-i-faqs' aria-label='الأسئلة الشائعة'>
           <h2 ref={faqTitleRef} className='who-am-i-faqs-title'>
             {renderWords(faqTitleWords, faqTitleVisible, 0, wordDelayMs, 'faq')}
           </h2>
@@ -450,8 +489,12 @@ function WhoAmISection () {
                   key={`${faq.question}-${index}`}
                   className={`who-am-i-faq ${
                     isOpen ? 'who-am-i-faq--open' : ''
-                  }`}
+                  } ${faqItemsVisible[index] ? 'who-am-i-faq--visible' : ''}`}
                   style={faqRevealStyle(index)}
+                  data-faq-index={index}
+                  ref={element => {
+                    faqItemRefs.current[index] = element
+                  }}
                 >
                   <button
                     type='button'

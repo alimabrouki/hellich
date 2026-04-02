@@ -196,7 +196,7 @@
   will-change: transform, opacity;
 }
 
-.who-am-i-faqs--visible .who-am-i-faq {
+.who-am-i-faq--visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
