@@ -1,4 +1,4 @@
-import { useCallback, useRef, type CSSProperties } from 'react'
+import { useCallback, type CSSProperties } from 'react'
 
 type FaqItem = {
   question: string
