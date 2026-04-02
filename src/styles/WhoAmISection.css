@@ -213,6 +213,15 @@
   direction: ltr;
   color: #111;
   font-family: inherit;
+  list-style: none;
+}
+
+.who-am-i-faq-button::-webkit-details-marker {
+  display: none;
+}
+
+.who-am-i-faq-button::marker {
+  content: '';
 }
 
 .who-am-i-faq-button:focus-visible {
@@ -290,13 +299,13 @@
   white-space: pre-line;
 }
 
-.who-am-i-faq--open .who-am-i-faq-panel {
+.who-am-i-faq[open] .who-am-i-faq-panel {
   max-height: 720px;
   opacity: 1;
   transform: translateY(0);
 }
 
-.who-am-i-faq--open .who-am-i-faq-icon {
+.who-am-i-faq[open] .who-am-i-faq-icon {
   transform: rotate(180deg);
 }
 

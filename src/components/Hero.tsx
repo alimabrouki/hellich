@@ -1,4 +1,4 @@
-import profileImage from '../assets/images/hellich-hero-image.png'
+import profileImage from '../assets/images/hellich-hero-image.webp'
 import type { animate } from '../types/types'
 import HeroTitle from './HeroTitle'
 

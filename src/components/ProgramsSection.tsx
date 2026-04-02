@@ -8,8 +8,9 @@ import workout01 from '../assets/images/workout01.jpg'
 import workout02 from '../assets/images/workout02.jpg'
 import workout03 from '../assets/images/workout03.png'
 import workout04 from '../assets/images/workout04.png'
+import ProgramCard, { type Program } from './ProgramCard'
 
-const nutritionPrograms = [
+const nutritionPrograms: Program[] = [
   {
     title: 'وقود زيادة نظيفة',
     description: 'هيكلة عالية البروتين مع كربوهيدرات ذكية وتحضير أسبوعي.',
@@ -44,7 +45,7 @@ const nutritionPrograms = [
   }
 ]
 
-const splitPrograms = [
+const splitPrograms: Program[] = [
   {
     title: '٤ أيام علوي / سفلي',
     description: 'توازن بين القوة والضخامة مع تعافٍ مدمج.',
@@ -258,45 +259,14 @@ function ProgramsSection () {
               <h2 className='programs-column-title'>تقسيمات التمرين</h2>
               <div className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'>
                 {splitPrograms.map((program, index) => (
-                  <article
-                    className='program-card program-card--stack'
+                  <ProgramCard
                     key={`split-${program.title}`}
-                    style={
-                      {
-                        '--stack-index': index * -1,
-                        '--stack-z': splitPrograms.length - index,
-                        '--card-bg': `url(${program.image})`,
-                        '--reveal-delay': `${index * 80}ms`
-                      } as CSSProperties
-                    }
-                  >
-                    <div className='program-card__content'>
-                      <div className='program-card__header'>
-                        <span className='program-card__index'>
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <h3 className='program-card__title'>{program.title}</h3>
-                      </div>
-                      <div className='program-card__details'>
-                        <p className='program-card__desc'>
-                          {program.description}
-                        </p>
-                        <div className='program-card__tags'>
-                          {program.tags.map(tag => (
-                            <span
-                              className='program-tag'
-                              key={`${program.title}-${tag}`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <p className='program-card__full'>
-                        {program.fullDescription}
-                      </p>
-                    </div>
-                  </article>
+                    program={program}
+                    index={index}
+                    stackIndex={index * -1}
+                    stackZ={splitPrograms.length - index}
+                    revealDelayMs={index * 80}
+                  />
                 ))}
               </div>
             </div>
@@ -316,45 +286,14 @@ function ProgramsSection () {
                 }
               >
                 {nutritionPrograms.map((program, index) => (
-                  <article
-                    className='program-card program-card--stack'
+                  <ProgramCard
                     key={`nutrition-${program.title}`}
-                    style={
-                      {
-                        '--stack-index': index,
-                        '--stack-z': nutritionPrograms.length - index,
-                        '--card-bg': `url(${program.image})`,
-                        '--reveal-delay': `${index * 80}ms`
-                      } as CSSProperties
-                    }
-                  >
-                    <div className='program-card__content'>
-                      <div className='program-card__header'>
-                        <span className='program-card__index'>
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <h3 className='program-card__title'>{program.title}</h3>
-                      </div>
-                      <div className='program-card__details'>
-                        <p className='program-card__desc'>
-                          {program.description}
-                        </p>
-                        <div className='program-card__tags'>
-                          {program.tags.map(tag => (
-                            <span
-                              className='program-tag'
-                              key={`${program.title}-${tag}`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <p className='program-card__full'>
-                        {program.fullDescription}
-                      </p>
-                    </div>
-                  </article>
+                    program={program}
+                    index={index}
+                    stackIndex={index}
+                    stackZ={nutritionPrograms.length - index}
+                    revealDelayMs={index * 80}
+                  />
                 ))}
               </div>
             </div>
