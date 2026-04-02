@@ -283,7 +283,7 @@
   opacity: 0;
   transform: translateY(-4px);
   transition:
-    height 50ms ease,
+    height 0.25625ms ease,
     opacity 50ms ease,
     transform 50ms ease;
   will-change: height, opacity, transform;
