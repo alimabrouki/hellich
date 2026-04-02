@@ -1,9 +1,11 @@
 ﻿import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import '../styles/WhoAmISection.css'
+import { faFacebookF, faTiktok } from '@fortawesome/free-brands-svg-icons'
 import whoAmIImage from '../assets/images/who-am-i.jpg'
 import tiktokVideo from '../assets/videos/tiktok.mp4'
 import facebookVideo from '../assets/videos/facebook.mp4'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const whoTitle = 'من أنا ؟'
 const whoTitleWords = whoTitle.split(/\s+/)
@@ -86,8 +88,8 @@ function WhoAmISection () {
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [imageVisible, setImageVisible] = useState(false)
   const [faqTitleVisible, setFaqTitleVisible] = useState(false)
-  const [faqItemsVisible, setFaqItemsVisible] = useState<boolean[]>(
-    () => faqs.map(() => false)
+  const [faqItemsVisible, setFaqItemsVisible] = useState<boolean[]>(() =>
+    faqs.map(() => false)
   )
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const faqItemRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -196,8 +198,8 @@ function WhoAmISection () {
   }, [])
 
   useEffect(() => {
-    const items = faqItemRefs.current.filter(
-      (item): item is HTMLDivElement => Boolean(item)
+    const items = faqItemRefs.current.filter((item): item is HTMLDivElement =>
+      Boolean(item)
     )
     if (!items.length) return
 
@@ -443,12 +445,7 @@ function WhoAmISection () {
             />
             <span className='social-card__overlay' aria-hidden='true' />
             <span className='social-card__icon' aria-hidden='true'>
-              <svg viewBox='0 0 24 24' aria-hidden='true'>
-                <path
-                  d='M20.53 8.33c-1.83-.1-3.34-.95-4.37-2.08-1.03-1.12-1.5-2.4-1.62-3.12h-3.1v12.1c0 1.46-1.2 2.64-2.68 2.64-1.48 0-2.68-1.18-2.68-2.64s1.2-2.64 2.68-2.64c.3 0 .59.05.86.13V9.5c-.3-.04-.61-.06-.92-.06C6.08 9.44 4 11.47 4 14.03c0 2.58 2.1 4.66 4.68 4.66 2.58 0 4.68-2.08 4.68-4.66V9.97c.88.67 2.1 1.16 3.9 1.2V8.33h-.73z'
-                  fill='currentColor'
-                />
-              </svg>
+              <FontAwesomeIcon icon={faTiktok} />
             </span>
           </a>
           <a
@@ -468,12 +465,7 @@ function WhoAmISection () {
             />
             <span className='social-card__overlay' aria-hidden='true' />
             <span className='social-card__icon' aria-hidden='true'>
-              <svg viewBox='0 0 24 24' aria-hidden='true'>
-                <path
-                  d='M13.7 9.35V7.58c0-.9.6-1.1 1.02-1.1h2V4h-2.76c-2.56 0-3.14 1.9-3.14 3.12v2.23H8.6v2.78h2.22V20h2.88v-7.87h2.2l.34-2.78H13.7z'
-                  fill='currentColor'
-                />
-              </svg>
+              <FontAwesomeIcon icon={faFacebookF} />
             </span>
           </a>
         </div>
