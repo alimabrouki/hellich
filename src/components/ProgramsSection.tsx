@@ -86,8 +86,6 @@ function ProgramsSection () {
   const leftColumnRef = useRef<HTMLDivElement | null>(null)
   const rightColumnRef = useRef<HTMLDivElement | null>(null)
   const [titleVisible, setTitleVisible] = useState(false)
-  const [leftVisible, setLeftVisible] = useState(false)
-  const [rightVisible, setRightVisible] = useState(false)
 
   const programsTitle = 'برامج مجانية !'
   const programsTitleWords = programsTitle.split(/\s+/)
@@ -160,17 +158,8 @@ function ProgramsSection () {
     const right = rightColumnRef.current
     if (!left || !right) return
 
-    const applyVisibility = (
-      setter: (value: boolean) => void,
-      inView: boolean
-    ) => {
-      if (!media.matches) {
-        setter(true)
-        return
-      }
-      if (inView) {
-        setter(true)
-      }
+    const setVisible = (element: HTMLElement) => {
+      element.classList.add('programs-column--visible')
     }
 
     const checkInView = (element: HTMLElement) => {
@@ -178,16 +167,19 @@ function ProgramsSection () {
       return rect.top < window.innerHeight * 0.85 && rect.bottom > 0
     }
 
+    if (!media.matches) {
+      setVisible(left)
+      setVisible(right)
+      return
+    }
+
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
-            if (entry.target === left) {
-              applyVisibility(setLeftVisible, entry.isIntersecting)
-            }
-            if (entry.target === right) {
-              applyVisibility(setRightVisible, entry.isIntersecting)
-            }
+            if (!entry.isIntersecting) return
+            setVisible(entry.target as HTMLElement)
+            observer.unobserve(entry.target)
           })
         },
         { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
@@ -196,8 +188,14 @@ function ProgramsSection () {
       observer.observe(right)
 
       const handleMediaChange = () => {
-        applyVisibility(setLeftVisible, checkInView(left))
-        applyVisibility(setRightVisible, checkInView(right))
+        if (!media.matches) {
+          setVisible(left)
+          setVisible(right)
+          observer.disconnect()
+          return
+        }
+        if (checkInView(left)) setVisible(left)
+        if (checkInView(right)) setVisible(right)
       }
       handleMediaChange()
       media.addEventListener('change', handleMediaChange)
@@ -208,8 +206,13 @@ function ProgramsSection () {
     }
 
     const onScroll = () => {
-      applyVisibility(setLeftVisible, checkInView(left))
-      applyVisibility(setRightVisible, checkInView(right))
+      if (!media.matches) {
+        setVisible(left)
+        setVisible(right)
+        return
+      }
+      if (checkInView(left)) setVisible(left)
+      if (checkInView(right)) setVisible(right)
     }
 
     const win = window as Window
@@ -252,9 +255,7 @@ function ProgramsSection () {
           <div className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'>
             <div
               ref={leftColumnRef}
-              className={`programs-column flex flex-col gap-3 text-right programs-column--left ${
-                leftVisible ? 'programs-column--visible' : ''
-              }`}
+              className='programs-column flex flex-col gap-3 text-right programs-column--left'
             >
               <h2 className='programs-column-title'>تقسيمات التمرين</h2>
               <div className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'>
@@ -272,9 +273,7 @@ function ProgramsSection () {
             </div>
             <div
               ref={rightColumnRef}
-              className={`programs-column flex flex-col gap-3 text-right programs-column--right ${
-                rightVisible ? 'programs-column--visible' : ''
-              }`}
+              className='programs-column flex flex-col gap-3 text-right programs-column--right'
             >
               <h2 className='programs-column-title'>دليل التغذية</h2>
               <div
