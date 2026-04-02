@@ -44,7 +44,7 @@ const faqs = [
   {
     question: 'هل يجب أن أكون في فورما قبل أن أبدأ؟',
     answer:
-      'ج: لا، بالعكس. التدريب مصمم لكل المستويات، سواء كنت مبتدئ تماماً أو لديك خبرة سابقة.\nهدفي هو أن آخذك من مستواك الحالي إلى أفضل نسخة منك، خطوة بخطوة وبطريقة آمنة وفعالة.'
+      ' لا، بالعكس. التدريب مصمم لكل المستويات، سواء كنت مبتدئ تماماً أو لديك خبرة سابقة.\nهدفي هو أن آخذك من مستواك الحالي إلى أفضل نسخة منك، خطوة بخطوة وبطريقة آمنة وفعالة.'
   },
   {
     question: 'هل التدريب مناسب للمبتدئين؟',
@@ -475,11 +475,7 @@ function WhoAmISection () {
             </span>
           </a>
         </div>
-        <div
-          id='faq'
-          className='who-am-i-faqs'
-          aria-label='الأسئلة الشائعة'
-        >
+        <div id='faq' className='who-am-i-faqs' aria-label='الأسئلة الشائعة'>
           <h2 ref={faqTitleRef} className='who-am-i-faqs-title'>
             {renderWords(faqTitleWords, faqTitleVisible, 0, wordDelayMs, 'faq')}
           </h2>
