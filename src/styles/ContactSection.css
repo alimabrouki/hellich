@@ -157,7 +157,7 @@
   will-change: transform, opacity;
 }
 
-.contact-form--visible .contact-field--reveal {
+.contact-field--visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
@@ -240,7 +240,7 @@
   will-change: transform, opacity;
 }
 
-.contact-form--visible .contact-time-slot--reveal {
+.contact-time-slot--visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -423,7 +423,7 @@
   filter: blur(32px);
 }
 
-.contact-form--visible .contact-submit--reveal {
+.contact-submit--visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }

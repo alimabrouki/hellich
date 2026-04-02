@@ -25,6 +25,9 @@ function ContactSection () {
   const [footerTitleVisible, setFooterTitleVisible] = useState(false)
   const [socialsVisible, setSocialsVisible] = useState(false)
   const [formVisible, setFormVisible] = useState(false)
+  const [visibleFields, setVisibleFields] = useState<Set<string>>(
+    () => new Set()
+  )
   const [status, setStatus] = useState<
     'idle' | 'sending' | 'success' | 'error'
   >('idle')
@@ -111,6 +114,62 @@ function ContactSection () {
       window.removeEventListener('resize', onScroll)
     }
   }, [])
+
+  useEffect(() => {
+    if (!formVisible) return
+    const form = formRef.current
+    if (!form) return
+
+    const targets = Array.from(
+      form.querySelectorAll<HTMLElement>('[data-reveal-id]')
+    )
+    if (!targets.length) return
+
+    const reveal = (target: HTMLElement) => {
+      const id = target.dataset.revealId
+      if (!id) return
+      setVisibleFields(current => {
+        if (current.has(id)) return current
+        const next = new Set(current)
+        next.add(id)
+        return next
+      })
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            reveal(entry.target as HTMLElement)
+            observer.unobserve(entry.target)
+          })
+        },
+        { threshold: 0.3 }
+      )
+
+      targets.forEach(target => observer.observe(target))
+      return () => observer.disconnect()
+    }
+
+    const onScroll = () => {
+      const viewportHeight = window.innerHeight
+      targets.forEach(target => {
+        const rect = target.getBoundingClientRect()
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+          reveal(target)
+        }
+      })
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [formVisible])
 
   useEffect(() => {
     const target = footerTitleRef.current
@@ -304,8 +363,13 @@ function ContactSection () {
           >
             <div className='contact-grid'>
               <div
-                className='contact-field contact-field--reveal'
+                className={`contact-field contact-field--reveal ${
+                  visibleFields.has('contact-name')
+                    ? 'contact-field--visible'
+                    : ''
+                }`}
                 style={revealStyle(0)}
+                data-reveal-id='contact-name'
               >
                 <label htmlFor='contact-name'>الاسم الكامل</label>
                 <input
@@ -318,8 +382,13 @@ function ContactSection () {
                 />
               </div>
               <div
-                className='contact-field contact-field--reveal'
+                className={`contact-field contact-field--reveal ${
+                  visibleFields.has('contact-email')
+                    ? 'contact-field--visible'
+                    : ''
+                }`}
                 style={revealStyle(1)}
+                data-reveal-id='contact-email'
               >
                 <label htmlFor='contact-email'>البريد الإلكتروني</label>
                 <input
@@ -332,8 +401,13 @@ function ContactSection () {
                 />
               </div>
               <div
-                className='contact-field contact-field--reveal'
+                className={`contact-field contact-field--reveal ${
+                  visibleFields.has('contact-age')
+                    ? 'contact-field--visible'
+                    : ''
+                }`}
                 style={revealStyle(2)}
+                data-reveal-id='contact-age'
               >
                 <label htmlFor='contact-age'>العمر</label>
                 <input
@@ -347,8 +421,13 @@ function ContactSection () {
                 />
               </div>
               <div
-                className='contact-field contact-field--reveal'
+                className={`contact-field contact-field--reveal ${
+                  visibleFields.has('contact-sex')
+                    ? 'contact-field--visible'
+                    : ''
+                }`}
                 style={revealStyle(3)}
+                data-reveal-id='contact-sex'
               >
                 <label htmlFor='contact-sex'>الجنس</label>
                 <select
@@ -368,8 +447,13 @@ function ContactSection () {
               <div className='contact-field contact-field--full'>
                 <div className='contact-row contact-row--time-weight'>
                   <div
-                    className='contact-field contact-field--compact contact-field--reveal'
+                    className={`contact-field contact-field--compact contact-field--reveal ${
+                      visibleFields.has('contact-weight')
+                        ? 'contact-field--visible'
+                        : ''
+                    }`}
                     style={revealStyle(4)}
+                    data-reveal-id='contact-weight'
                   >
                     <label htmlFor='contact-weight'>الوزن</label>
                     <input
@@ -383,16 +467,26 @@ function ContactSection () {
                     />
                   </div>
                   <div
-                    className='contact-field contact-field--time-group contact-field--reveal'
+                    className={`contact-field contact-field--time-group contact-field--reveal ${
+                      visibleFields.has('contact-time-group')
+                        ? 'contact-field--visible'
+                        : ''
+                    }`}
                     style={revealStyle(5)}
+                    data-reveal-id='contact-time-group'
                   >
                     <label htmlFor='contact-free-time-from'>
                       الوقت المناسب
                     </label>
                     <div className='contact-time-row'>
                       <div
-                        className='contact-time-slot contact-time-slot--reveal'
+                        className={`contact-time-slot contact-time-slot--reveal ${
+                          visibleFields.has('contact-free-time-from')
+                            ? 'contact-time-slot--visible'
+                            : ''
+                        }`}
                         style={revealStyle(6)}
+                        data-reveal-id='contact-free-time-from'
                       >
                         <span className='contact-time-label'>من</span>
                         <input
@@ -408,8 +502,13 @@ function ContactSection () {
                         />
                       </div>
                       <div
-                        className='contact-time-slot contact-time-slot--reveal'
+                        className={`contact-time-slot contact-time-slot--reveal ${
+                          visibleFields.has('contact-free-time-to')
+                            ? 'contact-time-slot--visible'
+                            : ''
+                        }`}
                         style={revealStyle(7)}
+                        data-reveal-id='contact-free-time-to'
                       >
                         <span className='contact-time-label'>إلى</span>
                         <input
@@ -429,8 +528,13 @@ function ContactSection () {
                 </div>
               </div>
               <div
-                className='contact-field contact-field--full contact-field--reveal'
+                className={`contact-field contact-field--full contact-field--reveal ${
+                  visibleFields.has('contact-message')
+                    ? 'contact-field--visible'
+                    : ''
+                }`}
                 style={revealStyle(8)}
+                data-reveal-id='contact-message'
               >
                 <label htmlFor='contact-message'>رسالتك</label>
                 <textarea
@@ -445,10 +549,15 @@ function ContactSection () {
             </div>
             <button
               type='submit'
-              className='contact-submit contact-submit--reveal'
+              className={`contact-submit contact-submit--reveal ${
+                visibleFields.has('contact-submit')
+                  ? 'contact-submit--visible'
+                  : ''
+              }`}
               disabled={status === 'sending'}
               aria-busy={status === 'sending'}
               style={revealStyle(9)}
+              data-reveal-id='contact-submit'
             >
               تدرّب معي
             </button>
