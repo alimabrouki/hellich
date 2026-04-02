@@ -150,7 +150,11 @@ function MobileMenu ({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) 
             style={{ transitionDelay: revealDelay(175) }}
           ></div>
         </div>
-        <StartBtnMobile menuOpen={menuOpen} delayMs={menuOpen ? 185 : 0} />
+        <StartBtnMobile
+          menuOpen={menuOpen}
+          delayMs={menuOpen ? 185 : 0}
+          onClick={closeMenu}
+        />
         <div
           className={`copyright-and-time flex items-center justify-between w-full
                   transition-all duration-350 ease-out
