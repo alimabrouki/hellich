@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import aliImage from '../assets/images/ali.png'
 import '../styles/ContactSection.css'
 
 const contactTitle = 'تواصل معي'
 const contactTitleWords = contactTitle.split(/\s+/)
 const wordDelayMs = 45
-const footerTitle = 'محمد مبروكي'
-const footerTitleWords = footerTitle.split(/\s+/)
+const footerTitle = 'HCILLEH'
+const footerTitleLetters = footerTitle.split('')
 const fieldRevealStepMs = 90
 const revealStyle = (index: number): CSSProperties =>
   ({
@@ -470,9 +471,9 @@ function ContactSection () {
             className='contact-footer-title'
             aria-label={footerTitle}
           >
-            {footerTitleWords.map((word, index) => (
+            {footerTitleLetters.map((letter, index) => (
               <span
-                key={`footer-${word}-${index}`}
+                key={`footer-${letter}-${index}`}
                 className={`about-intro-word ${
                   footerTitleVisible ? 'about-intro-word--visible' : ''
                 }`}
@@ -481,15 +482,17 @@ function ContactSection () {
                   animationDelay: `${index * wordDelayMs}ms`
                 }}
               >
-                {word}
-                {index < footerTitleWords.length - 1 ? '\u00A0' : ''}
+                {letter}
               </span>
             ))}
           </h2>
         </div>
         <div className='contact-footer-corners'>
           <span className='contact-footer-corner contact-footer-corner--left'>
-            ©2026 Hellich
+            <span className='contact-footer-copy' aria-hidden='true'>
+              ©
+            </span>
+            2026 Hellich
           </span>
           <span className='contact-footer-corner contact-footer-corner--right'>
             by{' '}
@@ -500,7 +503,13 @@ function ContactSection () {
               rel='noreferrer'
               aria-label='WhatsApp ALI'
             >
-              ALI
+              <span>ALI</span>
+              <img
+                className='contact-footer-ali'
+                src={aliImage}
+                alt=''
+                aria-hidden='true'
+              />
             </a>
           </span>
         </div>
