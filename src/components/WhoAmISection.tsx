@@ -342,17 +342,23 @@ function WhoAmISection () {
               src={whoAmIImage}
               alt=''
               aria-hidden='true'
+              loading='eager'
+              decoding='async'
               className='who-am-i-image who-am-i-image--ghost who-am-i-image--ghost-a'
             />
             <img
               src={whoAmIImage}
               alt=''
               aria-hidden='true'
+              loading='eager'
+              decoding='async'
               className='who-am-i-image who-am-i-image--ghost who-am-i-image--ghost-b'
             />
             <img
               src={whoAmIImage}
               alt='صورة من أنا'
+              loading='eager'
+              decoding='async'
               className='who-am-i-image who-am-i-image--main'
             />
           </div>
@@ -469,7 +475,11 @@ function WhoAmISection () {
             </span>
           </a>
         </div>
-        <div className='who-am-i-faqs' aria-label='الأسئلة الشائعة'>
+        <div
+          id='faq'
+          className='who-am-i-faqs'
+          aria-label='الأسئلة الشائعة'
+        >
           <h2 ref={faqTitleRef} className='who-am-i-faqs-title'>
             {renderWords(faqTitleWords, faqTitleVisible, 0, wordDelayMs, 'faq')}
           </h2>
