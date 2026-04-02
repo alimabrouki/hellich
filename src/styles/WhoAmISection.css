@@ -283,9 +283,9 @@
   opacity: 0;
   transform: translateY(-4px);
   transition:
-    height 0.25625ms ease,
-    opacity 50ms ease,
-    transform 50ms ease;
+    height 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
   will-change: height, opacity, transform;
 }
 
@@ -305,6 +305,7 @@
 .who-am-i-faq[open] .who-am-i-faq-panel {
   opacity: 1;
   transform: translateY(0);
+  height: auto;
 }
 
 .who-am-i-faq[open] .who-am-i-faq-icon {
