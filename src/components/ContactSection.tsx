@@ -248,7 +248,10 @@ function ContactSection () {
     const message = String(data.get('message') ?? '').trim()
 
     try {
-      const response = await fetch('/api/contact', {
+      const API_URL = import.meta.env.DEV
+        ? '/api/contact'
+        : '/.netlify/functions/contact'
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
