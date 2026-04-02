@@ -58,12 +58,13 @@ function ContactSection () {
       }
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [])
 
@@ -106,12 +107,13 @@ function ContactSection () {
       }
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [])
 
@@ -162,12 +164,13 @@ function ContactSection () {
       })
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [formVisible])
 
@@ -217,13 +220,14 @@ function ContactSection () {
       handleVisibility(inView)
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
       if (timeoutId !== null) window.clearTimeout(timeoutId)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [])
 

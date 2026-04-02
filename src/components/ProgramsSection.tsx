@@ -142,12 +142,13 @@ function ProgramsSection () {
       }
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [])
 
@@ -210,12 +211,13 @@ function ProgramsSection () {
       applyVisibility(setRightVisible, checkInView(right))
     }
 
+    const win = window as Window
     onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    win.addEventListener('scroll', onScroll, { passive: true })
+    win.addEventListener('resize', onScroll)
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      win.removeEventListener('scroll', onScroll)
+      win.removeEventListener('resize', onScroll)
     }
   }, [])
 
