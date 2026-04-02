@@ -283,9 +283,9 @@
   opacity: 0;
   transform: translateY(-4px);
   transition:
-    height 0.1s ease,
-    opacity 0.1s ease,
-    transform 0.1s ease;
+    height 50ms ease,
+    opacity 50ms ease,
+    transform 50ms ease;
   will-change: height, opacity, transform;
 }
 
