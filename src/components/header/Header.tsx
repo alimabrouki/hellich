@@ -104,7 +104,7 @@ function Header ({
       `}
     >
       <div
-        className={`head flex justify-between lg:mx-19 relative origin-bottom transform-gpu will-change-transform
+        className={`head flex justify-between lg:mx-7 relative origin-bottom transform-gpu will-change-transform
         transition-[transform] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]
         ${
           introActive
@@ -119,7 +119,7 @@ function Header ({
             className={`col-start-1 row-start-1 transition-opacity duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
             ${showHeadLinks ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
           >
-          <HeadLinks onNavigate={() => handleMenuOpen(false)} />
+            <HeadLinks onNavigate={() => handleMenuOpen(false)} />
           </div>
           <div
             className={`col-start-1 row-start-1 transition-[opacity,transform] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]
