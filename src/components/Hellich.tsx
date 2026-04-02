@@ -55,7 +55,7 @@ function Hellich () {
         })
         setLogoOnLight(visibleTargets.size > 0)
       },
-      { threshold: 0.35 }
+      { threshold: 0 }
     )
 
     targets.forEach(target => observer.observe(target))
