@@ -1,5 +1,6 @@
 import {
   memo,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -93,6 +94,11 @@ function ProgramsSection() {
   const leftColumnRef = useRef<HTMLDivElement | null>(null);
   const rightColumnRef = useRef<HTMLDivElement | null>(null);
   const [titleVisible, setTitleVisible] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+
+  const handleToggleCard = useCallback((key: string) => {
+    setExpandedCard((prev) => (prev === key ? null : key));
+  }, []);
 
   const programsTitle = "برامج مجانية !";
   const programsTitleWords = useMemo(
@@ -117,7 +123,7 @@ function ProgramsSection() {
             observer.disconnect();
           }
         },
-        { threshold: 0.35 },
+        { threshold: 0.3 },
       );
       observer.observe(section);
       return () => observer.disconnect();
@@ -137,7 +143,7 @@ function ProgramsSection() {
             setTitleVisible(true);
           }
         },
-        { threshold: 0.6 },
+        { threshold: 0.3 },
       );
       observer.observe(title);
       return () => observer.disconnect();
@@ -192,7 +198,7 @@ function ProgramsSection() {
             observer.unobserve(entry.target);
           });
         },
-        { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+        { threshold: 0.3, rootMargin: "0px 0px -10% 0px" },
       );
       observer.observe(left);
       observer.observe(right);
@@ -277,6 +283,8 @@ function ProgramsSection() {
                     stackIndex={index * -1}
                     stackZ={splitPrograms.length - index}
                     revealDelayMs={index * 80}
+                    expanded={expandedCard === `split-${program.title}`}
+                    onToggle={() => handleToggleCard(`split-${program.title}`)}
                   />
                 ))}
               </div>
@@ -302,6 +310,10 @@ function ProgramsSection() {
                     stackIndex={index}
                     stackZ={nutritionPrograms.length - index}
                     revealDelayMs={index * 80}
+                    expanded={expandedCard === `nutrition-${program.title}`}
+                    onToggle={() =>
+                      handleToggleCard(`nutrition-${program.title}`)
+                    }
                   />
                 ))}
               </div>

@@ -83,7 +83,7 @@ function WhoAmIFaqs () {
             setFaqTitleVisible(true)
           }
         },
-        { threshold: 0.6 }
+        { threshold: 0.9 }
       )
       observer.observe(title)
       return () => observer.disconnect()
@@ -108,8 +108,8 @@ function WhoAmIFaqs () {
   }, [])
 
   useEffect(() => {
-    const items = faqItemRefs.current.filter((item): item is HTMLDetailsElement =>
-      Boolean(item)
+    const items = faqItemRefs.current.filter(
+      (item): item is HTMLDetailsElement => Boolean(item)
     )
     if (!items.length) return
 
@@ -184,7 +184,12 @@ function WhoAmIFaqs () {
     ))
 
   return (
-    <div id='faq' className='who-am-i-faqs' aria-label='الأسئلة الشائعة'>
+    <div
+      data-logo-contrast='dark'
+      id='faq'
+      className='who-am-i-faqs'
+      aria-label='الأسئلة الشائعة'
+    >
       <h2 ref={faqTitleRef} className='who-am-i-faqs-title'>
         {renderWords(faqTitleWords, faqTitleVisible, 0, wordDelayMs, 'faq')}
       </h2>

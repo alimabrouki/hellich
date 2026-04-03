@@ -1,131 +1,131 @@
-import "../App.css";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import MobileMenu from "./MobileMenu";
-import Hero from "./Hero";
-import Header from "./header/Header";
-import ComeTrain from "./ComeTrain";
-import ProgramsSection from "./ProgramsSection";
-import WhoAmISection from "./WhoAmISection";
-import SlidingWords from "./SlidingWords";
-import ContactSection from "./ContactSection";
+import '../App.css'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import MobileMenu from './MobileMenu'
+import Hero from './Hero'
+import Header from './header/Header'
+import ComeTrain from './ComeTrain'
+import ProgramsSection from './ProgramsSection'
+import WhoAmISection from './WhoAmISection'
+import SlidingWords from './SlidingWords'
+import ContactSection from './ContactSection'
 
-function Hellich() {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Hellich () {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  const [animate, setAnimate] = useState(false);
-  const [aboutIntroVisible, setAboutIntroVisible] = useState(false);
-  const [logoOnLight, setLogoOnLight] = useState(false);
-  const aboutIntroRef = useRef<HTMLDivElement | null>(null);
+  const [animate, setAnimate] = useState(false)
+  const [aboutIntroVisible, setAboutIntroVisible] = useState(false)
+  const [logoOnLight, setLogoOnLight] = useState(false)
+  const aboutIntroRef = useRef<HTMLDivElement | null>(null)
 
-  const aboutIntroText = "جسدك أمانة… قوِّه اليوم قبل أن يضعف غدا.";
+  const aboutIntroText = 'جسدك أمانة… قوِّه اليوم قبل أن يضعف غدا.'
   const aboutIntroWords = useMemo(
     () => aboutIntroText.split(/\s+/),
-    [aboutIntroText],
-  );
-  const wordDelayMs = 45;
+    [aboutIntroText]
+  )
+  const wordDelayMs = 45
 
   const handleMenuOpen = useCallback((state: boolean) => {
-    setMenuOpen(state);
-  }, []);
+    setMenuOpen(state)
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAnimate(true);
-    }, 100);
+      setAnimate(true)
+    }, 100)
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
-    const body = document.body;
-    const root = document.documentElement;
-    body.classList.toggle("menu-open", menuOpen);
-    root.classList.toggle("menu-open", menuOpen);
+    const body = document.body
+    const root = document.documentElement
+    body.classList.toggle('menu-open', menuOpen)
+    root.classList.toggle('menu-open', menuOpen)
 
     return () => {
-      body.classList.remove("menu-open");
-      root.classList.remove("menu-open");
-    };
-  }, [menuOpen]);
+      body.classList.remove('menu-open')
+      root.classList.remove('menu-open')
+    }
+  }, [menuOpen])
 
   useEffect(() => {
     const targets = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-logo-contrast="dark"]'),
-    );
-    if (!targets.length) return;
+      document.querySelectorAll<HTMLElement>('[data-logo-contrast="dark"]')
+    )
+    if (!targets.length) return
 
-    const visibleTargets = new Set<Element>();
+    const visibleTargets = new Set<Element>()
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            visibleTargets.add(entry.target);
+            visibleTargets.add(entry.target)
           } else {
-            visibleTargets.delete(entry.target);
+            visibleTargets.delete(entry.target)
           }
-        });
-        setLogoOnLight(visibleTargets.size > 0);
+        })
+        setLogoOnLight(visibleTargets.size > 0)
       },
-      { threshold: 0 },
-    );
+      { threshold: 0 }
+    )
 
-    targets.forEach((target) => observer.observe(target));
-    return () => observer.disconnect();
-  }, []);
+    targets.forEach(target => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
-    const target = aboutIntroRef.current;
-    if (!target) return;
+    const target = aboutIntroRef.current
+    if (!target) return
 
-    let rafId: number | null = null;
-    let timeoutId: number | null = null;
-    let wasInView = false;
+    let rafId: number | null = null
+    let timeoutId: number | null = null
+    let wasInView = false
 
     const triggerAnimation = () => {
-      setAboutIntroVisible(false);
+      setAboutIntroVisible(false)
       if (timeoutId !== null) {
-        window.clearTimeout(timeoutId);
+        window.clearTimeout(timeoutId)
       }
       timeoutId = window.setTimeout(() => {
-        setAboutIntroVisible(true);
-      }, 50);
-    };
+        setAboutIntroVisible(true)
+      }, 50)
+    }
 
     const checkInView = () => {
-      const rect = target.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      const rect = target.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight && rect.bottom > 0
 
       if (inView && !wasInView) {
-        triggerAnimation();
+        triggerAnimation()
       } else if (!inView && wasInView) {
-        setAboutIntroVisible(false);
+        setAboutIntroVisible(false)
       }
 
-      wasInView = inView;
-    };
+      wasInView = inView
+    }
 
     const onScroll = () => {
-      if (rafId !== null) return;
+      if (rafId !== null) return
       rafId = requestAnimationFrame(() => {
-        rafId = null;
-        checkInView();
-      });
-    };
+        rafId = null
+        checkInView()
+      })
+    }
 
-    checkInView();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    checkInView()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
 
     return () => {
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      if (timeoutId !== null) window.clearTimeout(timeoutId);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
+      if (rafId !== null) cancelAnimationFrame(rafId)
+      if (timeoutId !== null) window.clearTimeout(timeoutId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
 
   return (
-    <div className="hellich relative" id="top">
+    <div className='hellich relative' id='top'>
       <MobileMenu menuOpen={menuOpen} handleMenuOpen={handleMenuOpen} />
       <Header
         animate={animate}
@@ -134,25 +134,25 @@ function Hellich() {
         logoOnLight={logoOnLight}
       />
       <Hero animate={animate} />
-      <div className="about relative z-10 min-h-svh ">
-        <div ref={aboutIntroRef} className="about-intro">
+      <div className='about relative z-10 min-h-svh '>
+        <div ref={aboutIntroRef} className='about-intro'>
           <h1
-            dir="rtl"
-            className="about-intro-title text-second-bg pt-20 mx-12 xl:mx-50 text-center"
+            dir='rtl'
+            className='about-intro-title text-second-bg pt-20 mx-12 xl:mx-50 text-center'
           >
             {aboutIntroWords.map((word, index) => (
               <span
                 key={`${word}-${index}`}
                 className={`about-intro-word ${
-                  aboutIntroVisible ? "about-intro-word--visible" : ""
+                  aboutIntroVisible ? 'about-intro-word--visible' : ''
                 }`}
                 style={{
                   transitionDelay: `${index * wordDelayMs}ms`,
-                  animationDelay: `${index * wordDelayMs}ms`,
+                  animationDelay: `${index * wordDelayMs}ms`
                 }}
               >
                 {word}
-                {index < aboutIntroWords.length - 1 ? "\u00A0" : ""}
+                {index < aboutIntroWords.length - 1 ? '\u00A0' : ''}
               </span>
             ))}
           </h1>
@@ -162,11 +162,11 @@ function Hellich() {
         <ProgramsSection />
         <SlidingWords />
         <WhoAmISection />
-        <SlidingWords className="sliding-words--second" />
+        <SlidingWords className='sliding-words--second' />
         <ContactSection />
       </div>
     </div>
-  );
+  )
 }
 
-export default Hellich;
+export default Hellich
