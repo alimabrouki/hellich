@@ -16,7 +16,6 @@
     "@fortawesome/react-fontawesome": "^3.3.0",
     "dotenv": "^16.6.1",
     "express": "^5.1.0",
-    "hellich": "link:",
     "lucide-react": "^0.575.0",
     "nodemailer": "^7.0.7",
     "react": "^19.2.0",
@@ -36,9 +35,23 @@
     "globals": "^16.5.0",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alimabrouki/hellich.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alimabrouki/hellich/issues"
+  },
+  "homepage": "https://github.com/alimabrouki/hellich#readme"
 }

@@ -15,6 +15,27 @@
       rel="stylesheet"
     />
     <title>Hellich</title>
+    <script>
+      const images = [
+        "/src/assets/images/hellich-hero-image.webp",
+        "/src/assets/images/who-am-i.jpg",
+        "/src/assets/images/nutrition01.jpg",
+        "/src/assets/images/nutrition02.jpg",
+        "/src/assets/images/nutrition03.jpg",
+        "/src/assets/images/nutrition04.jpg",
+        "/src/assets/images/workout01.jpg",
+        "/src/assets/images/workout02.jpg",
+        "/src/assets/images/workout03.png",
+        "/src/assets/images/workout04.png",
+      ];
+      images.forEach((src) => {
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.href = src;
+        document.head.appendChild(link);
+      });
+    </script>
   </head>
 
   <body>
