@@ -94,14 +94,11 @@
   min-height: 92px;
   overflow: visible;
   cursor: pointer;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
+  will-change: transform, opacity, max-height;
   transform: translateZ(0);
-  contain: layout paint;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
 }
 
 .program-card--stack::before {
@@ -199,9 +196,9 @@
   overflow: hidden;
   transform: translateY(-6px);
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    max-height 0.25s ease;
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    max-height 0.2s ease-out;
 }
 
 .program-card:hover .program-card__full,
@@ -271,13 +268,19 @@
   .programs-column:not(.programs-column--visible) .program-card {
     opacity: 0;
     --programs-card-y: 28px;
-    transition-delay: calc(var(--reveal-delay, 0ms) + 60ms);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 20ms);
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out;
   }
 
   .programs-column.programs-column--visible .program-card {
     opacity: 1;
     --programs-card-y: 0px;
     transition-delay: 0ms;
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.25s ease-out;
   }
 
   .program-card__details {
