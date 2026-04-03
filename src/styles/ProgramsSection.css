@@ -99,6 +99,8 @@
   transition:
     transform 0.15s ease-out,
     box-shadow 0.15s ease-out;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .program-card--stack::before {
@@ -202,10 +204,15 @@
 }
 
 .program-card:hover .program-card__full,
-.program-card:focus-within .program-card__full {
+.program-card:focus-within .program-card__full,
+.program-card.program-card--expanded .program-card__full {
   max-height: 320px;
   opacity: 1;
   transform: translateY(0);
+}
+
+.program-card:active {
+  transform: translate3d(0, calc(var(--programs-card-y, 0px) - 2px), 0);
 }
 
 .program-card__tags {
