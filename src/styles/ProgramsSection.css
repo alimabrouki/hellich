@@ -94,13 +94,39 @@
   min-height: 92px;
   overflow: visible;
   cursor: pointer;
-  will-change: transform, opacity, max-height;
-  transform: translateZ(0);
   transition:
     transform 0.15s ease-out,
     box-shadow 0.15s ease-out;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.program-card summary {
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.program-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.program-card summary {
+  list-style: none;
+  display: block;
+}
+
+.program-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.program-card[open] .program-card__full {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 2;
+  position: relative;
 }
 
 .program-card--stack::before {
@@ -196,19 +222,12 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transform: translateY(-6px);
-  transition:
-    opacity 0.15s ease-out,
-    transform 0.15s ease-out,
-    max-height 0.2s ease-out;
+  transition: all 0.3s ease-out;
 }
 
-.program-card:hover .program-card__full,
-.program-card:focus-within .program-card__full,
-.program-card.program-card--expanded .program-card__full {
-  max-height: 320px;
+.program-card[open] .program-card__full {
+  max-height: 300px;
   opacity: 1;
-  transform: translateY(0);
 }
 
 .program-card:active {
@@ -237,6 +256,14 @@
 }
 
 @media (max-width: 720px) {
+  .program-card {
+    will-change: auto;
+    transform: none;
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.3s ease-out;
+  }
+
   .programs-section {
     padding: 60px 0 60px;
     --programs-stack-separation: 26px;
@@ -286,8 +313,8 @@
     --programs-card-y: 0px;
     transition-delay: 0ms;
     transition:
-      opacity 0.25s ease-out,
-      transform 0.25s ease-out;
+      opacity 0.35s ease-out,
+      transform 0.35s ease-out;
   }
 
   .program-card__details {

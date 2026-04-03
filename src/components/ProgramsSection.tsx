@@ -1,6 +1,5 @@
 import {
   memo,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -94,11 +93,6 @@ function ProgramsSection() {
   const leftColumnRef = useRef<HTMLDivElement | null>(null);
   const rightColumnRef = useRef<HTMLDivElement | null>(null);
   const [titleVisible, setTitleVisible] = useState(false);
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-
-  const handleToggleCard = useCallback((key: string) => {
-    setExpandedCard((prev) => (prev === key ? null : key));
-  }, []);
 
   const programsTitle = "برامج مجانية !";
   const programsTitleWords = useMemo(
@@ -143,7 +137,7 @@ function ProgramsSection() {
             setTitleVisible(true);
           }
         },
-        { threshold: 0.3 },
+        { threshold: 0.2 },
       );
       observer.observe(title);
       return () => observer.disconnect();
@@ -283,8 +277,6 @@ function ProgramsSection() {
                     stackIndex={index * -1}
                     stackZ={splitPrograms.length - index}
                     revealDelayMs={index * 80}
-                    expanded={expandedCard === `split-${program.title}`}
-                    onToggle={() => handleToggleCard(`split-${program.title}`)}
                   />
                 ))}
               </div>
@@ -310,10 +302,6 @@ function ProgramsSection() {
                     stackIndex={index}
                     stackZ={nutritionPrograms.length - index}
                     revealDelayMs={index * 80}
-                    expanded={expandedCard === `nutrition-${program.title}`}
-                    onToggle={() =>
-                      handleToggleCard(`nutrition-${program.title}`)
-                    }
                   />
                 ))}
               </div>
