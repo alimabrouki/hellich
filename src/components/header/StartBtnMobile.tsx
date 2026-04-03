@@ -1,14 +1,15 @@
-﻿import type { menuProps } from '../../types/types'
+import { memo } from "react";
+import type { menuProps } from "../../types/types";
 
 type StartBtnMobileProps = menuProps & {
-  delayMs?: number
-  onClick?: () => void
-}
+  delayMs?: number;
+  onClick?: () => void;
+};
 
-function StartBtnMobile ({
+function StartBtnMobile({
   menuOpen,
   delayMs = 0,
-  onClick
+  onClick,
 }: StartBtnMobileProps) {
   return (
     <a
@@ -16,16 +17,16 @@ function StartBtnMobile ({
                   transition-all duration-500 ease-out
                   ${
                     menuOpen
-                      ? 'translate-y-0 opacity-100'
-                      : 'translate-y-8 opacity-0'
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-8 opacity-0"
                   }`}
-      href='#contact'
-      style={{ transitionDelay: menuOpen ? `${delayMs}ms` : '0ms' }}
+      href="#contact"
+      style={{ transitionDelay: menuOpen ? `${delayMs}ms` : "0ms" }}
       onClick={onClick}
     >
       إبدأ الآن
     </a>
-  )
+  );
 }
 
-export default StartBtnMobile
+export default memo(StartBtnMobile);

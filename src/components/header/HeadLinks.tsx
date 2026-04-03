@@ -1,19 +1,20 @@
-import NavLink from '../NavLink'
+import { memo } from "react";
+import NavLink from "../NavLink";
 
 type HeadLinksProps = {
-  onNavigate?: () => void
-}
+  onNavigate?: () => void;
+};
 
-function HeadLinks ({ onNavigate }: HeadLinksProps) {
+function HeadLinks({ onNavigate }: HeadLinksProps) {
   const links = [
-    { href: '#faq', label: 'الأسئلة الشائعة', num: '04' },
-    { href: '#contact', label: 'تواصل معي', num: '02' },
-    { href: '#who-am-i', label: 'من أنا ؟', num: '03' },
-    { href: '#programs', label: 'برامج مجانية', num: '01' }
-  ]
+    { href: "#faq", label: "الأسئلة الشائعة", num: "04" },
+    { href: "#contact", label: "تواصل معي", num: "02" },
+    { href: "#who-am-i", label: "من أنا ؟", num: "03" },
+    { href: "#programs", label: "برامج مجانية", num: "01" },
+  ];
   return (
-    <div className='hidden lg:flex head-links'>
-      {links.map(link => (
+    <div className="hidden lg:flex head-links">
+      {links.map((link) => (
         <NavLink
           key={link.href}
           menuOpen={false}
@@ -24,7 +25,7 @@ function HeadLinks ({ onNavigate }: HeadLinksProps) {
         </NavLink>
       ))}
     </div>
-  )
+  );
 }
 
-export default HeadLinks
+export default memo(HeadLinks);

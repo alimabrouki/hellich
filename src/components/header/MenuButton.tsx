@@ -1,60 +1,61 @@
-import type { animate, handleMenuProps, menuProps } from '../../types/types'
+import { memo } from "react";
+import type { animate, handleMenuProps, menuProps } from "../../types/types";
 
 type MenuButtonProps = menuProps &
   handleMenuProps &
   animate & {
-    showOnDesktop?: boolean
-  }
+    showOnDesktop?: boolean;
+  };
 
-function MenuButton ({
+function MenuButton({
   handleMenuOpen,
   menuOpen,
   animate,
-  showOnDesktop = false
+  showOnDesktop = false,
 }: MenuButtonProps) {
   const desktopVisibilityClass = showOnDesktop
-    ? 'hidden lg:inline-flex'
-    : 'inline-flex lg:hidden'
+    ? "hidden lg:inline-flex"
+    : "inline-flex lg:hidden";
 
   return (
     <button
-      type='button'
+      type="button"
       onClick={() => handleMenuOpen(!menuOpen)}
       className={`menu-button cursor-pointer group relative ${desktopVisibilityClass} py-4 px-3.5 lg:py-[17px] lg:px-[28px] bg-[#eaf9fb] mr-3 lg:mr-0 rounded-[3px]
         
-          ${menuOpen ? 'bg-black text-[#eaf9fb]' : 'text-main-bleu'}`}
-      style={{ transitionDelay: animate ? '110ms' : '0ms' }}
+          ${menuOpen ? "bg-black text-[#eaf9fb]" : "text-main-bleu"}`}
+      style={{ transitionDelay: animate ? "110ms" : "0ms" }}
     >
-      <span className='menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px] -translate-y-2 bg-main-bleu'></span>
+      <span className="menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px] -translate-y-2 bg-main-bleu"></span>
 
       <span
         className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px]
-            ${menuOpen ? 'translate-y-1.75' : '-translate-y-2'}
+            ${menuOpen ? "translate-y-1.75" : "-translate-y-2"}
             bg-main-bleu transition-transform duration-300`}
       ></span>
 
       <span
         className={`menu-dot rounded-[40%] size-2 absolute translate-x-10 lg:translate-x-[54px]
-            ${menuOpen ? 'translate-y-5' : '-translate-y-2'}
+            ${menuOpen ? "translate-y-5" : "-translate-y-2"}
             bg-main-bleu transition-transform duration-300`}
       ></span>
 
-      <span className='relative inline-block -translate-x-2.5 lg:-translate-x-3.5  translate-y-2.25 overflow-hidden align-bottom font-[650] leading-none'>
+      <span className="relative inline-block -translate-x-2.5 lg:-translate-x-3.5  translate-y-2.25 overflow-hidden align-bottom font-[650] leading-none">
         <span
           className={`block transition-all duration-300 ease-[cubic-bezier(0.76,0,0.24,1)]
-              ${menuOpen ? '-translate-y-full blur-[10px] opacity-0' : ''}`}
+              ${menuOpen ? "-translate-y-full blur-[10px] opacity-0" : ""}`}
         >
           Menu
         </span>
         <span
           className={`absolute left-0 top-full block transition-transform duration-350 ease-[cubic-bezier(0.76,0,0.24,1)]
-              ${menuOpen ? '-translate-y-full' : ''}`}
+              ${menuOpen ? "-translate-y-full" : ""}`}
         >
           Close
         </span>
       </span>
     </button>
-  )
+  );
 }
 
-export default MenuButton
+export default memo(MenuButton);

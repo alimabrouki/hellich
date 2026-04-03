@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 function LibyaTime() {
   const [dateTime, setDateTime] = useState("");
@@ -31,4 +31,4 @@ function LibyaTime() {
   );
 }
 
-export default LibyaTime;
+export default memo(LibyaTime);

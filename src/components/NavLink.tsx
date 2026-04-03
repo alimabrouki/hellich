@@ -1,3 +1,4 @@
+import { memo } from "react";
 interface NavLinkProps {
   href: string;
   children: string;
@@ -24,4 +25,4 @@ function NavLink({ href, children, menuOpen, onClick }: NavLinkProps) {
   );
 }
 
-export default NavLink;
+export default memo(NavLink);

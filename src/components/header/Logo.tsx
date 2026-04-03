@@ -1,29 +1,30 @@
+import { memo } from "react";
 import type {
   animate,
   logoClickProps,
   logoContrastProps,
-  menuProps
-} from '../../types/types'
-import logo from '../../assets/images/logo.svg'
+  menuProps,
+} from "../../types/types";
+import logo from "../../assets/images/logo.svg";
 
-function Logo ({
+function Logo({
   menuOpen,
   animate,
   logoOnLight,
-  onLogoClick
+  onLogoClick,
 }: menuProps & animate & logoContrastProps & logoClickProps) {
   return (
-    <a href='#top' aria-label='العودة للأعلى' onClick={onLogoClick}>
+    <a href="#top" aria-label="العودة للأعلى" onClick={onLogoClick}>
       <img
         className={`w-35 rounded-[3px] mr-auto lg:mr-5 ${
-          menuOpen || logoOnLight ? 'bg-black' : ''
+          menuOpen || logoOnLight ? "bg-black" : ""
         }`}
-        style={{ transitionDelay: animate ? '40ms' : '0ms' }}
+        style={{ transitionDelay: animate ? "40ms" : "0ms" }}
         src={logo}
-        alt=''
+        alt=""
       />
     </a>
-  )
+  );
 }
 
-export default Logo
+export default memo(Logo);
