@@ -80,7 +80,7 @@
   box-shadow: none;
   background: transparent;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.2s ease;
 }
 
 .who-am-i-image-main-overlay {
@@ -330,16 +330,16 @@
 }
 
 .who-am-i-faq-panel {
-  height: 0;
+  max-height: 0;
   overflow: hidden;
   padding: 0 20px;
   opacity: 0;
   transform: translateY(-4px);
   transition:
-    height 0.3s ease,
+    max-height 0.3s ease,
     opacity 0.3s ease,
     transform 0.3s ease;
-  will-change: height, opacity, transform;
+  will-change: max-height, opacity, transform;
 }
 
 .who-am-i-faq > .who-am-i-faq-panel {
@@ -358,7 +358,7 @@
 .who-am-i-faq[open] .who-am-i-faq-panel {
   opacity: 1;
   transform: translateY(0);
-  height: auto;
+  max-height: 640px;
 }
 
 .who-am-i-faq[open] .who-am-i-faq-icon {
