@@ -1,30 +1,30 @@
-import nodemailer from 'nodemailer'
+import nodemailer from "nodemailer";
 
-const isEmail = value => /\S+@\S+\.\S+/.test(value)
-const escapeHtml = value =>
+const isEmail = (value) => /\S+@\S+\.\S+/.test(value);
+const escapeHtml = (value) =>
   String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 export const handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' }
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
     const {
-      name = '',
-      email = '',
-      age = '',
-      sex = '',
-      weight = '',
-      freeTimeFrom = '',
-      freeTimeTo = '',
-      message = ''
-    } = JSON.parse(event.body || '{}')
+      name = "",
+      email = "",
+      age = "",
+      sex = "",
+      weight = "",
+      freeTimeFrom = "",
+      freeTimeTo = "",
+      message = "",
+    } = JSON.parse(event.body || "{}");
 
     const fields = {
       name,
@@ -34,38 +34,38 @@ export const handler = async (event) => {
       weight,
       freeTimeFrom,
       freeTimeTo,
-      message
-    }
+      message,
+    };
 
     const missing = Object.entries(fields)
-      .filter(([, value]) => String(value ?? '').trim().length === 0)
-      .map(([key]) => key)
+      .filter(([, value]) => String(value ?? "").trim().length === 0)
+      .map(([key]) => key);
 
     if (missing.length) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ ok: false, error: 'Missing required fields' })
-      }
+        body: JSON.stringify({ ok: false, error: "Missing required fields" }),
+      };
     }
 
     if (!isEmail(email)) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ ok: false, error: 'Invalid email' })
-      }
+        body: JSON.stringify({ ok: false, error: "Invalid email" }),
+      };
     }
 
-    const { EMAIL_USER, EMAIL_APP_PASSWORD, EMAIL_TO } = process.env
+    const { EMAIL_USER, EMAIL_APP_PASSWORD, EMAIL_TO } = process.env;
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       auth: {
         user: EMAIL_USER,
-        pass: EMAIL_APP_PASSWORD
-      }
-    })
+        pass: EMAIL_APP_PASSWORD,
+      },
+    });
 
-    const subject = `طلب تدريب من ${name}`
+    const subject = `طلب تدريب من ${name}`;
 
     const text = `
 الاسم: ${name}
@@ -77,7 +77,7 @@ export const handler = async (event) => {
 
 الرسالة:
 ${message}
-`
+`;
 
     const html = `
     <div style="font-family: Arial; direction: rtl; text-align: right;">
@@ -91,7 +91,7 @@ ${message}
       <p><strong>الرسالة:</strong></p>
       <p style="white-space: pre-line;">${escapeHtml(message)}</p>
     </div>
-    `
+    `;
 
     await transporter.sendMail({
       from: `Hellich Contact <${EMAIL_USER}>`,
@@ -99,18 +99,21 @@ ${message}
       replyTo: email,
       subject,
       text,
-      html
-    })
+      html,
+    });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ ok: true })
-    }
-
+      body: JSON.stringify({ ok: true }),
+    };
   } catch (error) {
+    console.error("Contact form error:", error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ ok: false, error: 'Failed to send email' })
-    }
+      body: JSON.stringify({
+        ok: false,
+        error: error.message || "Failed to send email",
+      }),
+    };
   }
-}
+};
