@@ -138,7 +138,7 @@ function Hellich () {
         <div ref={aboutIntroRef} className='about-intro'>
           <h1
             dir='rtl'
-            className='about-intro-title text-second-bg pt-20 mx-12 xl:mx-50 text-center'
+            className='about-intro-title text-surface-muted pt-20 mx-12 xl:mx-50 text-center'
           >
             {aboutIntroWords.map((word, index) => (
               <span

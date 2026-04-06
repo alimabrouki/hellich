@@ -37,7 +37,7 @@
 }
 
 .sliding-word__text {
-  background: var(--color-main-bleu);
+  background: var(--color-brand-primary);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -47,7 +47,7 @@
   width: 0.9em;
   height: 0.9em;
   border-radius: 999px;
-  background: var(--color-main-bleu);
+  background: var(--color-brand-primary);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 

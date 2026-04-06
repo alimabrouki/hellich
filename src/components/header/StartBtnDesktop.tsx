@@ -47,7 +47,7 @@ const StartBtnDesktop: React.FC = () => {
   return (
     <a
       href="#contact"
-      className="hidden lg:flex overflow-hidden rounded-2xl bg-head-btn font-bold lg:my-2 lg:ml-5"
+      className="hidden lg:flex overflow-hidden rounded-2xl bg-surface-accent font-bold lg:my-2 lg:ml-5"
     >
       <div className="w-28.75 overflow-hidden py-2">
         <div ref={contentRef} className="flex will-change-transform">

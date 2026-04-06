@@ -233,13 +233,16 @@ function WhoAmISection () {
               decoding='async'
               className='who-am-i-image who-am-i-image--ghost who-am-i-image--ghost-b'
             />
-            <img
-              src={whoAmIImage}
-              alt='صورة من أنا'
-              loading='eager'
-              decoding='async'
-              className='who-am-i-image who-am-i-image--main'
-            />
+            <div className='who-am-i-image-main-wrap'>
+              <img
+                src={whoAmIImage}
+                alt='صورة من أنا'
+                loading='eager'
+                decoding='async'
+                className='who-am-i-image who-am-i-image--main'
+              />
+              <span className='who-am-i-image-main-overlay' aria-hidden='true' />
+            </div>
           </div>
           <div
             ref={infoRef}

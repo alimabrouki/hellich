@@ -16,7 +16,7 @@ function MobileMenu({ menuOpen, handleMenuOpen }: menuProps & handleMenuProps) {
     >
       <div className="relative z-10 flex w-full flex-col items-end justify-center gap-4 p-4 text-[30px] font-bold">
         <span
-          className={`transition-all duration-350 ease-out text-[25px] text-text-dark font-medium time-font ${
+          className={`transition-all duration-350 ease-out text-[25px] text-text-primary font-medium time-font ${
             menuOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
           style={{ transitionDelay: revealDelay(0) }}

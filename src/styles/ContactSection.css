@@ -1,11 +1,11 @@
 .contact-section {
   position: relative;
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
   overflow: hidden;
 }
 
 .contact-inner {
-  width: min(1200px, calc(100% - 48px));
+  width: var(--layout-content-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   font-size: clamp(3.2rem, 9.5vw, 8.4rem);
   font-weight: 900;
   letter-spacing: 0.08em;
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
   text-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
   line-height: 1.1;
 }
@@ -42,7 +42,7 @@
   transition:
     opacity 0.6s ease,
     filter 0.6s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.7s var(--motion-ease-standard);
   will-change: transform, opacity, filter;
 }
 
@@ -66,22 +66,20 @@
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
   transition:
-    transform 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
-}
-
-.contact-social:hover {
-  transform: translateY(-6px);
-  box-shadow: none;
-  border-color: transparent;
 }
 
 .contact-social__icon {
   width: clamp(54px, 7vw, 88px);
   height: clamp(54px, 7vw, 88px);
+  transition: transform 0.3s ease;
+}
+
+.contact-social__icon:hover {
+  transform: translateY(-6px);
 }
 
 .contact-social__icon svg {
@@ -106,11 +104,11 @@
 }
 
 .contact-social--whatsapp .contact-social__icon {
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
 }
 
 .contact-social--facebook .contact-social__icon {
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
 }
 
 .contact-form {
@@ -125,7 +123,7 @@
   transition:
     opacity 0.6s ease,
     filter 0.6s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.7s var(--motion-ease-standard);
   will-change: transform, opacity, filter;
 }
 
@@ -261,9 +259,9 @@
   justify-self: center;
   padding: 14px 32px;
   border-radius: 16px;
-  border: 2px solid var(--color-head-btn);
-  background: var(--color-head-btn);
-  color: var(--color-text-dark);
+  border: 2px solid var(--color-surface-accent);
+  background: var(--color-surface-accent);
+  color: var(--color-text-primary);
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -272,7 +270,7 @@
     transform 0.12s ease,
     box-shadow 0.12s ease,
     background 0.12s ease;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-elevation-md);
 }
 
 .contact-submit--reveal {
@@ -308,7 +306,7 @@
   font-size: clamp(4.2rem, 9.5vw, 8.4rem);
   font-weight: 900;
   letter-spacing: 0.08em;
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
   text-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
   line-height: 1.05;
   white-space: nowrap;
@@ -472,7 +470,7 @@
 
 @media (max-width: 720px) {
   .contact-inner {
-    width: min(100%, calc(100% - 32px));
+    width: var(--layout-content-width-mobile);
     gap: 32px;
   }
 

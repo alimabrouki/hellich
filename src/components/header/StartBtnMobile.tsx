@@ -13,7 +13,7 @@ function StartBtnMobile ({
 }: StartBtnMobileProps) {
   return (
     <a
-      className={`btn-fill btn-fill--to-white text-head-btn bg-black self-center border-2 border-black rounded-2xl px-9 py-2 flex items-center font-bold
+      className={`btn-fill btn-fill--to-white text-surface-accent bg-black self-center border-2 border-black rounded-2xl px-9 py-2 flex items-center font-bold
                   transition-all duration-500 ease-out
                   ${
                     menuOpen

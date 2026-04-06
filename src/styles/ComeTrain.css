@@ -41,7 +41,6 @@
     animation-range: entry 0% cover 70%;
   }
 }
-
 @keyframes comeTrainTitle {
   from {
     top: 100%;
@@ -128,7 +127,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.5s var(--motion-ease-standard);
   will-change: transform;
 }
 
@@ -169,3 +168,4 @@
     }
   }
 }
+
