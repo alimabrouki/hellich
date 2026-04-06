@@ -37,6 +37,7 @@
 }
 
 .who-am-i-image {
+  filter: grayscale(0.3);
   width: min(340px, 100%);
   height: auto;
   border-radius: 32px;
