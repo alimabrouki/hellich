@@ -125,7 +125,7 @@ function ComeTrain () {
 
         const maxShift = Math.min(window.innerWidth * 0.25, 80)
         const targetShift = eased * maxShift * direction
-        currentShift += (targetShift - currentShift) * 0.02
+        currentShift += (targetShift - currentShift) * 0.03
       } else {
         const timeSinceScroll = now - lastScrollTime
         const sectionEnd = vh * 0.5
