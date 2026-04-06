@@ -1,32 +1,32 @@
-import { memo } from "react";
-import type { menuProps } from "../../types/types";
+import { memo } from 'react'
+import type { menuProps } from '../../types/types'
 
 type StartBtnMobileProps = menuProps & {
-  delayMs?: number;
-  onClick?: () => void;
-};
+  delayMs?: number
+  onClick?: () => void
+}
 
-function StartBtnMobile({
+function StartBtnMobile ({
   menuOpen,
   delayMs = 0,
-  onClick,
+  onClick
 }: StartBtnMobileProps) {
   return (
     <a
-      className={`text-head-btn bg-black self-center rounded-2xl px-9 py-2 flex items-center font-bold
+      className={`btn-fill btn-fill--to-white text-head-btn bg-black self-center border-2 border-black rounded-2xl px-9 py-2 flex items-center font-bold
                   transition-all duration-500 ease-out
                   ${
                     menuOpen
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-8 opacity-0"
+                      ? 'translate-y-0 opacity-100'
+                      : 'translate-y-8 opacity-0'
                   }`}
-      href="#contact"
-      style={{ transitionDelay: menuOpen ? `${delayMs}ms` : "0ms" }}
+      href='#contact'
+      style={{ transitionDelay: menuOpen ? `${delayMs}ms` : '0ms' }}
       onClick={onClick}
     >
-      إبدأ الآن
+      <span className='btn-fill__label'>إبدأ الآن</span>
     </a>
-  );
+  )
 }
 
-export default memo(StartBtnMobile);
+export default memo(StartBtnMobile)

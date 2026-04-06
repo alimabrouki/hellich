@@ -150,6 +150,49 @@ body::-webkit-scrollbar-thumb {
     transform: translateY(0) rotate(0) skewX(0);
     animation: aboutIntroRope 1.35s cubic-bezier(0.16, 1.15, 0.3, 1) both;
   }
+
+  .btn-fill {
+    --btn-fill: #ffffff;
+    --btn-fill-text: #111111;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .btn-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--btn-fill);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+  }
+
+  .btn-fill__label {
+    position: relative;
+    z-index: 1;
+    color: inherit;
+  }
+
+  .btn-fill--to-white {
+    --btn-fill: #ffffff;
+    --btn-fill-text: #000000;
+  }
+
+  .btn-fill--to-black {
+    --btn-fill: #000000;
+    --btn-fill-text: var(--color-pappay);
+  }
+
+  .btn-fill:is(:hover, :focus-visible) .btn-fill__label {
+    color: var(--btn-fill-text);
+  }
+
+  .btn-fill:is(:hover, :focus-visible)::before {
+    transform: scaleY(1);
+  }
 }
 .word-slider {
   display: flex;

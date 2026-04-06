@@ -559,7 +559,7 @@ function ContactSection () {
             </div>
             <button
               type='submit'
-              className={`contact-submit contact-submit--reveal ${
+              className={`btn-fill btn-fill--to-black contact-submit contact-submit--reveal ${
                 visibleFields.has('contact-submit')
                   ? 'contact-submit--visible'
                   : ''
@@ -569,7 +569,7 @@ function ContactSection () {
               style={revealStyle(9)}
               data-reveal-id='contact-submit'
             >
-              تدرّب معي
+              <span className='btn-fill__label'>تدرّب معي</span>
             </button>
             {status !== 'idle' && (
               <p
