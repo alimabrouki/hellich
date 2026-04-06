@@ -1,12 +1,12 @@
 .who-am-i-section {
   position: relative;
   padding: 90px 0 130px;
-  color: var(--color-text-dark);
+  color: var(--color-text-primary);
   overflow: hidden;
 }
 
 .who-am-i-inner {
-  width: min(1200px, calc(100% - 48px));
+  width: var(--layout-content-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   font-size: clamp(2.6rem, 5vw, 4.6rem);
   font-weight: 800;
   letter-spacing: 0.03em;
-  color: var(--color-text-dark);
+  color: var(--color-text-primary);
   text-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
@@ -47,8 +47,9 @@
   object-fit: cover;
   grid-area: 1 / 1;
   transition:
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease;
+    transform 0.5s var(--motion-ease-standard),
+    opacity 0.35s ease,
+    filter 0.35s ease;
   will-change: transform, opacity, filter;
 }
 
@@ -56,6 +57,39 @@
   opacity: 0;
   transform: translate3d(-28px, 28px, 0);
   z-index: 2;
+}
+
+.who-am-i-image-main-wrap {
+  position: relative;
+  grid-area: 1 / 1;
+  width: min(340px, 100%);
+  border-radius: 32px;
+  overflow: hidden;
+  z-index: 2;
+  border: 4px solid transparent;
+  box-shadow: none;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.who-am-i-image-main-wrap .who-am-i-image--main {
+  width: 100%;
+  display: block;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.who-am-i-image-main-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(100, 0, 249, 0.256);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--motion-ease-standard);
 }
 
 .who-am-i-image--ghost {
@@ -78,7 +112,25 @@
 .who-am-i-image-wrap--visible .who-am-i-image--main {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  border: 4px solid #ffffff;
+}
+
+.who-am-i-image-wrap--visible .who-am-i-image-main-wrap {
+  border-color: #ffffff;
+  box-shadow: 0 24px 60px rgba(3, 19, 43, 0.25);
+}
+
+.who-am-i-image-wrap--visible
+  .who-am-i-image-main-wrap
+  .who-am-i-image--main:hover {
+  transform: scale(1.04);
+}
+
+.who-am-i-image-wrap--visible
+  .who-am-i-image-main-wrap
+  .who-am-i-image--main:hover
+  + .who-am-i-image-main-overlay {
+  opacity: 1;
+  transition-delay: 80ms;
 }
 
 .who-am-i-image-wrap--visible .who-am-i-image--ghost {
@@ -107,7 +159,7 @@
   filter: blur(10px);
   transform: translateX(0);
   transition:
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s var(--motion-ease-standard),
     opacity 0.55s ease,
     filter 0.55s ease;
   will-change: transform, opacity, filter;
@@ -132,7 +184,7 @@
   z-index: 2;
   width: clamp(52px, 5.5vw, 76px);
   height: clamp(52px, 5.5vw, 76px);
-  color: var(--color-pappay);
+  color: var(--color-text-on-dark);
   transition: transform 0.3s ease;
 }
 
@@ -172,7 +224,7 @@
   text-align: center;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800;
-  color: var(--color-text-dark);
+  color: var(--color-text-primary);
 }
 
 .who-am-i-faqs-list {
@@ -416,7 +468,7 @@
   }
 
   .who-am-i-inner {
-    width: min(100%, calc(100% - 32px));
+    width: var(--layout-content-width-mobile);
     gap: 36px;
   }
 
