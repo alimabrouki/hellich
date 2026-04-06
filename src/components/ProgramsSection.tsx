@@ -311,7 +311,9 @@ function ProgramsSection () {
       </div>
       <div className='programs-cta'>
         <a
-          href='#contact'
+          href='https://wa.me/218948002493?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A8%D9%8A%D8%AA%20%D9%86%D8%A8%D8%AF%D8%A3%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D9%85%D8%B9%D8%A7%D9%83%D8%8C%20%D9%86%D8%AD%D8%A8%20%D9%86%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%B4%D9%86%D9%88%D8%A7%20%D9%8A%D9%84%D8%B2%D9%85%D9%86%D9%8A%20%D9%86%D8%B9%D9%85%D9%84'
+          target='_blank'
+          rel='noreferrer'
           className='inline-flex cursor-pointer items-center justify-center rounded-2xl bg-head-btn px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-dark shadow-[0_14px_30px_rgba(0,0,0,0.28)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-bleu/70'
         >
           ابدأ برنامجك الآن
