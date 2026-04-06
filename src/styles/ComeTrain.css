@@ -138,8 +138,8 @@
 
 @media (max-width: 640px) {
   .slide-card {
-    width: clamp(180px, 48vw, 260px);
-    height: clamp(180px, 48vw, 260px);
+    width: clamp(200px, 48vw, 260px);
+    height: clamp(200px, 48vw, 260px);
     border-radius: 24px;
   }
 
