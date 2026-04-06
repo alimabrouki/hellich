@@ -350,7 +350,7 @@
   display: block;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(28, 28, 28, 0.6);
+  color: rgb(28 28 28 / 82%);
 }
 
 .who-am-i-stats {
