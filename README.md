@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# Hellich
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance personal trainer website crafted for impact, clarity, and conversion.
 
-Currently, two official plugins are available:
+Built with a focus on motion, responsiveness, and Arabic-first user experience, this project blends modern frontend engineering with intentional UI design to deliver a premium digital presence for a fitness coach.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Desktop
+![Desktop View 1](./src/assets/images/desktopview1.png)  
+![Desktop View 2](./src/assets/images/desktopview2.png)
 
-## Expanding the ESLint configuration
+### Mobile
+![Mobile View 1](./src/assets/images/mobileview1.png)  
+![Mobile View 2](./src/assets/images/mobileview2.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## What Makes It Different
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Motion-Driven Experience** — smooth, scroll-based interactions that guide attention
+- **Arabic-First (RTL)** — designed from the ground up for native readability and flow
+- **Responsive by Default** — consistent experience across all devices
+- **Conversion-Focused Sections** — structured to turn visitors into clients
+- **Clean UI System** — minimal, sharp, and purposeful design decisions
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+- React + TypeScript  
+- Vite  
+- Tailwind CSS  
+- Serverless Functions (Netlify)
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+---
+
+## Live Demo
+
+[View Website](coachhellich.tn)
+
+---
+
+## Note
+
+The codebase is intentionally not documented for reuse.  
+This repository exists to showcase execution, not to distribute implementation.
+
+---
