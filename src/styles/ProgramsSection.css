@@ -152,7 +152,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.571);
   border-radius: inherit;
   z-index: 1;
 }
@@ -209,14 +209,14 @@
 }
 
 .program-card__desc {
-  color: rgba(234, 230, 221, 0.78);
+  color: #eae6dd;
   line-height: 1.6;
   margin-bottom: 12px;
 }
 
 .program-card__full {
   margin-top: 12px;
-  color: rgba(234, 230, 221, 0.86);
+  color: #eae6dd;
   line-height: 1.7;
   font-size: 0.95rem;
   max-height: 0;
@@ -245,7 +245,7 @@
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(3, 166, 219, 0.12);
-  color: rgba(234, 230, 221, 0.8);
+  color: #eae6ddf0;
   font-size: 0.75rem;
 }
 
