@@ -39,7 +39,7 @@ Built with a focus on motion, responsiveness, and Arabic-first user experience, 
 
 ## Live Demo
 
-[View Website](hellich.netlify.app)
+[View Website](https://hellich.netlify.app/)
 
 ---
 
