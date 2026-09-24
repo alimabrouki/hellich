@@ -4,271 +4,243 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties
-} from 'react'
-import '../styles/ProgramsSection.css'
-import nutrition01 from '../assets/images/nutrition01.jpg'
-import nutrition02 from '../assets/images/nutrition02.jpg'
-import nutrition03 from '../assets/images/nutrition03.jpg'
-import nutrition04 from '../assets/images/nutrition04.jpg'
-import workout01 from '../assets/images/workout01.jpg'
-import workout02 from '../assets/images/workout02.jpg'
-import workout03 from '../assets/images/workout03.png'
-import workout04 from '../assets/images/workout04.png'
-import ProgramCard, { type Program } from './ProgramCard'
+} from "react";
+import "../styles/ProgramsSection.css";
+import nutrition01 from "../assets/images/nutrition01.webp";
+import nutrition02 from "../assets/images/nutrition02.webp";
+import nutrition03 from "../assets/images/nutrition03.webp";
+import nutrition04 from "../assets/images/nutrition04.webp";
+import workout01 from "../assets/images/workout01.webp";
+import workout02 from "../assets/images/workout02.webp";
+import workout03 from "../assets/images/workout03.webp";
+import workout04 from "../assets/images/workout04.webp";
+import ProgramCard, { type Program } from "./ProgramCard";
 
 const nutritionPrograms: Program[] = [
   {
-    title: 'وقود زيادة نظيفة',
-    description: 'هيكلة عالية البروتين مع كربوهيدرات ذكية وتحضير أسبوعي.',
+    title: "وقود زيادة نظيفة",
+    description: "هيكلة عالية البروتين مع كربوهيدرات ذكية وتحضير أسبوعي.",
     fullDescription:
-      'دليل كامل لزيادة نظيفة يشمل جدول وجبات يومي، توزيع الماكروز، قائمة مشتريات، وخيارات بديلة سريعة لكل وجبة بدون تعقيد.',
-    tags: ['٤ أسابيع', 'حسب الماكروز', 'تحضير وجبات'],
-    image: nutrition01
+      "دليل كامل لزيادة نظيفة يشمل جدول وجبات يومي، توزيع الماكروز، قائمة مشتريات، وخيارات بديلة سريعة لكل وجبة بدون تعقيد.",
+    tags: ["٤ أسابيع", "حسب الماكروز", "تحضير وجبات"],
+    image: nutrition01,
   },
   {
-    title: 'إعادة ضبط خسارة الدهون',
-    description: 'تدوير السعرات، التحكم في الشهية، وتعافٍ سريع.',
+    title: "إعادة ضبط خسارة الدهون",
+    description: "تدوير السعرات، التحكم في الشهية، وتعافٍ سريع.",
     fullDescription:
-      'خطة تنشيف تدريجية مع إعادة تغذية محسوبة وتتبع وزن أسبوعي، ونظام وجبات منخفض الجهد يحافظ على الشبع ويثبت الأداء.',
-    tags: ['مرحلة تنشيف', 'بروتين عالٍ', 'ضغط منخفض'],
-    image: nutrition02
+      "خطة تنشيف تدريجية مع إعادة تغذية محسوبة وتتبع وزن أسبوعي، ونظام وجبات منخفض الجهد يحافظ على الشبع ويثبت الأداء.",
+    tags: ["مرحلة تنشيف", "بروتين عالٍ", "ضغط منخفض"],
+    image: nutrition02,
   },
   {
-    title: 'وقود الأداء',
-    description: 'وجبات بتوقيت دقيق لأيام التدريب والراحة.',
+    title: "وقود الأداء",
+    description: "وجبات بتوقيت دقيق لأيام التدريب والراحة.",
     fullDescription:
-      'برنامج توقيت كارب وبروتين حول التمرين، توزيع وجبات لأيام الراحة، وإرشادات ترطيب ومكملات أساسية لرفع الأداء.',
-    tags: ['رياضي', 'توقيت', 'ترطيب'],
-    image: nutrition03
+      "برنامج توقيت كارب وبروتين حول التمرين، توزيع وجبات لأيام الراحة، وإرشادات ترطيب ومكملات أساسية لرفع الأداء.",
+    tags: ["رياضي", "توقيت", "ترطيب"],
+    image: nutrition03,
   },
   {
-    title: 'قوة نباتية',
-    description: 'بروتينات كاملة مع بدائل سهلة ووصفات بسيطة.',
+    title: "قوة نباتية",
+    description: "بروتينات كاملة مع بدائل سهلة ووصفات بسيطة.",
     fullDescription:
-      'دليل نباتي عملي لبناء العضلات يتضمن مصادر بروتين كاملة، دمج أحماض أمينية، ووصفات خفيفة على المعدة.',
-    tags: ['نباتي', 'مناسب للمعدة', 'بسيط'],
-    image: nutrition04
-  }
-]
+      "دليل نباتي عملي لبناء العضلات يتضمن مصادر بروتين كاملة، دمج أحماض أمينية، ووصفات خفيفة على المعدة.",
+    tags: ["نباتي", "مناسب للمعدة", "بسيط"],
+    image: nutrition04,
+  },
+];
 
 const splitPrograms: Program[] = [
   {
-    title: '٤ أيام علوي / سفلي',
-    description: 'توازن بين القوة والضخامة مع تعافٍ مدمج.',
+    title: "٤ أيام علوي / سفلي",
+    description: "توازن بين القوة والضخامة مع تعافٍ مدمج.",
     fullDescription:
-      'جدول أسبوعي مفصل بالحجم والشدة، تقسيم عضلات واضح، وتمارين بديلة مع أسبوع تخفيف دوري للحفاظ على التعافي.',
-    tags: ['متوسط', '٤ أيام', 'قوة'],
-    image: workout01
+      "جدول أسبوعي مفصل بالحجم والشدة، تقسيم عضلات واضح، وتمارين بديلة مع أسبوع تخفيف دوري للحفاظ على التعافي.",
+    tags: ["متوسط", "٤ أيام", "قوة"],
+    image: workout01,
   },
   {
-    title: 'دفع / سحب / أرجل',
-    description: 'تقسيمة كلاسيكية لزيادة الحجم والكثافة.',
+    title: "دفع / سحب / أرجل",
+    description: "تقسيمة كلاسيكية لزيادة الحجم والكثافة.",
     fullDescription:
-      'خطة تضخيم كلاسيكية مع تقدم بالأوزان، توزيع أحمال متوازن، وتمارين دعم لتقوية نقاط الضعف على المدى الطويل.',
-    tags: ['ضخامة', '٥-٦ أيام', 'حجم'],
-    image: workout02
+      "خطة تضخيم كلاسيكية مع تقدم بالأوزان، توزيع أحمال متوازن، وتمارين دعم لتقوية نقاط الضعف على المدى الطويل.",
+    tags: ["ضخامة", "٥-٦ أيام", "حجم"],
+    image: workout02,
   },
   {
-    title: '٣ أيام جسم كامل',
-    description: 'تمارين جسم كامل بكفاءة لأسابيع الانشغال.',
+    title: "٣ أيام جسم كامل",
+    description: "تمارين جسم كامل بكفاءة لأسابيع الانشغال.",
     fullDescription:
-      'برنامج مختصر يحافظ على القوة في أسابيع الانشغال، يعتمد على تمارين مركبة وإحماء سريع وخطة تقدّم بسيطة.',
-    tags: ['مبتدئ', '٣ أيام', 'موفّر للوقت'],
-    image: workout03
+      "برنامج مختصر يحافظ على القوة في أسابيع الانشغال، يعتمد على تمارين مركبة وإحماء سريع وخطة تقدّم بسيطة.",
+    tags: ["مبتدئ", "٣ أيام", "موفّر للوقت"],
+    image: workout03,
   },
   {
-    title: 'تقسيمة القوة الرياضية',
-    description: 'قوة وسرعة ولياقة في نظام واحد.',
+    title: "تقسيمة القوة الرياضية",
+    description: "قوة وسرعة ولياقة في نظام واحد.",
     fullDescription:
-      'نظام أداء يجمع السرعة والقوة الانفجارية مع لياقة وظيفية، ويحدد بوضوح أيام الشدة العالية والمتوسطة.',
-    tags: ['أداء', '٥ أيام', 'انفجارية'],
-    image: workout04
-  }
-]
+      "نظام أداء يجمع السرعة والقوة الانفجارية مع لياقة وظيفية، ويحدد بوضوح أيام الشدة العالية والمتوسطة.",
+    tags: ["أداء", "٥ أيام", "انفجارية"],
+    image: workout04,
+  },
+];
 
-function ProgramsSection () {
-  const programsRef = useRef<HTMLElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const leftColumnRef = useRef<HTMLDivElement | null>(null)
-  const rightColumnRef = useRef<HTMLDivElement | null>(null)
-  const [titleVisible, setTitleVisible] = useState(false)
+function ProgramsSection() {
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const leftColumnRef = useRef<HTMLDivElement | null>(null);
+  const rightColumnRef = useRef<HTMLDivElement | null>(null);
+  const [titleVisible, setTitleVisible] = useState(false);
 
-  const programsTitle = 'برامج مجانية !'
+  const programsTitle = "برامج مجانية !";
   const programsTitleWords = useMemo(
     () => programsTitle.split(/\s+/),
-    [programsTitle]
-  )
-  const wordDelayMs = 45
+    [programsTitle],
+  );
+  const wordDelayMs = 45;
 
   useEffect(() => {
-    const section = programsRef.current
-    if (!section) return
+    const title = titleRef.current;
+    if (!title) return;
 
-    const triggerAnimation = () => {
-      section.classList.add('programs-section--animate')
-    }
-
-    if ('IntersectionObserver' in window) {
+    if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            triggerAnimation()
-            observer.disconnect()
+            setTitleVisible(true);
           }
         },
-        { threshold: 0.3 }
-      )
-      observer.observe(section)
-      return () => observer.disconnect()
-    }
-
-    triggerAnimation()
-  }, [])
-
-  useEffect(() => {
-    const title = titleRef.current
-    if (!title) return
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setTitleVisible(true)
-          }
-        },
-        { threshold: 0.2 }
-      )
-      observer.observe(title)
-      return () => observer.disconnect()
+        { threshold: 0.2 },
+      );
+      observer.observe(title);
+      return () => observer.disconnect();
     }
 
     const onScroll = () => {
-      const rect = title.getBoundingClientRect()
-      const inView = rect.top < window.innerHeight && rect.bottom > 0
+      const rect = title.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
       if (inView) {
-        setTitleVisible(true)
+        setTitleVisible(true);
       }
-    }
+    };
 
-    const win = window as Window
-    onScroll()
-    win.addEventListener('scroll', onScroll, { passive: true })
-    win.addEventListener('resize', onScroll)
+    const win = window as Window;
+    onScroll();
+    win.addEventListener("scroll", onScroll, { passive: true });
+    win.addEventListener("resize", onScroll);
     return () => {
-      win.removeEventListener('scroll', onScroll)
-      win.removeEventListener('resize', onScroll)
-    }
-  }, [])
+      win.removeEventListener("scroll", onScroll);
+      win.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 720px)')
+    const media = window.matchMedia("(max-width: 720px)");
 
-    const left = leftColumnRef.current
-    const right = rightColumnRef.current
-    if (!left || !right) return
+    const left = leftColumnRef.current;
+    const right = rightColumnRef.current;
+    if (!left || !right) return;
 
     const setVisible = (element: HTMLElement) => {
-      element.classList.add('programs-column--visible')
-    }
+      element.classList.add("programs-column--visible");
+    };
 
     const checkInView = (element: HTMLElement) => {
-      const rect = element.getBoundingClientRect()
-      return rect.top < window.innerHeight * 0.85 && rect.bottom > 0
-    }
+      const rect = element.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+    };
 
     if (!media.matches) {
-      setVisible(left)
-      setVisible(right)
-      return
+      setVisible(left);
+      setVisible(right);
+      return;
     }
 
-    if ('IntersectionObserver' in window) {
+    if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return
-            setVisible(entry.target as HTMLElement)
-            observer.unobserve(entry.target)
-          })
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            setVisible(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          });
         },
-        { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
-      )
-      observer.observe(left)
-      observer.observe(right)
+        { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+      );
+      observer.observe(left);
+      observer.observe(right);
 
       const handleMediaChange = () => {
         if (!media.matches) {
-          setVisible(left)
-          setVisible(right)
-          observer.disconnect()
-          return
+          setVisible(left);
+          setVisible(right);
+          observer.disconnect();
+          return;
         }
-        if (checkInView(left)) setVisible(left)
-        if (checkInView(right)) setVisible(right)
-      }
-      handleMediaChange()
-      media.addEventListener('change', handleMediaChange)
+        if (checkInView(left)) setVisible(left);
+        if (checkInView(right)) setVisible(right);
+      };
+      handleMediaChange();
+      media.addEventListener("change", handleMediaChange);
       return () => {
-        observer.disconnect()
-        media.removeEventListener('change', handleMediaChange)
-      }
+        observer.disconnect();
+        media.removeEventListener("change", handleMediaChange);
+      };
     }
 
     const onScroll = () => {
       if (!media.matches) {
-        setVisible(left)
-        setVisible(right)
-        return
+        setVisible(left);
+        setVisible(right);
+        return;
       }
-      if (checkInView(left)) setVisible(left)
-      if (checkInView(right)) setVisible(right)
-    }
+      if (checkInView(left)) setVisible(left);
+      if (checkInView(right)) setVisible(right);
+    };
 
-    const win = window as Window
-    onScroll()
-    win.addEventListener('scroll', onScroll, { passive: true })
-    win.addEventListener('resize', onScroll)
+    const win = window as Window;
+    onScroll();
+    win.addEventListener("scroll", onScroll, { passive: true });
+    win.addEventListener("resize", onScroll);
     return () => {
-      win.removeEventListener('scroll', onScroll)
-      win.removeEventListener('resize', onScroll)
-    }
-  }, [])
+      win.removeEventListener("scroll", onScroll);
+      win.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   return (
     <section
-      ref={programsRef}
-      className='programs-section about'
-      id='programs'
-      aria-labelledby='programs-title'
-      dir='rtl'
+      className="programs-section about"
+      id="programs"
+      aria-labelledby="programs-title"
+      dir="rtl"
     >
-      <div className='programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9'>
-        <h1 id='programs-title' ref={titleRef} className='programs-title'>
+      <div className="programs-inner relative z-[1] mx-auto flex w-[min(1200px,calc(100%-48px))] flex-col gap-9">
+        <h1 id="programs-title" ref={titleRef} className="programs-title">
           {programsTitleWords.map((word, index) => (
             <span
               key={`${word}-${index}`}
               className={`about-intro-word ${
-                titleVisible ? 'about-intro-word--visible' : ''
+                titleVisible ? "about-intro-word--visible" : ""
               }`}
               style={{
                 transitionDelay: `${index * wordDelayMs}ms`,
-                animationDelay: `${index * wordDelayMs}ms`
+                animationDelay: `${index * wordDelayMs}ms`,
               }}
             >
               {word}
-              {index < programsTitleWords.length - 1 ? '\u00A0' : ''}
+              {index < programsTitleWords.length - 1 ? "\u00A0" : ""}
             </span>
           ))}
         </h1>
-        <div className='flex flex-col'>
-          <div className='programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2'>
+        <div className="flex flex-col">
+          <div className="programs-columns grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
             <div
               ref={leftColumnRef}
-              className='programs-column flex flex-col gap-3 text-right programs-column--left'
+              className="programs-column flex flex-col gap-3 text-right programs-column--left"
             >
-              <h2 className='programs-column-title'>تقسيمات التمرين</h2>
-              <div className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'>
+              <h2 className="programs-column-title">تقسيمات التمرين</h2>
+              <div className="programs-stack relative flex flex-col items-stretch overflow-visible isolate">
                 {splitPrograms.map((program, index) => (
                   <ProgramCard
                     key={`split-${program.title}`}
@@ -276,24 +248,16 @@ function ProgramsSection () {
                     index={index}
                     stackIndex={index * -1}
                     stackZ={splitPrograms.length - index}
-                    revealDelayMs={index * 80}
                   />
                 ))}
               </div>
             </div>
             <div
               ref={rightColumnRef}
-              className='programs-column flex flex-col gap-3 text-right programs-column--right'
+              className="programs-column flex flex-col gap-3 text-right programs-column--right"
             >
-              <h2 className='programs-column-title'>دليل التغذية</h2>
-              <div
-                className='programs-stack relative flex flex-col items-stretch overflow-visible isolate'
-                style={
-                  {
-                    '--stack-pad': `${(nutritionPrograms.length - 1) * 28}px`
-                  } as CSSProperties
-                }
-              >
+              <h2 className="programs-column-title">دليل التغذية</h2>
+              <div className="programs-stack relative flex flex-col items-stretch overflow-visible isolate">
                 {nutritionPrograms.map((program, index) => (
                   <ProgramCard
                     key={`nutrition-${program.title}`}
@@ -301,7 +265,6 @@ function ProgramsSection () {
                     index={index}
                     stackIndex={index}
                     stackZ={nutritionPrograms.length - index}
-                    revealDelayMs={index * 80}
                   />
                 ))}
               </div>
@@ -309,18 +272,18 @@ function ProgramsSection () {
           </div>
         </div>
       </div>
-      <div className='programs-cta'>
+      <div className="programs-cta">
         <a
-          href='https://wa.me/218948002493?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A8%D9%8A%D8%AA%20%D9%86%D8%A8%D8%AF%D8%A3%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D9%85%D8%B9%D8%A7%D9%83%D8%8C%20%D9%86%D8%AD%D8%A8%20%D9%86%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%B4%D9%86%D9%88%D8%A7%20%D9%8A%D9%84%D8%B2%D9%85%D9%86%D9%8A%20%D9%86%D8%B9%D9%85%D9%84'
-          target='_blank'
-          rel='noreferrer'
-          className='btn-fill btn-fill--to-black inline-flex cursor-pointer items-center justify-center border-2 border-surface-accent rounded-2xl bg-surface-accent px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-primary shadow-[0_14px_30px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/70'
+          href="https://wa.me/218948002493?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A8%D9%8A%D8%AA%20%D9%86%D8%A8%D8%AF%D8%A3%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D9%85%D8%B9%D8%A7%D9%83%D8%8C%20%D9%86%D8%AD%D8%A8%20%D9%86%D8%B9%D8%B1%D9%81%20%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%B4%D9%86%D9%88%D8%A7%20%D9%8A%D9%84%D8%B2%D9%85%D9%86%D9%8A%20%D9%86%D8%B9%D9%85%D9%84"
+          target="_blank"
+          rel="noreferrer"
+          className="btn-fill btn-fill--to-black inline-flex cursor-pointer items-center justify-center border-2 border-surface-accent rounded-2xl bg-surface-accent px-10 py-3 text-lg font-bold tracking-[0.02em] text-text-primary shadow-[0_14px_30px_rgba(0,0,0,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/70"
         >
-          <span className='btn-fill__label'>ابدأ برنامجك الآن</span>
+          <span className="btn-fill__label">ابدأ برنامجك الآن</span>
         </a>
       </div>
     </section>
-  )
+  );
 }
 
-export default memo(ProgramsSection)
+export default memo(ProgramsSection);

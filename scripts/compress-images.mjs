@@ -5,14 +5,14 @@ import path from "path";
 const imagesDir = "./src/assets/images";
 
 const files = [
-  "nutrition01.jpg",
-  "nutrition02.jpg",
-  "nutrition03.jpg",
-  "nutrition04.jpg",
-  "workout01.jpg",
-  "workout02.jpg",
-  "workout03.png",
-  "workout04.png",
+  "nutrition01.webp",
+  "nutrition02.webp",
+  "nutrition03.webp",
+  "nutrition04.webp",
+  "workout01.webp",
+  "workout02.webp",
+  "workout03.webp",
+  "workout04.webp",
   "hellich-hero-image.webp",
 ];
 
