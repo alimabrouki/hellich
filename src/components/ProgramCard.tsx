@@ -13,7 +13,6 @@ type ProgramCardProps = {
   index: number;
   stackIndex: number;
   stackZ: number;
-  revealDelayMs: number;
 };
 
 export default function ProgramCard({
@@ -21,13 +20,12 @@ export default function ProgramCard({
   index,
   stackIndex,
   stackZ,
-  revealDelayMs,
 }: ProgramCardProps) {
   const style = {
-    "--stack-index": stackIndex,
+    "--card-x-desktop": `${stackIndex * 10}px`,
+    "--card-x-mobile": `${stackIndex * 4}px`,
     "--stack-z": stackZ,
     "--card-bg": `url(${program.image})`,
-    "--reveal-delay": `${revealDelayMs}ms`,
   } as CSSProperties;
 
   return (

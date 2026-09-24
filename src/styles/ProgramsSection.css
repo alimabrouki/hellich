@@ -1,38 +1,8 @@
-@property --programs-stack-separation {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 36px;
-}
-
-@property --programs-stack-shift {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 28px;
-}
-
-@keyframes programsStackSpread {
-  from {
-    --programs-stack-separation: 36px;
-    --programs-stack-shift: 28px;
-  }
-
-  to {
-    --programs-stack-separation: -36px;
-    --programs-stack-shift: 0px;
-  }
-}
-
 .programs-section {
   position: relative;
   padding: 60px 0 60px;
   overflow: hidden;
-  --programs-stack-separation: 36px;
-  --programs-stack-shift: 28px;
-  --programs-card-y: 0px;
-}
-
-.programs-section.programs-section--animate {
-  animation: programsStackSpread 0.9s ease-in-out both;
+  --programs-stack-separation: 16px;
 }
 
 .programs-title {
@@ -68,35 +38,35 @@
   text-align: center;
 }
 
-.programs-stack {
-  padding-bottom: var(--stack-pad, 0px);
-}
-
 .programs-cta {
-  position: absolute;
-  inset-inline: 0;
+  position: relative;
   z-index: 30;
   display: flex;
   justify-content: center;
+  margin-top: clamp(36px, 5vw, 56px);
 }
 
 .program-card {
   position: relative;
-  border-radius: 18px;
-  padding: 16px 18px 18px;
-  background-color: rgba(3, 19, 43, 0.92);
-  background-image: var(--card-bg);
+  border: 1px solid rgba(3, 166, 219, 0.3);
+  border-radius: 20px;
+  padding: 20px 22px 22px;
+  background-color: #03132b;
+  background-image:
+    linear-gradient(115deg, rgba(3, 19, 43, 0.94), rgba(3, 19, 43, 0.68)),
+    var(--card-bg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-bottom: 1px solid rgba(3, 166, 219, 0.28);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
-  min-height: 92px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+  min-height: 108px;
   overflow: visible;
   cursor: pointer;
   transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out;
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease,
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-position 600ms ease;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
@@ -110,6 +80,12 @@
 
 .program-card summary::-webkit-details-marker {
   display: none;
+}
+
+.program-card summary:focus-visible {
+  border-radius: 12px;
+  outline: 2px solid rgba(3, 166, 219, 0.95);
+  outline-offset: 5px;
 }
 
 .program-card summary {
@@ -132,19 +108,13 @@
 .program-card--stack::before {
   content: "";
   position: absolute;
-  top: -12px;
+  top: 11px;
   inset-inline-start: 22px;
-  width: 70px;
-  height: 16px;
-  border-radius: 12px 12px 4px 4px;
-  background: linear-gradient(
-    120deg,
-    rgba(3, 166, 219, 0.6),
-    rgba(255, 239, 213, 0.35)
-  );
-  border: 1px solid rgba(3, 166, 219, 0.4);
-  border-bottom: none;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  width: 36px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(3, 166, 219, 0.82);
+  box-shadow: 0 0 16px rgba(3, 166, 219, 0.3);
   z-index: 3;
 }
 
@@ -152,17 +122,19 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.571);
+  background: linear-gradient(
+    110deg,
+    rgba(3, 19, 43, 0.18),
+    rgba(3, 19, 43, 0.04) 55%,
+    rgba(0, 0, 0, 0.12)
+  );
   border-radius: inherit;
   z-index: 1;
 }
 
 .programs-stack .program-card {
-  transform: translate3d(
-    calc(var(--stack-index) * var(--programs-stack-shift)),
-    var(--programs-card-y, 0px),
-    0
-  );
+  --card-x: var(--card-x-desktop, 0px);
+  transform: translate3d(var(--card-x), 0, 0);
   z-index: var(--stack-z, 1);
 }
 
@@ -203,9 +175,10 @@
 
 .program-card:hover,
 .program-card:focus-within {
-  transform: translate3d(0, calc(var(--programs-card-y, 0px) - 4px), 0);
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
-  z-index: 20;
+  transform: translate3d(var(--card-x, 0px), -7px, 0) scale(1.02);
+  border-color: rgba(3, 166, 219, 0.75);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.4), 0 0 22px rgba(3, 166, 219, 0.12);
+  z-index: 30;
 }
 
 .program-card__desc {
@@ -231,7 +204,7 @@
 }
 
 .program-card:active {
-  transform: translate3d(0, calc(var(--programs-card-y, 0px) - 2px), 0);
+  transform: translate3d(var(--card-x, 0px), -2px, 0) scale(0.995);
 }
 
 .program-card__tags {
@@ -258,28 +231,20 @@
 @media (max-width: 720px) {
   .program-card {
     will-change: auto;
-    transform: none;
-    transition:
-      transform 0.3s ease-out,
-      box-shadow 0.3s ease-out;
+    padding: 18px 18px 20px;
   }
 
   .programs-section {
     padding: 60px 0 60px;
-    --programs-stack-separation: 26px;
-    --programs-stack-shift: 16px;
+    --programs-stack-separation: 14px;
+  }
+
+  .programs-stack .program-card {
+    --card-x: var(--card-x-mobile, 0px);
   }
 
   .programs-title {
     letter-spacing: 0.03em;
-  }
-
-  .programs-stack .program-card {
-    transform: translateX(0) translateY(var(--programs-card-y, 0px));
-  }
-
-  .programs-stack .program-card + .program-card {
-    margin-top: 16px;
   }
 
   .programs-column-title {
@@ -297,24 +262,6 @@
     opacity: 1;
     transform: translateY(0);
     transition-delay: 80ms;
-  }
-
-  .programs-column:not(.programs-column--visible) .program-card {
-    opacity: 0;
-    --programs-card-y: 28px;
-    transition-delay: calc(var(--reveal-delay, 0ms) + 20ms);
-    transition:
-      opacity 0.25s ease-out,
-      transform 0.25s ease-out;
-  }
-
-  .programs-column.programs-column--visible .program-card {
-    opacity: 1;
-    --programs-card-y: 0px;
-    transition-delay: 0ms;
-    transition:
-      opacity 0.35s ease-out,
-      transform 0.35s ease-out;
   }
 
   .program-card__details {
